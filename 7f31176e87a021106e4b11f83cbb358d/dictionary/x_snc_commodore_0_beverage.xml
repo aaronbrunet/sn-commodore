@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="18fde8fa87a021106e4b11f83cbb35b3" label="Beverages" max_length="40" name="x_snc_commodore_0_beverage" type="collection">
+        <element label="ABV" max_length="40" name="abv" type="integer"/>
+        <element label="Brand" max_length="40" name="brand" type="string"/>
+        <element label="Country of Origin" max_length="5000" name="country" type="string"/>
+        <element label="Description" max_length="5000" name="description" type="string"/>
+        <element display="true" label="Name" max_length="1000" name="name" type="string"/>
+        <element label="Region of Origin" max_length="5000" name="region" type="string"/>
+        <element label="Style" max_length="500" name="style" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="Taste" max_length="5000" name="taste" type="string"/>
+        <element choice="3" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Beer" sequence="0" value="beer"/>
+                <element inactive_on_update="false" label="Wine" sequence="1" value="wine"/>
+                <element inactive_on_update="false" label="Spirit" sequence="2" value="spirit"/>
+                <element inactive_on_update="false" label="Other" sequence="3" value="other"/>
+            </choice>
+        </element>
+        <element label="Type (Other)" max_length="40" name="type_other" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>
