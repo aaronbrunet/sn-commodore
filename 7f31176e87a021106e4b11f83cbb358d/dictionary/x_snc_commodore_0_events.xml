@@ -3,12 +3,14 @@
         <element label="Attendees" max_length="1024" name="attendees" reference="sys_user" type="glide_list"/>
         <element label="Beverage Count" max_length="40" name="beverage_count" type="integer"/>
         <element label="Description" max_length="5000" name="description" type="string"/>
-        <element label="Drinks" max_length="40" name="drinks" type="glide_list"/>
+        <element label="Drinks" max_length="40" name="drinks" reference="x_snc_commodore_0_beverage" type="glide_list"/>
+        <element label="Drink Names Hidden" max_length="40" name="drink_names_hidden" type="boolean"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Required" max_length="40" name="required" type="boolean"/>
         <element display="true" label="Short description" max_length="500" name="short_description" type="string"/>
         <element label="Slots" max_length="40" name="slots" type="integer"/>
         <element label="Start" max_length="40" name="start" type="glide_date_time"/>
+        <element label="Theme" max_length="1000" name="theme" type="string"/>
         <element label="Winner" max_length="32" name="winner" reference="sys_user" type="reference"/>
         <index name="index">
             <element name="winner"/>

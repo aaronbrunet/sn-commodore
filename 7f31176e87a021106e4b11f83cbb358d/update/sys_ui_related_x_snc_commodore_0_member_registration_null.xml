@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_related sys_domain="global" table="x_snc_commodore_0_member_registration" version="2" view="">
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Member Registration - Default view" name="x_snc_commodore_0_member_registration" related_list="NULL" sys_domain="global" view="Default view">a454f87287e021106e4b11f83cbb353b</list_id>
+            <order_by/>
+            <position>0</position>
+            <related_list>REL:9252b03287e021106e4b11f83cbb3550</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 01:28:39</sys_created_on>
+            <sys_id>a054f87287e021106e4b11f83cbb353c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 01:28:39</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Member Registration - Default view" name="x_snc_commodore_0_member_registration" related_list="NULL" sys_domain="global" view="Default view">a454f87287e021106e4b11f83cbb353b</list_id>
+            <order_by/>
+            <position>1</position>
+            <related_list>REL:0793b07287e021106e4b11f83cbb35df</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 01:28:39</sys_created_on>
+            <sys_id>a454f87287e021106e4b11f83cbb353c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 01:28:39</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Member Registration - Default view" name="x_snc_commodore_0_member_registration" related_list="NULL" sys_domain="global" view="Default view">a454f87287e021106e4b11f83cbb353b</list_id>
+            <order_by/>
+            <position>2</position>
+            <related_list>REL:fe14387287e021106e4b11f83cbb3552</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 01:28:39</sys_created_on>
+            <sys_id>a854f87287e021106e4b11f83cbb353c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 01:28:39</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Member Registration - Default view</calculated_name>
+            <filter/>
+            <name>x_snc_commodore_0_member_registration</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 01:28:39</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a454f87287e021106e4b11f83cbb353b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Member Registration - Default view</sys_name>
+            <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+            <sys_update_name>sys_ui_related_x_snc_commodore_0_member_registration_null</sys_update_name>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 01:28:39</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_related_list>
+    </sys_ui_related>
+</record_update>
