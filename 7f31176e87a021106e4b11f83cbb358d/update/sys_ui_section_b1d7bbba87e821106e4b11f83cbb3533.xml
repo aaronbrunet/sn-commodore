@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="b1d7bbba87e821106e4b11f83cbb3533" sys_domain="global" table="x_snc_commodore_0_votes" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>beverage</element>
+            <position>0</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 17:21:27</sys_created_on>
+            <sys_id>656ecc8b872c21106e4b11f83cbb358e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_votes" sys_domain="global" view="Default view">b1d7bbba87e821106e4b11f83cbb3533</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 17:21:27</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>event_attendances</element>
+            <position>1</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 17:21:27</sys_created_on>
+            <sys_id>696ecc8b872c21106e4b11f83cbb358e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_votes" sys_domain="global" view="Default view">b1d7bbba87e821106e4b11f83cbb3533</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 17:21:27</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>user</element>
+            <position>2</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 17:21:27</sys_created_on>
+            <sys_id>6d6ecc8b872c21106e4b11f83cbb358e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_votes" sys_domain="global" view="Default view">b1d7bbba87e821106e4b11f83cbb3533</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 17:21:27</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>score</element>
+            <position>3</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 17:21:27</sys_created_on>
+            <sys_id>616ecc8b872c21106e4b11f83cbb358f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_votes" sys_domain="global" view="Default view">b1d7bbba87e821106e4b11f83cbb3533</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 17:21:27</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_commodore_0_votes</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-01-26 15:42:54</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b1d7bbba87e821106e4b11f83cbb3533</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_commodore_0_votes</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+            <sys_update_name>sys_ui_section_b1d7bbba87e821106e4b11f83cbb3533</sys_update_name>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-01-26 15:42:54</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

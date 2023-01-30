@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_snc_commodore_0_club_event_attendances">x_snc_commodore_0_club_event_attendances</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>CLBA</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-01-26 15:40:43</sys_created_on>
+        <sys_id>b557ff7a87e821106e4b11f83cbb3505</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CLBA</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sys_number_b557ff7a87e821106e4b11f83cbb3505</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-01-26 15:40:43</sys_updated_on>
+    </sys_number>
+</record_update>

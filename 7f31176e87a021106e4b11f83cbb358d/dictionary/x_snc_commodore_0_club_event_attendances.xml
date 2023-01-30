@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="cd57bf7a87e821106e4b11f83cbb35ce" label="Club Event Attendances" max_length="40" name="x_snc_commodore_0_club_event_attendances" type="collection">
+        <element label="Event" max_length="32" name="event" reference="x_snc_commodore_0_events" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element label="Votes" max_length="40" name="votes" type="glide_list"/>
+        <index name="index">
+            <element name="event"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

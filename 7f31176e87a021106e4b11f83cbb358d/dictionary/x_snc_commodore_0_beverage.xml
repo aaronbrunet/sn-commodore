@@ -5,6 +5,7 @@
         <element label="Country of Origin" max_length="5000" name="country" type="string"/>
         <element label="Description" max_length="5000" name="description" type="string"/>
         <element label="Introduced by" max_length="32" name="introduced_by" reference="sys_user" type="reference"/>
+        <element label="Masked Name" max_length="1000" name="masked_name" type="string"/>
         <element display="true" label="Name" max_length="1000" name="name" type="string"/>
         <element label="Region of Origin" max_length="5000" name="region" type="string"/>
         <element label="Style" max_length="500" name="style" type="string"/>
