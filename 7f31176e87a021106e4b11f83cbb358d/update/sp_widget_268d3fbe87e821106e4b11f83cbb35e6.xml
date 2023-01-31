@@ -5,24 +5,34 @@
   /* widget controller */
 	var c = this;
 	var data = $scope.data;
+	
+	spUtil.recordWatch($scope, "x_snc_commodore_0_votes", "event_attendances.event=607174fe87a021106e4b11f83cbb351f", function(name) {
+		console.log(name.data.operation); 
+		console.log(name); 
+		spUtil.update($scope);
+    });
+
+	$scope.votesToWidth = function(curr,total){
+		return (curr / total ) * 100;
+	};
+
 	// $scope.refreshLive = function(){
-		
-		var refresh;
-		if($scope.data.voting_open){
+		// var refresh;
+		// if($scope.data.voting_open){
 			
-			refresh = $interval(function(){
-				console.log("Refresh")
-				console.log($scope.data.voting_open);
-				if($scope.data.voting_open){
-					spUtil.update($scope);
-				}
-				else {
-					$interval.cancel(refresh);
-				}
-			}, 10000);
-		} else {
-			$interval.cancel(refresh);
-		}
+		// 	refresh = $interval(function(){
+		// 		console.log("Refresh")
+		// 		console.log($scope.data.voting_open);
+		// 		if($scope.data.voting_open){
+		// 			spUtil.update($scope);
+		// 		}
+		// 		else {
+		// 			$interval.cancel(refresh);
+		// 		}
+		// 	}, 10000);
+		// } else {
+		// 	$interval.cancel(refresh);
+		// }
 	// }
 };]]></client_script>
         <controller_as>c</controller_as>
@@ -61,19 +71,18 @@ while(getAttendees.next()){
 }
 
 var b_list = event.drinks.toString();
-console.log(b_list);
+//console.log(b_list);
 var beverages = [];
 var getBev = new GlideRecord('x_snc_commodore_0_beverage');
 getBev.addEncodedQuery('sys_idIN'+b_list);
 getBev.query();
 while(getBev.next()){
-
 	var bObj = {};
 	$sp.getRecordElements(bObj, getBev, 'name,masked_name');
 	bObj.sys_id = getBev.getValue('sys_id');
+	bObj.votes = 0;
 	beverages.push(bObj);
 }
-//console.log(beverages);
 
 var votes = [];
 var getVotes = new GlideRecord('x_snc_commodore_0_votes');
@@ -86,13 +95,24 @@ while(getVotes.next()){
 	vObj.beverage.masked_name = getVotes.beverage.masked_name.getDisplayValue(); 
 	vObj.sys_id = getVotes.getValue('sys_id');
 	votes.push(vObj);
+	var targetBeverage = beverages.findIndex(b => b.sys_id == vObj.beverage.value);
+	beverages[targetBeverage].votes += 1;
+	// console.log(beverages[targetBeverage]);
 }
-console.log(JSON.stringify(votes));
+// console.log(JSON.stringify(votes));
 
 data.attendees = attendees;
 data.beverages = beverages;
+console.log(data.beverages);
+data.bevVotes = [...beverages].sort((a,b) => b.votes - a.votes);
+console.log(data.bevVotes);
 data.votes = votes;
-
+// var d = new Date();
+// data.refreshed = d;//.getByFormat('HH:mm');
+var gd = new GlideDate();
+var g = gd.getInternalFormattedLocalTime();
+console.log(g);
+data.refreshed = new Date(g);
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -100,23 +120,28 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>65</sys_mod_count>
+        <sys_mod_count>100</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-01-26 20:58:23</sys_updated_on>
+        <sys_updated_on>2023-01-31 19:48:43</sys_updated_on>
         <template><![CDATA[<div>
-<h1>Hello World</h1>
+<h1>The Cellar</h1>
   <div>
-    <h2>Event Reference Info</h2>
+    <h2>Event Info</h2>
+    <div>
+      <i class="fa fa-clock-o" aria-hidden="true" title="${Last refreshed}"></i>
+		<sn-time-ago timestamp="::data.refreshed"/>
+    </div>
   </div>
-  <div>
+  
+  <div ng-if="data.voting_open">
     <!--<button ng-click="refreshLive()">Refresh Live</button>-->
- 	Voting open: {{data.voting_open}}
-    <input type="checkbox" ng-model="data.voting_open"/>
+ 	Voting is open
+    <!--<input type="checkbox" ng-model="data.voting_open"/>-->
   </div>
   <div>
     <h3>Attendees</h3>
@@ -124,19 +149,26 @@ data.votes = votes;
     	{{a.user.display_value}}
     </div>
   </div>
-    <div>
+  <div>
     <h3>Beverages</h3>
     <div ng-repeat="b in data.beverages">
-    	Drink: {{b.masked_name.display_value}}
-    	Actual Name: {{b.name.display_value}}
+    	{{b.name.display_value}} ({{b.masked_name.display_value}})
+    </div>
+  </div>
+  <div>
+    <h3>Beverage Votes</h3>
+    <div ng-repeat="bv in data.bevVotes">
+      <div>
+    	{{bv.name.display_value}} ({{bv.masked_name.display_value}}): {{bv.votes}} vote{{bv.votes==1?'':'s'}}
+      </div>
+      <div style="display:block;background-color:red;width:{{votesToWidth(bv.votes,data.votes.length)}}%;height:10px;"></div>
     </div>
   </div>
   <div>
     <h3>Voting list</h3>
     Votes:{{data.vote_count}}
 	<div ng-repeat="v in data.votes">
-    	User: {{v.user.display_value}}
-    	Beverage: {{v.beverage.masked_name}}
+    	{{v.user.display_value}} voted for {{v.beverage.masked_name}}
       
     </div>
   </div>
