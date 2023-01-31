@@ -59,6 +59,11 @@
 var event = new GlideRecord('x_snc_commodore_0_events');
 event.get('607174fe87a021106e4b11f83cbb351f');
 data.voting_open = event.getValue('voting_open') == 1;
+data.drink_names_hidden = event.getValue('voting_open') == 1;
+var gd = new GlideDate();
+var gdt = gd.getNumericValue() - gd.getTZOffset();
+data.refreshed = new Date(gdt);
+
 var attendees = [];
 var getAttendees = new GlideRecord('x_snc_commodore_0_club_event_attendances');
 getAttendees.addQuery("event",event.sys_id);
@@ -66,6 +71,10 @@ getAttendees.query();
 while(getAttendees.next()){
 	var aObj = {};
 	$sp.getRecordElements(aObj, getAttendees, 'user');
+	var user = getAttendees.user;
+	var registration = new x_snc_commodore_0.CCUtils().getRegFromUser(user.getValue('sys_id'));
+	aObj.status = registration.getValue('role');
+	console.log(aObj.status);
 	aObj.sys_id = getAttendees.getValue('sys_id');
 	attendees.push(aObj);
 }
@@ -107,12 +116,7 @@ console.log(data.beverages);
 data.bevVotes = [...beverages].sort((a,b) => b.votes - a.votes);
 console.log(data.bevVotes);
 data.votes = votes;
-// var d = new Date();
-// data.refreshed = d;//.getByFormat('HH:mm');
-var gd = new GlideDate();
-var g = gd.getInternalFormattedLocalTime();
-console.log(g);
-data.refreshed = new Date(g);
+
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -120,46 +124,51 @@ data.refreshed = new Date(g);
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>100</sys_mod_count>
+        <sys_mod_count>116</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-01-31 19:48:43</sys_updated_on>
+        <sys_updated_on>2023-01-31 21:59:06</sys_updated_on>
         <template><![CDATA[<div>
 <h1>The Cellar</h1>
   <div>
     <h2>Event Info</h2>
     <div>
-      <i class="fa fa-clock-o" aria-hidden="true" title="${Last refreshed}"></i>
+      <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
 		<sn-time-ago timestamp="::data.refreshed"/>
     </div>
   </div>
   
   <div ng-if="data.voting_open">
-    <!--<button ng-click="refreshLive()">Refresh Live</button>-->
- 	Voting is open
-    <!--<input type="checkbox" ng-model="data.voting_open"/>-->
+ 	<i class="ri-check-line"></i>Voting is open
+  </div>
+    <div ng-if="!data.voting_open">
+ 	<i class="ri-close-line"></i>Voting is closed
+  </div>
+  <div>
+    <i class="ri-eye{{data.drink_names_hidden ? '-close' : ''}}-fill"></i>
+  	Drink names are {{data.drink_names_hidden ? 'hidden' : 'visible'}}
   </div>
   <div>
     <h3>Attendees</h3>
     <div ng-repeat="a in data.attendees">
-    	{{a.user.display_value}}
+    	<i class="ri-user-line"></i>{{a.user.display_value}}
     </div>
   </div>
   <div>
     <h3>Beverages</h3>
     <div ng-repeat="b in data.beverages">
-    	{{b.name.display_value}} ({{b.masked_name.display_value}})
+    	{{data.drink_names_hidden ? b.masked_name.display_value : b.name.display_value}}
     </div>
   </div>
   <div>
     <h3>Beverage Votes</h3>
     <div ng-repeat="bv in data.bevVotes">
       <div>
-    	{{bv.name.display_value}} ({{bv.masked_name.display_value}}): {{bv.votes}} vote{{bv.votes==1?'':'s'}}
+    	   {{data.drink_names_hidden ? bv.masked_name.display_value : bv.name.display_value}}: {{bv.votes}} vote{{bv.votes==1?'':'s'}}
       </div>
       <div style="display:block;background-color:red;width:{{votesToWidth(bv.votes,data.votes.length)}}%;height:10px;"></div>
     </div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_theme_css_include">
+    <m2m_sp_theme_css_include action="INSERT_OR_UPDATE">
+        <order/>
+        <sp_css_include display_value="ec-theme-lato-fonts">203b09ce1b5d341047582171604bcb88</sp_css_include>
+        <sp_theme display_value="CC Theme">0c58f2a88774a5104c1fc99d0ebb35b2</sp_theme>
+        <sys_class_name>m2m_sp_theme_css_include</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-01-31 21:37:08</sys_created_on>
+        <sys_id>f3d8bea88774a5104c1fc99d0ebb3595</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ec-theme-lato-fonts.CC Theme</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>m2m_sp_theme_css_include_f3d8bea88774a5104c1fc99d0ebb3595</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-01-31 21:37:08</sys_updated_on>
+    </m2m_sp_theme_css_include>
+</record_update>
