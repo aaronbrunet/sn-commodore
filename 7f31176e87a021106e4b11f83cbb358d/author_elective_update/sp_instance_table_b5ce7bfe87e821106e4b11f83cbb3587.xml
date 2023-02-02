@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_table">
+    <sp_instance_table action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <display_field/>
+        <field_list>user,beverage.type</field_list>
+        <filter/>
+        <glyph/>
+        <id/>
+        <maximum_entries>5</maximum_entries>
+        <order>2</order>
+        <order_by/>
+        <order_direction>asc</order_direction>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">391e37fe87e821106e4b11f83cbb3599</sp_column>
+        <sp_page/>
+        <sp_widget display_value="Data Table from Instance Definition">38058ff1cb11020000f8d856634c9c8c</sp_widget>
+        <sys_class_name>sp_instance_table</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-01-26 16:13:12</sys_created_on>
+        <sys_id>b5ce7bfe87e821106e4b11f83cbb3587</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_instance_table_b5ce7bfe87e821106e4b11f83cbb3587</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-01-26 16:15:11</sys_updated_on>
+        <table>x_snc_commodore_0_votes</table>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance_table>
+    <sys_translated_text action="DELETE" query="documentkey=b5ce7bfe87e821106e4b11f83cbb3587"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sp_instance_table_b5ce7bfe87e821106e4b11f83cbb3587</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_table"><sp_instance_table action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><display_field/><field_list>user,beverage.type</field_list><filter/><glyph/><id/><maximum_entries>5</maximum_entries><order>2</order><order_by/><order_direction>asc</order_direction><roles/><short_description/><size>md</size><sp_column display_value="1">391e37fe87e821106e4b11f83cbb3599</sp_column><sp_page/><sp_widget display_value="Data Table from Instance Definition">38058ff1cb11020000f8d856634c9c8c</sp_widget><sys_class_name>sp_instance_table</sys_class_name><sys_created_by>aaron.brunet</sys_created_by><sys_created_on>2023-01-26 16:13:12</sys_created_on><sys_id>b5ce7bfe87e821106e4b11f83cbb3587</sys_id><sys_mod_count>2</sys_mod_count><sys_name/><sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package><sys_policy/><sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope><sys_update_name>sp_instance_table_b5ce7bfe87e821106e4b11f83cbb3587</sys_update_name><sys_updated_by>aaron.brunet</sys_updated_by><sys_updated_on>2023-01-26 16:15:11</sys_updated_on><table>x_snc_commodore_0_votes</table><title/><url/><widget_parameters/></sp_instance_table><sys_translated_text action="delete_multiple" query="documentkey=b5ce7bfe87e821106e4b11f83cbb3587"/></record_update>]]></payload>
+        <payload_hash>1885395206</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-01-26 16:15:12</sys_created_on>
+        <sys_id>723ff332872c21106e4b11f83cbb354c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>185eedc96950000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-01-26 16:15:12</sys_updated_on>
+        <type>Instance with Table</type>
+        <update_guid>3a3ff332582c211017847c55a5e9954b</update_guid>
+        <update_guid_history>3a3ff332582c211017847c55a5e9954b:1885395206,400ffffee5e8211061439a52ee5ecdf3:-1635566253,35ce7bfe83e82110acaec2a532fae289:-650659361</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">4ef21cdd87b029104c1fc99d0ebb352c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-02-02 17:27:45</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance_table">sp_instance_table</sys_db_object>
+        <sys_id>4a46fa98edd84ab7b11d9a4559f16cb1</sys_id>
+        <sys_metadata>b5ce7bfe87e821106e4b11f83cbb3587</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sp_instance_table_b5ce7bfe87e821106e4b11f83cbb3587</sys_update_name>
+        <sys_update_version display_value="sp_instance_table_b5ce7bfe87e821106e4b11f83cbb3587">723ff332872c21106e4b11f83cbb354c</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-02-02 17:27:45</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

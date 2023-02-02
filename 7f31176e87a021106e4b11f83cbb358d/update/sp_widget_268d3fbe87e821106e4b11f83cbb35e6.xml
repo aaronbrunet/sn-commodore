@@ -7,36 +7,32 @@
 	var data = $scope.data;
 	
 	spUtil.recordWatch($scope, "x_snc_commodore_0_votes", "event_attendances.event=607174fe87a021106e4b11f83cbb351f", function(name) {
-		console.log(name.data.operation); 
+		//console.log(name.data.operation); 
 		console.log(name); 
 		spUtil.update($scope);
+		$scope.server.update();
     });
+
+	$scope.refresh = function(){
+		spUtil.update($scope);
+	};
 
 	$scope.votesToWidth = function(curr,total){
 		return (curr / total ) * 100;
 	};
 
-	// $scope.refreshLive = function(){
-		// var refresh;
-		// if($scope.data.voting_open){
-			
-		// 	refresh = $interval(function(){
-		// 		console.log("Refresh")
-		// 		console.log($scope.data.voting_open);
-		// 		if($scope.data.voting_open){
-		// 			spUtil.update($scope);
-		// 		}
-		// 		else {
-		// 			$interval.cancel(refresh);
-		// 		}
-		// 	}, 10000);
-		// } else {
-		// 	$interval.cancel(refresh);
-		// }
-	// }
+	$scope.toggleAction = function (action) {
+		$scope.data.action = action;
+		spUtil.update($scope).then(function() {
+			$scope.data.action = undefined;
+			$scope.server.update();
+		});
+	};
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>i {&#13;
+    vertical-align: bottom;&#13;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -55,14 +51,34 @@
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
+function getTime(){
+	console.log('Calculating new timestamp');
+	var gd = new GlideDate();
+	var gdt = gd.getNumericValue() - gd.getTZOffset();
+	return new Date(gdt);
+}
+
 
 var event = new GlideRecord('x_snc_commodore_0_events');
 event.get('607174fe87a021106e4b11f83cbb351f');
 data.voting_open = event.getValue('voting_open') == 1;
-data.drink_names_hidden = event.getValue('voting_open') == 1;
-var gd = new GlideDate();
-var gdt = gd.getNumericValue() - gd.getTZOffset();
-data.refreshed = new Date(gdt);
+data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
+
+data.refreshed = getTime();
+
+if(input){
+	var action = input.action;
+	if(action == 'toggleDrinkVisibility'){
+		var toggleDrink = data.drink_names_hidden ? '0' : '1';
+		event.setValue('drink_names_hidden',toggleDrink);
+		event.update();
+	}
+	if(action == 'toggleVoting'){
+		var toggleVote = data.voting_open ? '0' : '1';
+		event.setValue('voting_open',toggleVote);
+		event.update();
+	}
+}
 
 var attendees = [];
 var getAttendees = new GlideRecord('x_snc_commodore_0_club_event_attendances');
@@ -72,9 +88,11 @@ while(getAttendees.next()){
 	var aObj = {};
 	$sp.getRecordElements(aObj, getAttendees, 'user');
 	var user = getAttendees.user;
-	var registration = new x_snc_commodore_0.CCUtils().getRegFromUser(user.getValue('sys_id'));
-	aObj.status = registration.getValue('role');
-	console.log(aObj.status);
+	//console.log(user.sys_id.toString());
+	var registration = new x_snc_commodore_0.CCUtils().getRegFromUser(user.sys_id.toString());
+	//console.log(JSON.stringify(registration));
+	aObj.status = registration.role.toString();
+	//console.log(aObj.status);
 	aObj.sys_id = getAttendees.getValue('sys_id');
 	attendees.push(aObj);
 }
@@ -106,15 +124,15 @@ while(getVotes.next()){
 	votes.push(vObj);
 	var targetBeverage = beverages.findIndex(b => b.sys_id == vObj.beverage.value);
 	beverages[targetBeverage].votes += 1;
-	// console.log(beverages[targetBeverage]);
+	//console.log(beverages[targetBeverage]);
 }
-// console.log(JSON.stringify(votes));
+//console.log(JSON.stringify(votes));
 
 data.attendees = attendees;
 data.beverages = beverages;
-console.log(data.beverages);
+//console.log(data.beverages);
 data.bevVotes = [...beverages].sort((a,b) => b.votes - a.votes);
-console.log(data.bevVotes);
+//console.log(data.bevVotes);
 data.votes = votes;
 
 
@@ -124,38 +142,36 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>116</sys_mod_count>
+        <sys_mod_count>159</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-01-31 21:59:06</sys_updated_on>
+        <sys_updated_on>2023-02-02 19:36:32</sys_updated_on>
         <template><![CDATA[<div>
 <h1>The Cellar</h1>
   <div>
     <h2>Event Info</h2>
     <div>
       <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
-		<sn-time-ago timestamp="::data.refreshed"/>
+		<sn-time-ago timestamp="data.refreshed"/>
     </div>
   </div>
   
-  <div ng-if="data.voting_open">
- 	<i class="ri-check-line"></i>Voting is open
-  </div>
-    <div ng-if="!data.voting_open">
- 	<i class="ri-close-line"></i>Voting is closed
-  </div>
-  <div>
+  
+    <button ng-click="toggleAction('toggleVoting')">
+      <i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}
+    </button>
+  <button ng-click="toggleAction('toggleDrinkVisibility')">
     <i class="ri-eye{{data.drink_names_hidden ? '-close' : ''}}-fill"></i>
   	Drink names are {{data.drink_names_hidden ? 'hidden' : 'visible'}}
-  </div>
+  </button>
   <div>
     <h3>Attendees</h3>
     <div ng-repeat="a in data.attendees">
-    	<i class="ri-user-line"></i>{{a.user.display_value}}
+    	<i class="ri-user{{a.status == 'founder' ? '-star' : ''}}-fill"></i>{{a.user.display_value}}
     </div>
   </div>
   <div>
@@ -175,9 +191,9 @@ data.votes = votes;
   </div>
   <div>
     <h3>Voting list</h3>
-    Votes:{{data.vote_count}}
+    Votes: {{data.vote_count}}
 	<div ng-repeat="v in data.votes">
-    	{{v.user.display_value}} voted for {{v.beverage.masked_name}}
+    	{{v.user.display_value}} voted for {{data.drink_names_hidden ? v.beverage.masked_name : v.beverage.display_value}}
       
     </div>
   </div>
