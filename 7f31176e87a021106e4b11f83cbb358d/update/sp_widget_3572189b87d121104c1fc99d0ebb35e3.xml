@@ -33,7 +33,6 @@ outline: 2px solid grey;&#13;
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
 	var event_id = $sp.getParameter('sys_id');
-	console.log(event_id);
 	var event = new GlideRecord('x_snc_commodore_0_events');
 	event.get(event_id);
 	if (event == null){
@@ -52,9 +51,7 @@ outline: 2px solid grey;&#13;
 	for(i in fields){
 		var field = fields[i];
 		data[field.name] = field;
-		console.log([field.name,data[field.name].name]);
 	}
-	console.log(data.start);
 	var gdt = event.getValue('start');
 	var start = new GlideDateTime(gdt);
 	var date = start.getLocalDate().getByFormat('MMMM d, YYYY');
@@ -69,20 +66,25 @@ outline: 2px solid grey;&#13;
 	var b_list = event.drinks.toString();
 	data.beverage_curr_count = b_list.split(',').length;
 
+	data.registered = false;
+	if(a_list.indexOf(gs.getUserID())>-1){
+		data.registered = true;
+	}
+
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>39</sys_mod_count>
+        <sys_mod_count>52</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-05 21:04:26</sys_updated_on>
+        <sys_updated_on>2023-03-05 21:25:18</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.event">
   <h2>No event found</h2>
 </div>
@@ -95,6 +97,8 @@ outline: 2px solid grey;&#13;
     <h1>{{data.short_description.display_value}}</h1>
     <div><i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}</div>
     <div ng-if="data.required"><i class="ri-alert-fill"></i>This event is required</div>  
+    <div ng-if="data.registered"><i class="ri-check-line"></i>You've joined this event.</div>
+    <br/>
     <div>    
     <p>{{data.description.display_value}}</p>
       <h4>Theme: {{data.theme.display_value}}</h4>
@@ -104,6 +108,10 @@ outline: 2px solid grey;&#13;
     <h3><i class="ri-map-pin-2-fill"></i> {{data.location.display_value}}</h3>
     <h3><i class="ri-user-fill"></i> {{data.attendees_curr_count}}/{{data.slots.value}}</h3>
     <h3><i class="ri-goblet-fill"></i> {{data.beverage_curr_count}}/{{data.beverage_count.value}}</h3>
+  </div>
+  <div class="box" ng-if="!data.past">
+    <button ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value">Join This Event</button>
+    <button ng-disabled="data.beverage_curr_count >= data.beverage_count.value">Bring A Beverage</button>
   </div>
 </div>
 ]]></template>
