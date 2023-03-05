@@ -5,6 +5,7 @@
         <element label="Description" max_length="5000" name="description" type="string"/>
         <element label="Beverages" max_length="10000" name="drinks" reference="x_snc_commodore_0_beverage" type="glide_list"/>
         <element label="Drink Names Hidden" max_length="40" name="drink_names_hidden" type="boolean"/>
+        <element label="Location" max_length="5000" name="location" type="string"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Required" max_length="40" name="required" type="boolean"/>
         <element display="true" label="Short description" max_length="500" name="short_description" type="string"/>

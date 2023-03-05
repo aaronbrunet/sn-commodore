@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.box {&#13;
+outline: 2px solid grey;&#13;
+  display: block;&#13;
+}&#13;
+.warning-box {&#13;
+	height: 4rem;&#13;
+  background-color: yellow;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cc-event-card</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CC Event Card</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	var event_id = $sp.getParameter('sys_id');
+	console.log(event_id);
+	var event = new GlideRecord('x_snc_commodore_0_events');
+	event.get(event_id);
+	if (event == null){
+		return;
+	}
+	data.canRead = event.canRead();
+	if (!data.canRead){
+		return;
+	}
+	data.event = event_id;
+	var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
+	data.voting_open = event.getValue('voting_open') == 1;
+	data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
+	data.required = event.getValue('required') == 1;
+	data.fields = fields;
+	for(i in fields){
+		var field = fields[i];
+		data[field.name] = field;
+		console.log([field.name,data[field.name].name]);
+	}
+	console.log(data.start);
+	var gdt = event.getValue('start');
+	var start = new GlideDateTime(gdt);
+	var date = start.getLocalDate().getByFormat('MMMM d, YYYY');
+	var time = start.getLocalTime().getByFormat('hh:mm a');
+	data.date = date;
+	data.time = time;
+	data.past = start.onOrBefore(new GlideDateTime());
+
+	var a_list = event.attendees.toString();
+	data.attendees_curr_count = a_list.split(',').length;
+
+	var b_list = event.drinks.toString();
+	data.beverage_curr_count = b_list.split(',').length;
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-05 19:37:02</sys_created_on>
+        <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
+        <sys_mod_count>39</sys_mod_count>
+        <sys_name>CC Event Card</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-05 21:04:26</sys_updated_on>
+        <template><![CDATA[<div ng-if="!data.event">
+  <h2>No event found</h2>
+</div>
+<div ng-if="data.event">
+  <div class="box">  
+    <div class="warning-box" ng-if="data.past">
+        <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
+    </div>
+    <h2>{{data.date}} at {{data.time}}</h2>  
+    <h1>{{data.short_description.display_value}}</h1>
+    <div><i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}</div>
+    <div ng-if="data.required"><i class="ri-alert-fill"></i>This event is required</div>  
+    <div>    
+    <p>{{data.description.display_value}}</p>
+      <h4>Theme: {{data.theme.display_value}}</h4>
+    </div>
+  </div>
+  <div class="box">
+    <h3><i class="ri-map-pin-2-fill"></i> {{data.location.display_value}}</h3>
+    <h3><i class="ri-user-fill"></i> {{data.attendees_curr_count}}/{{data.slots.value}}</h3>
+    <h3><i class="ri-goblet-fill"></i> {{data.beverage_curr_count}}/{{data.beverage_count.value}}</h3>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>
