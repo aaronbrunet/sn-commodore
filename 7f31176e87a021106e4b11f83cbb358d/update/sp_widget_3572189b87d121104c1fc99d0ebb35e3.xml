@@ -32,6 +32,8 @@ outline: 2px solid grey;&#13;
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
+
+	// Build initial event parameters
 	var event_id = $sp.getParameter('sys_id');
 	var event = new GlideRecord('x_snc_commodore_0_events');
 	event.get(event_id);
@@ -43,17 +45,21 @@ outline: 2px solid grey;&#13;
 		return;
 	}
 	data.event = event_id;
+
+	// Pull essential fields and write to named fields in data obj
 	var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
 	data.voting_open = event.getValue('voting_open') == 1;
 	data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
 	data.required = event.getValue('required') == 1;
-	data.fields = fields;
 	for(i in fields){
 		var field = fields[i];
 		data[field.name] = field;
 	}
+
+	//Date handling
 	var gdt = event.getValue('start');
 	var start = new GlideDateTime(gdt);
+	//user getLocalDate/Time for SN TZ 
 	var date = start.getLocalDate().getByFormat('MMMM d, YYYY');
 	var time = start.getLocalTime().getByFormat('hh:mm a');
 	data.date = date;
@@ -71,20 +77,46 @@ outline: 2px solid grey;&#13;
 		data.registered = true;
 	}
 
+	//Vote info
+	data.my_vote = false;
+	var votes = [];
+	var getVotes = new GlideRecord('x_snc_commodore_0_votes');
+	getVotes.addQuery('event_attendances.event',event.sys_id);
+	getVotes.query();
+	data.vote_count = getVotes.getRowCount();
+	while(getVotes.next()){
+			
+		if(getVotes.getValue('user') == gs.getUserID()){
+			data.my_vote = true;
+		}
+		var vObj = {};
+		$sp.getRecordElements(vObj, getVotes, 'vote,user,beverage');
+		vObj.beverage.masked_name = getVotes.beverage.masked_name.getDisplayValue(); 
+		vObj.sys_id = getVotes.getValue('sys_id');
+		votes.push(vObj);
+		//var targetBeverage = beverages.findIndex(b => b.sys_id == vObj.beverage.value);
+		//beverages[targetBeverage].votes += 1;
+		//console.log(beverages[targetBeverage]);
+	}
+	data.votes = votes;
+	console.log(data.votes);
+	data.my_vote_info = votes.find(v => v.user.value == gs.getUserID());
+	console.log(data.my_vote_info);
+
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>52</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-05 21:25:18</sys_updated_on>
+        <sys_updated_on>2023-03-06 01:56:54</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.event">
   <h2>No event found</h2>
 </div>
@@ -113,6 +145,17 @@ outline: 2px solid grey;&#13;
     <button ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value">Join This Event</button>
     <button ng-disabled="data.beverage_curr_count >= data.beverage_count.value">Bring A Beverage</button>
   </div>
+  <div class="box">
+    <div ng-switch="data.my_vote">
+      <div ng-switch-when="true"> 
+        I voted for {{data.my_vote_info.beverage.masked_name}}!
+      </div>
+      <div ng-switch-when="false"> 
+        <div ng-if="data.voting_open">
+          <button>Vote</button>
+        </div>
+      </div>
+    </div>
 </div>
 ]]></template>
     </sp_widget>
