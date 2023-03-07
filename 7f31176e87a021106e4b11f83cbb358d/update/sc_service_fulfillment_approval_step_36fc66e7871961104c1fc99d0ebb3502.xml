@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_service_fulfillment_approval_step">
+    <sc_service_fulfillment_approval_step action="INSERT_OR_UPDATE">
+        <approval_title>Commodore's Club Founders</approval_title>
+        <approval_type>anyone_approves</approval_type>
+        <catalog_conditions/>
+        <groups name="Commodore's Club Founders">c220f0be87a021106e4b11f83cbb3513</groups>
+        <service_fulfillment_stage display_value="">e70d66e7871961104c1fc99d0ebb3530</service_fulfillment_stage>
+        <service_fulfillment_step_configuration display_value="Custom approval">2b7d9a7e87022010c84e4561d5cb0b21</service_fulfillment_step_configuration>
+        <sys_class_name>sc_service_fulfillment_approval_step</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-07 00:58:41</sys_created_on>
+        <sys_id>36fc66e7871961104c1fc99d0ebb3502</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Approval from </sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sc_service_fulfillment_approval_step_36fc66e7871961104c1fc99d0ebb3502</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-07 00:58:41</sys_updated_on>
+        <title>Approval from Commodore's Club Founders</title>
+        <users/>
+    </sc_service_fulfillment_approval_step>
+    <sys_translated_text action="delete_multiple" query="documentkey=36fc66e7871961104c1fc99d0ebb3502"/>
+</record_update>
