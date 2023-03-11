@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="catalog_ui_policy_action">
+    <catalog_ui_policy_action action="INSERT_OR_UPDATE">
+        <catalog_item display_value="Add a Beverage to the Cellar">3f69a38587a9a5104c1fc99d0ebb359a</catalog_item>
+        <catalog_variable>IO:93ecaf4987a9a5104c1fc99d0ebb35d2</catalog_variable>
+        <cleared>true</cleared>
+        <disabled>true</disabled>
+        <field/>
+        <mandatory>false</mandatory>
+        <order>100</order>
+        <sys_class_name>catalog_ui_policy_action</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:59:05</sys_created_on>
+        <sys_id>a3d3bb8187e9a5104c1fc99d0ebb35e1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>description</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>catalog_ui_policy_action_a3d3bb8187e9a5104c1fc99d0ebb35e1</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:59:05</sys_updated_on>
+        <table/>
+        <ui_policy display_value="Hide fields if invalid">a673b38187e9a5104c1fc99d0ebb35c7</ui_policy>
+        <variable>description</variable>
+        <variable_set/>
+        <visible>false</visible>
+    </catalog_ui_policy_action>
+</record_update>
