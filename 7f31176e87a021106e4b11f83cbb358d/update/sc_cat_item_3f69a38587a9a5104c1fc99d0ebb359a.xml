@@ -14,7 +14,7 @@
         <description/>
         <display_price_property>non_zero</display_price_property>
         <entitlement_script/>
-        <flow_designer_flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow_designer_flow>
+        <flow_designer_flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</flow_designer_flow>
         <fulfillment_automation_level>unspecified</fulfillment_automation_level>
         <group/>
         <hide_sp>false</hide_sp>
@@ -28,8 +28,8 @@
         <mobile_picture/>
         <mobile_picture_type>use_desktop_picture</mobile_picture_type>
         <model/>
-        <name>Join Club Event</name>
-        <no_attachment_v2>true</no_attachment_v2>
+        <name>Add a Beverage to the Cellar</name>
+        <no_attachment_v2>false</no_attachment_v2>
         <no_cart>false</no_cart>
         <no_cart_v2>true</no_cart_v2>
         <no_delivery_time_v2>true</no_delivery_time_v2>
@@ -45,33 +45,33 @@
         <ordered_item_link/>
         <owner display_value="Aaron Brunet">c6a52aa6876069106e4b11f83cbb359f</owner>
         <picture/>
-        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=037fee2b871961104c1fc99d0ebb3534&amp;sysparm_preview=true", "summary");</preview>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=3f69a38587a9a5104c1fc99d0ebb359a&amp;sysparm_preview=true", "summary");</preview>
         <price>0</price>
         <published_ref/>
         <recurring_frequency/>
         <recurring_price>0</recurring_price>
-        <request_method>request</request_method>
+        <request_method>submit</request_method>
         <roles/>
         <sc_catalogs>f436da458765a5104c1fc99d0ebb3523</sc_catalogs>
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <short_description>Sign up to attend a Commodore's Club Event</short_description>
+        <short_description/>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
         <state/>
         <sys_class_name>sc_cat_item</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-03-07 01:09:46</sys_created_on>
-        <sys_id>037fee2b871961104c1fc99d0ebb3534</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>Join Club Event</sys_name>
+        <sys_created_on>2023-03-11 21:14:01</sys_created_on>
+        <sys_id>3f69a38587a9a5104c1fc99d0ebb359a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Add a Beverage to the Cellar</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
-        <sys_update_name>sc_cat_item_037fee2b871961104c1fc99d0ebb3534</sys_update_name>
+        <sys_update_name>sc_cat_item_3f69a38587a9a5104c1fc99d0ebb359a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-11 18:43:46</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:47:58</sys_updated_on>
         <taxonomy_topic/>
         <template/>
         <template_manager_roles/>
@@ -83,22 +83,22 @@
         <visible_standalone>true</visible_standalone>
         <workflow/>
     </sc_cat_item>
-    <sys_translated_text action="delete_multiple" query="documentkey=037fee2b871961104c1fc99d0ebb3534"/>
-    <fx_price action="delete_multiple" query="id=037fee2b871961104c1fc99d0ebb3534"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=3f69a38587a9a5104c1fc99d0ebb359a"/>
+    <fx_price action="delete_multiple" query="id=3f69a38587a9a5104c1fc99d0ebb359a"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>price</field>
-        <id>037fee2b871961104c1fc99d0ebb3534</id>
+        <id>3f69a38587a9a5104c1fc99d0ebb359a</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-03-07 01:09:46</sys_created_on>
-        <sys_id>b99f2e6b871961104c1fc99d0ebb35ac</sys_id>
+        <sys_created_on>2023-03-11 21:14:01</sys_created_on>
+        <sys_id>2599a38587a9a5104c1fc99d0ebb35a9</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 01:09:46</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:14:01</sys_updated_on>
         <table>sc_cat_item</table>
         <type>calculated</type>
     </fx_price>
@@ -106,16 +106,16 @@
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>recurring_price</field>
-        <id>037fee2b871961104c1fc99d0ebb3534</id>
+        <id>3f69a38587a9a5104c1fc99d0ebb359a</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-03-07 01:09:46</sys_created_on>
-        <sys_id>359f2e6b871961104c1fc99d0ebb35ad</sys_id>
+        <sys_created_on>2023-03-11 21:14:01</sys_created_on>
+        <sys_id>2599a38587a9a5104c1fc99d0ebb35aa</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 01:09:46</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:14:01</sys_updated_on>
         <table>sc_cat_item</table>
         <type>calculated</type>
     </fx_price>

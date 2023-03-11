@@ -10,9 +10,9 @@
         <copied_from_name>FlowTemplate_Empty</copied_from_name>
         <description/>
         <internal_name>club_event_attendance_approval</internal_name>
-        <label_cache>[{"name":"2e5a2315-0e24-4e97-8d56-cf5204cb67b8.user_details","label":"1 - Get Catalog Variables➛user_details","reference":"sys_user","reference_display":"user_details","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"Service Catalog_1.request_item.requested_for","label":"Trigger - Service Catalog➛Requested Item Record➛Requested for","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","parent_table_name":"sc_req_item","column_name":"requested_for"},{"name":"4ab8be01-76c8-46e2-b291-98536c0e0787.approval_state","label":"2 - Ask For Approval➛Approval State","reference_display":"Approval State","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Not Yet Requested","value":"not requested","order":1.0},{"label":"Requested","value":"requested","order":2.0},{"label":"Approved","value":"approved","order":3.0},{"label":"Rejected","value":"rejected","order":4.0},{"label":"Cancelled","value":"cancelled","order":5.0},{"label":"No Longer Required","value":"not_required","order":6.0},{"label":"Skipped","value":"skipped","order":7.0}],"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"{{static.c220f0be87a021106e4b11f83cbb3513}}","label":"Commodore\u0027s Club Founders","reference":"sys_user_group","reference_display":"Group","type":"reference","base_type":"reference"},{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Requested Item Record","reference":"sc_req_item","reference_display":"Requested Item","type":"reference","base_type":"reference","attributes":{"default_search_field":"number"}},{"name":"2e5a2315-0e24-4e97-8d56-cf5204cb67b8.club_event","label":"1 - Get Catalog Variables➛club_event","reference":"x_snc_commodore_0_events","reference_display":"club_event","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"Service Catalog_1.table_name","label":"Trigger - Service Catalog➛Table Name","type":"table_name","base_type":"table_name","attributes":{"test_input_hidden":"true"}}]</label_cache>
+        <label_cache>[{"name":"Service Catalog_1.table_name","label":"Trigger - Service Catalog➛Table Name","type":"table_name","base_type":"table_name","attributes":{"test_input_hidden":"true"}},{"name":"2e5a2315-0e24-4e97-8d56-cf5204cb67b8.club_event","label":"1 - Get Catalog Variables➛club_event","reference":"x_snc_commodore_0_events","reference_display":"club_event","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Requested Item Record","reference":"sc_req_item","reference_display":"Requested Item","type":"reference","base_type":"reference","attributes":{"default_search_field":"number"}},{"name":"{{static.c220f0be87a021106e4b11f83cbb3513}}","label":"Commodore\u0027s Club Founders","reference":"sys_user_group","reference_display":"Group","type":"reference","base_type":"reference"},{"name":"4ab8be01-76c8-46e2-b291-98536c0e0787.approval_state","label":"2 - Ask For Approval➛Approval State","reference_display":"Approval State","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Not Yet Requested","value":"not requested","order":1.0},{"label":"Requested","value":"requested","order":2.0},{"label":"Approved","value":"approved","order":3.0},{"label":"Rejected","value":"rejected","order":4.0},{"label":"Cancelled","value":"cancelled","order":5.0},{"label":"No Longer Required","value":"not_required","order":6.0},{"label":"Skipped","value":"skipped","order":7.0}],"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"Service Catalog_1.request_item.requested_for","label":"Trigger - Service Catalog➛Requested Item Record➛Requested for","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","parent_table_name":"sc_req_item","column_name":"requested_for"},{"name":"2e5a2315-0e24-4e97-8d56-cf5204cb67b8.user_details","label":"1 - Get Catalog Variables➛user_details","reference":"sys_user","reference_display":"user_details","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}}]</label_cache>
         <master_snapshot>01b5baef871961104c1fc99d0ebb3557</master_snapshot>
-        <name>Club Event Attendance Approval</name>
+        <name>CC Club Event Attendance Approval</name>
         <natlang/>
         <outputs/>
         <pre_compiled>false</pre_compiled>
@@ -29,15 +29,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>03a23a2f871961104c1fc99d0ebb35a3</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name>Club Event Attendance Approval</sys_name>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>CC Club Event Attendance Approval</sys_name>
         <sys_overrides/>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sys_hub_flow_03a23a2f871961104c1fc99d0ebb35a3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 01:57:37</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:40:59</sys_updated_on>
         <type>flow</type>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=03a23a2f871961104c1fc99d0ebb35a3"/>
@@ -64,16 +64,16 @@
     <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
         <comment/>
         <display_text/>
-        <flow display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
+        <flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
         <name>Service Catalog</name>
         <remote_sys_id/>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-07 01:32:03</sys_created_on>
         <sys_id>98b476af871961104c1fc99d0ebb35a4</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_scope/>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 01:57:37</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:40:58</sys_updated_on>
         <trigger_definition display_value="Service Catalog">c43a1011c36813002841b63b12d3ae15</trigger_definition>
         <trigger_inputs/>
         <trigger_outputs/>
@@ -149,7 +149,7 @@
         <label>Table Name</label>
         <mandatory>false</mandatory>
         <max_length>40</max_length>
-        <model display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</model>
+        <model display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</model>
         <model_id>03a23a2f871961104c1fc99d0ebb35a3</model_id>
         <model_table>sys_hub_flow</model_table>
         <name>var__m_sys_hub_flow_input_03a23a2f871961104c1fc99d0ebb35a3</name>
@@ -232,7 +232,7 @@
         <label>Request Item</label>
         <mandatory>true</mandatory>
         <max_length>32</max_length>
-        <model display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</model>
+        <model display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</model>
         <model_id>03a23a2f871961104c1fc99d0ebb35a3</model_id>
         <model_table>sys_hub_flow</model_table>
         <name>var__m_sys_hub_flow_input_03a23a2f871961104c1fc99d0ebb35a3</name>
@@ -285,17 +285,17 @@
         <action_type_parent/>
         <comment/>
         <display_text/>
-        <flow display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
+        <flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
         <order>4</order>
         <parent_ui_id>546ab47f-4e1c-4130-9827-3c5724b981a9</parent_ui_id>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-07 01:32:03</sys_created_on>
         <sys_id>24b476af871961104c1fc99d0ebb35d8</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 02:03:32</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:40:59</sys_updated_on>
         <ui_id>89b0606f-d9e4-40a3-8925-ea22ff3463c6</ui_id>
     </sys_hub_action_instance>
     <sys_variable_value action="delete_multiple" query="document_key=24b476af871961104c1fc99d0ebb35d8"/>
@@ -347,17 +347,17 @@
         <action_type_parent/>
         <comment/>
         <display_text/>
-        <flow display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
+        <flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
         <order>1</order>
         <parent_ui_id/>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-07 01:32:03</sys_created_on>
         <sys_id>50b476af871961104c1fc99d0ebb35aa</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 02:03:32</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:40:58</sys_updated_on>
         <ui_id>2e5a2315-0e24-4e97-8d56-cf5204cb67b8</ui_id>
     </sys_hub_action_instance>
     <sys_variable_value action="delete_multiple" query="document_key=50b476af871961104c1fc99d0ebb35aa"/>
@@ -435,17 +435,17 @@
         <action_type_parent/>
         <comment/>
         <display_text/>
-        <flow display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
+        <flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
         <order>2</order>
         <parent_ui_id/>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-07 01:32:03</sys_created_on>
         <sys_id>9cb476af871961104c1fc99d0ebb35b2</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 02:03:32</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:40:58</sys_updated_on>
         <ui_id>4ab8be01-76c8-46e2-b291-98536c0e0787</ui_id>
     </sys_hub_action_instance>
     <sys_variable_value action="delete_multiple" query="document_key=9cb476af871961104c1fc99d0ebb35b2"/>
@@ -590,7 +590,7 @@
         <decision_table_inputs/>
         <display_text/>
         <extended_inputs/>
-        <flow display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
+        <flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</flow>
         <flow_variable/>
         <flow_variables_assigned/>
         <inputs/>
@@ -604,10 +604,10 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-07 01:32:03</sys_created_on>
         <sys_id>d4b476af871961104c1fc99d0ebb35b7</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-07 01:57:37</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:40:59</sys_updated_on>
         <ui_id>546ab47f-4e1c-4130-9827-3c5724b981a9</ui_id>
         <workflow_inputs/>
         <workflow_reference/>
@@ -715,7 +715,7 @@
         <name>Club Event Attendance Approval</name>
         <natlang/>
         <outputs/>
-        <parent_flow display_value="Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</parent_flow>
+        <parent_flow display_value="CC Club Event Attendance Approval">03a23a2f871961104c1fc99d0ebb35a3</parent_flow>
         <remote_trigger_id/>
         <run_as>user</run_as>
         <run_with_roles/>

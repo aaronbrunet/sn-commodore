@@ -106,7 +106,9 @@ function buildCard(event_id){
 				return;
 			}
 
-			data.cat_item_href = "/cc?id=sc_cat_item&sys_id=037fee2b871961104c1fc99d0ebb3534&event_id="+event_id;
+			data.signup_href = "/cc?id=sc_cat_item&sys_id=037fee2b871961104c1fc99d0ebb3534&event_id="+event_id;
+			data.bev_href = "/cc?id=sc_cat_item&sys_id=3f69a38587a9a5104c1fc99d0ebb359a&event_id="+event_id;
+
 
 			// Pull essential fields and write to named fields in data obj
 			var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
@@ -176,14 +178,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>126</sys_mod_count>
+        <sys_mod_count>127</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-11 19:52:00</sys_updated_on>
+        <sys_updated_on>2023-03-11 21:18:17</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.event || data.event ==''">
   <h2>No event found</h2>
 </div>
@@ -210,8 +212,8 @@ function buildCard(event_id){
   </div>
   <div ng-if="!data.cat_item">
   <div class="box" ng-if="!data.past">
-    <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.cat_item_href}}">Join This Event</a>
-    <button ng-disabled="data.beverage_curr_count >= data.beverage_count.value">Bring A Beverage</button>
+    <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">Join This Event</a>
+    <a ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}">Bring A Beverage</a>
   </div>
   <div class="box">
     <div ng-switch="data.my_vote">

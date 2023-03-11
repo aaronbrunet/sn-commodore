@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <internal_name>add_beverage_to_cellar</internal_name>
+        <label_cache>[{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.type_other","label":"1 - Get Catalog Variables➛type_other","reference":"","reference_display":"type_other","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.type","label":"1 - Get Catalog Variables➛type","reference":"","reference_display":"type","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":100.0},{"label":"Beer","value":"beer","order":100.0},{"label":"Wine","value":"wine","order":100.0},{"label":"Spirit","value":"spirit","order":100.0},{"label":"Other","value":"other","order":100.0}],"attributes":{"catalogType":"5","catalogTypeLabel":"Select Box"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.taste","label":"1 - Get Catalog Variables➛taste","reference":"","reference_display":"taste","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.style","label":"1 - Get Catalog Variables➛style","reference":"","reference_display":"style","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.region","label":"1 - Get Catalog Variables➛region","reference":"","reference_display":"region","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.proof","label":"1 - Get Catalog Variables➛proof","reference":"","reference_display":"proof","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.name","label":"1 - Get Catalog Variables➛name","reference":"","reference_display":"name","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.description","label":"1 - Get Catalog Variables➛description","reference":"","reference_display":"description","type":"multi_small","base_type":"multi_small","attributes":{"catalogType":"2","catalogTypeLabel":"Multi Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.country","label":"1 - Get Catalog Variables➛country","reference":"","reference_display":"country","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.brand","label":"1 - Get Catalog Variables➛brand","reference":"","reference_display":"brand","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.abv","label":"1 - Get Catalog Variables➛abv","reference":"","reference_display":"abv","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.user_details","label":"1 - Get Catalog Variables➛user_details","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.club_event","label":"1 - Get Catalog Variables➛club_event","reference":"x_snc_commodore_0_events","reference_display":"Club Events","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"abafdc60-c5f3-4336-b114-8557e765d9de.approval_state","label":"2 - Ask For Approval➛Approval State","reference_display":"Approval State","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Not Yet Requested","value":"not requested","order":1.0},{"label":"Requested","value":"requested","order":2.0},{"label":"Approved","value":"approved","order":3.0},{"label":"Rejected","value":"rejected","order":4.0},{"label":"Cancelled","value":"cancelled","order":5.0},{"label":"No Longer Required","value":"not_required","order":6.0},{"label":"Skipped","value":"skipped","order":7.0}],"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"{{static.c220f0be87a021106e4b11f83cbb3513}}","label":"Commodore\u0027s Club Founders","reference":"sys_user_group","reference_display":"Group","type":"reference","base_type":"reference"},{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Requested Item Record","reference":"sc_req_item","reference_display":"Requested Item","type":"reference","base_type":"reference","attributes":{"default_search_field":"number"}}]</label_cache>
+        <master_snapshot>7b2177cd87a9a5104c1fc99d0ebb3565</master_snapshot>
+        <name>CC Add Beverage to Cellar</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id>483177cd87a9a5104c1fc99d0ebb35f2</remote_trigger_id>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:39:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>cb7fef0d87a9a5104c1fc99d0ebb3536</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>CC Add Beverage to Cellar</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sys_hub_flow_cb7fef0d87a9a5104c1fc99d0ebb3536</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:16</sys_updated_on>
+        <type>flow</type>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_variable_value action="delete_multiple" query="document_key=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_flow_catalog_trigger action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <catalog_item/>
+        <name/>
+        <run_flow_in>background</run_flow_in>
+        <sys_class_name>sys_flow_catalog_trigger</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>483177cd87a9a5104c1fc99d0ebb35f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+    </sys_flow_catalog_trigger>
+    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT IN44dfe74d87a9a5104c1fc99d0ebb35d3"/>
+    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</flow>
+        <name>Service Catalog</name>
+        <remote_sys_id/>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:41:14</sys_created_on>
+        <sys_id>44dfe74d87a9a5104c1fc99d0ebb35d3</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <trigger_definition display_value="Service Catalog">c43a1011c36813002841b63b12d3ae15</trigger_definition>
+        <trigger_inputs/>
+        <trigger_outputs/>
+        <trigger_type>service_catalog</trigger_type>
+    </sys_hub_trigger_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=44dfe74d87a9a5104c1fc99d0ebb35d3"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>44dfe74d87a9a5104c1fc99d0ebb35d3</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:41:14</sys_created_on>
+        <sys_id>ccdfe74d87a9a5104c1fc99d0ebb35d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:41:14</sys_updated_on>
+        <value>background</value>
+        <variable display_value="Run flow In">6090c72977203300f5bfcfcc78106159</variable>
+    </sys_variable_value>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT INc77fef0d87a9a5104c1fc99d0ebb3537"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>cb7fef0d87a9a5104c1fc99d0ebb3536</id>
+        <name>Add Beverage to Cellar</name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:39:49</sys_created_on>
+        <sys_id>c77fef0d87a9a5104c1fc99d0ebb3537</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:39:49</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=c77fef0d87a9a5104c1fc99d0ebb3537"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT IN0cdfa74d87a9a5104c1fc99d0ebb35ec,fbcfa74d87a9a5104c1fc99d0ebb35e8"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,test_input_hidden=true,uiType=table_name</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>sc_req_item</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>table_name</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">table_name</internal_type>
+        <label>Table Name</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</model>
+        <model_id>cb7fef0d87a9a5104c1fc99d0ebb3536</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_cb7fef0d87a9a5104c1fc99d0ebb3536</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>true</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:41:14</sys_created_on>
+        <sys_id>0cdfa74d87a9a5104c1fc99d0ebb35ec</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>default_search_field=number,element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>request_item</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Request Item</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</model>
+        <model_id>cb7fef0d87a9a5104c1fc99d0ebb3536</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_cb7fef0d87a9a5104c1fc99d0ebb3536</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="sc_req_item">sc_req_item</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:41:14</sys_created_on>
+        <sys_id>fbcfa74d87a9a5104c1fc99d0ebb35e8</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_output action="delete_multiple" query="model=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_hub_action_instance action="delete_multiple" query="flow=cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT IN17d0bf8d87a9a5104c1fc99d0ebb3515,97d0bf8d87a9a5104c1fc99d0ebb3509,d7d0bf8d87a9a5104c1fc99d0ebb3501"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent/>
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</flow>
+        <order>4</order>
+        <parent_ui_id>00b4615b-8507-4792-8782-ea569d9b5d64</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>17d0bf8d87a9a5104c1fc99d0ebb3515</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <ui_id>d626ba57-7158-4660-8848-0719a2638e64</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=17d0bf8d87a9a5104c1fc99d0ebb3515"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>17d0bf8d87a9a5104c1fc99d0ebb3515</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>1fd0bf8d87a9a5104c1fc99d0ebb3516</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value>x_snc_commodore_0_beverage</value>
+        <variable display_value="Table">61e05916c31332002841b63b12d3aee4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=17d0bf8d87a9a5104c1fc99d0ebb3515"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>17d0bf8d87a9a5104c1fc99d0ebb3515</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>d7d0bf8d87a9a5104c1fc99d0ebb3516</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_2de05916c31332002841b63b12d3aee1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>values</field>
+        <id>17d0bf8d87a9a5104c1fc99d0ebb3515</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>9bd0bf8d87a9a5104c1fc99d0ebb3516</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_2de05916c31332002841b63b12d3aee1</table>
+        <value>event={{936c525b-b16c-4950-bbd5-f24642a4ea39.club_event}}^introduced_by={{936c525b-b16c-4950-bbd5-f24642a4ea39.user_details}}^abv={{936c525b-b16c-4950-bbd5-f24642a4ea39.abv}}^brand={{936c525b-b16c-4950-bbd5-f24642a4ea39.brand}}^country={{936c525b-b16c-4950-bbd5-f24642a4ea39.country}}^description={{936c525b-b16c-4950-bbd5-f24642a4ea39.description}}^name={{936c525b-b16c-4950-bbd5-f24642a4ea39.name}}^proof={{936c525b-b16c-4950-bbd5-f24642a4ea39.proof}}^region={{936c525b-b16c-4950-bbd5-f24642a4ea39.region}}^style={{936c525b-b16c-4950-bbd5-f24642a4ea39.style}}^taste={{936c525b-b16c-4950-bbd5-f24642a4ea39.taste}}^type={{936c525b-b16c-4950-bbd5-f24642a4ea39.type}}^type_other={{936c525b-b16c-4950-bbd5-f24642a4ea39.type_other}}</value>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=17d0bf8d87a9a5104c1fc99d0ebb3515"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=17d0bf8d87a9a5104c1fc99d0ebb3515"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Ask For Approval">f8f2e9920b10030085c083eb37673abd</action_type>
+        <action_type_parent/>
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</flow>
+        <order>2</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>97d0bf8d87a9a5104c1fc99d0ebb3509</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <ui_id>abafdc60-c5f3-4336-b114-8557e765d9de</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=97d0bf8d87a9a5104c1fc99d0ebb3509"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>97d0bf8d87a9a5104c1fc99d0ebb3509</document_key>
+        <order>5</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>1bd0bf8d87a9a5104c1fc99d0ebb350c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value/>
+        <variable display_value="Due Date">c5f2e9920b10030085c083eb37673af9</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>97d0bf8d87a9a5104c1fc99d0ebb3509</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>57d0bf8d87a9a5104c1fc99d0ebb350c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value>approval_history</value>
+        <variable display_value="Journal Field">c1f2e9920b10030085c083eb37673ae3</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>97d0bf8d87a9a5104c1fc99d0ebb3509</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>93d0bf8d87a9a5104c1fc99d0ebb350c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value>approval</value>
+        <variable display_value="Approval Field">01f2e9920b10030085c083eb37673ad8</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>97d0bf8d87a9a5104c1fc99d0ebb3509</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>dbd0bf8d87a9a5104c1fc99d0ebb350c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value>sc_req_item</value>
+        <variable display_value="Table">bcf2e9920b10030085c083eb37673acc</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=97d0bf8d87a9a5104c1fc99d0ebb3509"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>approval_conditions</field>
+        <id>97d0bf8d87a9a5104c1fc99d0ebb3509</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>5fd0bf8d87a9a5104c1fc99d0ebb350b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value>ApprovesAnyG[{{static.c220f0be87a021106e4b11f83cbb3513}}]</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>approval_field</field>
+        <id>97d0bf8d87a9a5104c1fc99d0ebb3509</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>53d0bf8d87a9a5104c1fc99d0ebb350b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>due_date</field>
+        <id>97d0bf8d87a9a5104c1fc99d0ebb3509</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>9bd0bf8d87a9a5104c1fc99d0ebb350b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value>{"action":"none","date_type":"actual","date":"{{}}","duration":1,"duration_type":"days","schedule":"","schedule_label":""}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>journal_field</field>
+        <id>97d0bf8d87a9a5104c1fc99d0ebb3509</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>17d0bf8d87a9a5104c1fc99d0ebb350b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record</field>
+        <id>97d0bf8d87a9a5104c1fc99d0ebb3509</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>d7d0bf8d87a9a5104c1fc99d0ebb350b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value>{{Service Catalog_1.request_item}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>97d0bf8d87a9a5104c1fc99d0ebb3509</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>13d0bf8d87a9a5104c1fc99d0ebb350c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=97d0bf8d87a9a5104c1fc99d0ebb3509"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=97d0bf8d87a9a5104c1fc99d0ebb3509"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Get Catalog Variables">330ba3abc31013002841b63b12d3aee8</action_type>
+        <action_type_parent/>
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</flow>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>d7d0bf8d87a9a5104c1fc99d0ebb3501</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <ui_id>936c525b-b16c-4950-bbd5-f24642a4ea39</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=d7d0bf8d87a9a5104c1fc99d0ebb3501"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>d7d0bf8d87a9a5104c1fc99d0ebb3501</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>1fd0bf8d87a9a5104c1fc99d0ebb3503</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value>d5b9e78587a9a5104c1fc99d0ebb35ee:item_option_new,fcc92b8587a9a5104c1fc99d0ebb358c:item_option_new,c4d96b8587a9a5104c1fc99d0ebb3553:item_option_new,83ca6fc587a9a5104c1fc99d0ebb3561:item_option_new,2a0b6fc587a9a5104c1fc99d0ebb35b8:item_option_new,ab4b670987a9a5104c1fc99d0ebb3598:item_option_new,c6ebaf0987a9a5104c1fc99d0ebb35d3:item_option_new,996ba70987a9a5104c1fc99d0ebb351a:item_option_new,38cbaf0987a9a5104c1fc99d0ebb35cb:item_option_new,651ce34987a9a5104c1fc99d0ebb35a8:item_option_new,4b6ca74987a9a5104c1fc99d0ebb3537:item_option_new,01cc2f4987a9a5104c1fc99d0ebb3595:item_option_new,001d238987a9a5104c1fc99d0ebb35f4:item_option_new,93ecaf4987a9a5104c1fc99d0ebb35d2:item_option_new</value>
+        <variable display_value="Catalog Variables">7b0ba3abc31013002841b63b12d3aef7</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>d7d0bf8d87a9a5104c1fc99d0ebb3501</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>dfd0bf8d87a9a5104c1fc99d0ebb3503</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <value>3f69a38587a9a5104c1fc99d0ebb359a</value>
+        <variable display_value="Template Catalog Items and Variable Sets">bb0ba3abc31013002841b63b12d3aef1</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=d7d0bf8d87a9a5104c1fc99d0ebb3501"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>catalog_variables</field>
+        <id>d7d0bf8d87a9a5104c1fc99d0ebb3501</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>13d0bf8d87a9a5104c1fc99d0ebb3503</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_330ba3abc31013002841b63b12d3aee8</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>requested_item</field>
+        <id>d7d0bf8d87a9a5104c1fc99d0ebb3501</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>9bd0bf8d87a9a5104c1fc99d0ebb3503</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_330ba3abc31013002841b63b12d3aee8</table>
+        <value>{{Service Catalog_1.request_item}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>template_catalog_item</field>
+        <id>d7d0bf8d87a9a5104c1fc99d0ebb3501</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>d7d0bf8d87a9a5104c1fc99d0ebb3503</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_action_input_330ba3abc31013002841b63b12d3aee8</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=d7d0bf8d87a9a5104c1fc99d0ebb3501"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=d7d0bf8d87a9a5104c1fc99d0ebb3501"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_hub_flow_logic action="delete_multiple" query="flow=cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT IN1fd0bf8d87a9a5104c1fc99d0ebb350d"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">53d0bf8d87a9a5104c1fc99d0ebb350d</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <inputs/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <outputs_to_assign/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>1fd0bf8d87a9a5104c1fc99d0ebb350d</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <ui_id>00b4615b-8507-4792-8782-ea569d9b5d64</ui_id>
+        <workflow_inputs/>
+        <workflow_reference/>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=1fd0bf8d87a9a5104c1fc99d0ebb350d"/>
+    <sys_element_mapping action="delete_multiple" query="id=1fd0bf8d87a9a5104c1fc99d0ebb350d"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>condition</field>
+        <id>1fd0bf8d87a9a5104c1fc99d0ebb350d</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:45:50</sys_created_on>
+        <sys_id>5fd0bf8d87a9a5104c1fc99d0ebb3510</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:45:50</sys_updated_on>
+        <table>var__m_sys_hub_flow_logic_input_af4e1945c3e232002841b63b12d3ae3e</table>
+        <value>{{abafdc60-c5f3-4336-b114-8557e765d9de.approval_state}}=approved</value>
+    </sys_element_mapping>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=1fd0bf8d87a9a5104c1fc99d0ebb350d"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=1fd0bf8d87a9a5104c1fc99d0ebb350d"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT IN4cdfa74d87a9a5104c1fc99d0ebb35eb,8cdfe74d87a9a5104c1fc99d0ebb35d0"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>request_item</element>
+        <help/>
+        <hint/>
+        <label>Request Item</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_cb7fef0d87a9a5104c1fc99d0ebb3536</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:41:14</sys_created_on>
+        <sys_id>4cdfa74d87a9a5104c1fc99d0ebb35eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:41:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>table_name</element>
+        <help/>
+        <hint/>
+        <label>Table Name</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_cb7fef0d87a9a5104c1fc99d0ebb3536</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:41:14</sys_created_on>
+        <sys_id>8cdfe74d87a9a5104c1fc99d0ebb35d0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:41:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_output_cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=cb7fef0d87a9a5104c1fc99d0ebb3536^sys_idNOT IN003177cd87a9a5104c1fc99d0ebb35f3"/>
+    <sys_flow_trigger_plan action="INSERT_OR_UPDATE">
+        <binding_strategy>com.snc.process_flow.engine.binding.RunAlways</binding_strategy>
+        <plan/>
+        <plan_id>cb7fef0d87a9a5104c1fc99d0ebb3536</plan_id>
+        <snapshot>7b2177cd87a9a5104c1fc99d0ebb3565</snapshot>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>003177cd87a9a5104c1fc99d0ebb35f3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <trigger display_value="">483177cd87a9a5104c1fc99d0ebb35f2</trigger>
+    </sys_flow_trigger_plan>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=cb7fef0d87a9a5104c1fc99d0ebb3536"/>
+    <sys_hub_flow_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <internal_name>cc_add_beverage_to_cellar</internal_name>
+        <label_cache>[{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.type_other","label":"1 - Get Catalog Variables➛type_other","reference":"","reference_display":"type_other","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.type","label":"1 - Get Catalog Variables➛type","reference":"","reference_display":"type","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":100.0},{"label":"Beer","value":"beer","order":100.0},{"label":"Wine","value":"wine","order":100.0},{"label":"Spirit","value":"spirit","order":100.0},{"label":"Other","value":"other","order":100.0}],"attributes":{"catalogType":"5","catalogTypeLabel":"Select Box"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.taste","label":"1 - Get Catalog Variables➛taste","reference":"","reference_display":"taste","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.style","label":"1 - Get Catalog Variables➛style","reference":"","reference_display":"style","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.region","label":"1 - Get Catalog Variables➛region","reference":"","reference_display":"region","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.proof","label":"1 - Get Catalog Variables➛proof","reference":"","reference_display":"proof","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.name","label":"1 - Get Catalog Variables➛name","reference":"","reference_display":"name","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.description","label":"1 - Get Catalog Variables➛description","reference":"","reference_display":"description","type":"multi_small","base_type":"multi_small","attributes":{"catalogType":"2","catalogTypeLabel":"Multi Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.country","label":"1 - Get Catalog Variables➛country","reference":"","reference_display":"country","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.brand","label":"1 - Get Catalog Variables➛brand","reference":"","reference_display":"brand","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.abv","label":"1 - Get Catalog Variables➛abv","reference":"","reference_display":"abv","type":"string","base_type":"string","attributes":{"catalogType":"6","catalogTypeLabel":"Single Line Text"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.user_details","label":"1 - Get Catalog Variables➛user_details","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"936c525b-b16c-4950-bbd5-f24642a4ea39.club_event","label":"1 - Get Catalog Variables➛club_event","reference":"x_snc_commodore_0_events","reference_display":"Club Events","type":"reference","base_type":"reference","attributes":{"catalogType":"8","catalogTypeLabel":"Reference"}},{"name":"abafdc60-c5f3-4336-b114-8557e765d9de.approval_state","label":"2 - Ask For Approval➛Approval State","reference_display":"Approval State","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Not Yet Requested","value":"not requested","order":1.0},{"label":"Requested","value":"requested","order":2.0},{"label":"Approved","value":"approved","order":3.0},{"label":"Rejected","value":"rejected","order":4.0},{"label":"Cancelled","value":"cancelled","order":5.0},{"label":"No Longer Required","value":"not_required","order":6.0},{"label":"Skipped","value":"skipped","order":7.0}],"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"{{static.c220f0be87a021106e4b11f83cbb3513}}","label":"Commodore\u0027s Club Founders","reference":"sys_user_group","reference_display":"Group","type":"reference","base_type":"reference"},{"name":"Service Catalog_1.request_item","label":"Trigger - Service Catalog➛Requested Item Record","reference":"sc_req_item","reference_display":"Requested Item","type":"reference","base_type":"reference","attributes":{"default_search_field":"number"}}]</label_cache>
+        <master>true</master>
+        <name>CC Add Beverage to Cellar</name>
+        <natlang/>
+        <outputs/>
+        <parent_flow display_value="CC Add Beverage to Cellar">cb7fef0d87a9a5104c1fc99d0ebb3536</parent_flow>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow_snapshot</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7b2177cd87a9a5104c1fc99d0ebb3565</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:13</sys_updated_on>
+        <type>flow</type>
+    </sys_hub_flow_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_variable_value action="delete_multiple" query="document_key=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=7b2177cd87a9a5104c1fc99d0ebb3565^sys_idNOT INc83177cd87a9a5104c1fc99d0ebb35cc"/>
+    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</flow>
+        <name>Service Catalog</name>
+        <remote_sys_id/>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>c83177cd87a9a5104c1fc99d0ebb35cc</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:15</sys_updated_on>
+        <trigger_definition display_value="Service Catalog">c43a1011c36813002841b63b12d3ae15</trigger_definition>
+        <trigger_inputs/>
+        <trigger_outputs/>
+        <trigger_type>service_catalog</trigger_type>
+    </sys_hub_trigger_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=c83177cd87a9a5104c1fc99d0ebb35cc"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>c83177cd87a9a5104c1fc99d0ebb35cc</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>883177cd87a9a5104c1fc99d0ebb35cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>background</value>
+        <variable display_value="Run flow In">6090c72977203300f5bfcfcc78106159</variable>
+    </sys_variable_value>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=7b2177cd87a9a5104c1fc99d0ebb3565^sys_idNOT IN7b2177cd87a9a5104c1fc99d0ebb3566"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>7b2177cd87a9a5104c1fc99d0ebb3565</id>
+        <name>CC Add Beverage to Cellar</name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:13</sys_created_on>
+        <sys_id>7b2177cd87a9a5104c1fc99d0ebb3566</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:13</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=7b2177cd87a9a5104c1fc99d0ebb3566"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=7b2177cd87a9a5104c1fc99d0ebb3565^sys_idNOT IN3b2177cd87a9a5104c1fc99d0ebb357c,bf2177cd87a9a5104c1fc99d0ebb3567"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>default_search_field=number,element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>request_item</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Request Item</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</model>
+        <model_id>7b2177cd87a9a5104c1fc99d0ebb3565</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_7b2177cd87a9a5104c1fc99d0ebb3565</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="sc_req_item">sc_req_item</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>3b2177cd87a9a5104c1fc99d0ebb357c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,test_input_hidden=true,uiType=table_name,uiTypeLabel=Table Name</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>sc_req_item</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>table_name</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">table_name</internal_type>
+        <label>Table Name</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</model>
+        <model_id>7b2177cd87a9a5104c1fc99d0ebb3565</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_7b2177cd87a9a5104c1fc99d0ebb3565</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:13</sys_created_on>
+        <sys_id>bf2177cd87a9a5104c1fc99d0ebb3567</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_output action="delete_multiple" query="model=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_hub_action_instance action="delete_multiple" query="flow=7b2177cd87a9a5104c1fc99d0ebb3565^sys_idNOT IN043177cd87a9a5104c1fc99d0ebb35c1,4c3177cd87a9a5104c1fc99d0ebb35ca,732177cd87a9a5104c1fc99d0ebb35b7"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Ask For Approval">f8f2e9920b10030085c083eb37673abd</action_type>
+        <action_type_parent display_value="Ask For Approval">bae0a1120b10030085c083eb37673a92</action_type_parent>
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</flow>
+        <order>2</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>043177cd87a9a5104c1fc99d0ebb35c1</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <ui_id>abafdc60-c5f3-4336-b114-8557e765d9de</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=043177cd87a9a5104c1fc99d0ebb35c1"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>043177cd87a9a5104c1fc99d0ebb35c1</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>003177cd87a9a5104c1fc99d0ebb35c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>approval</value>
+        <variable display_value="Approval Field">01f2e9920b10030085c083eb37673ad8</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>043177cd87a9a5104c1fc99d0ebb35c1</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>483177cd87a9a5104c1fc99d0ebb35c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>sc_req_item</value>
+        <variable display_value="Table">bcf2e9920b10030085c083eb37673acc</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>043177cd87a9a5104c1fc99d0ebb35c1</document_key>
+        <order>5</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>843177cd87a9a5104c1fc99d0ebb35c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value/>
+        <variable display_value="Due Date">c5f2e9920b10030085c083eb37673af9</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>043177cd87a9a5104c1fc99d0ebb35c1</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>c03177cd87a9a5104c1fc99d0ebb35c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>approval_history</value>
+        <variable display_value="Journal Field">c1f2e9920b10030085c083eb37673ae3</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=043177cd87a9a5104c1fc99d0ebb35c1"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>approval_conditions</field>
+        <id>043177cd87a9a5104c1fc99d0ebb35c1</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>c83177cd87a9a5104c1fc99d0ebb35c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value>ApprovesAnyG[{{static.c220f0be87a021106e4b11f83cbb3513}}]</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>approval_field</field>
+        <id>043177cd87a9a5104c1fc99d0ebb35c1</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>cc3177cd87a9a5104c1fc99d0ebb35c2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>due_date</field>
+        <id>043177cd87a9a5104c1fc99d0ebb35c1</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>083177cd87a9a5104c1fc99d0ebb35c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value>{"action":"none","date_type":"actual","date":"{{}}","duration":1,"duration_type":"days","schedule":"","schedule_label":""}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>journal_field</field>
+        <id>043177cd87a9a5104c1fc99d0ebb35c1</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>803177cd87a9a5104c1fc99d0ebb35c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record</field>
+        <id>043177cd87a9a5104c1fc99d0ebb35c1</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>443177cd87a9a5104c1fc99d0ebb35c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value>{{Service Catalog_1.request_item}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>043177cd87a9a5104c1fc99d0ebb35c1</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>8c3177cd87a9a5104c1fc99d0ebb35c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f8f2e9920b10030085c083eb37673abd</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=043177cd87a9a5104c1fc99d0ebb35c1"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=043177cd87a9a5104c1fc99d0ebb35c1"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</flow>
+        <order>4</order>
+        <parent_ui_id>00b4615b-8507-4792-8782-ea569d9b5d64</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>4c3177cd87a9a5104c1fc99d0ebb35ca</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <ui_id>d626ba57-7158-4660-8848-0719a2638e64</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=4c3177cd87a9a5104c1fc99d0ebb35ca"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>4c3177cd87a9a5104c1fc99d0ebb35ca</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>443177cd87a9a5104c1fc99d0ebb35cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>x_snc_commodore_0_beverage</value>
+        <variable display_value="Table">61e05916c31332002841b63b12d3aee4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=4c3177cd87a9a5104c1fc99d0ebb35ca"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>4c3177cd87a9a5104c1fc99d0ebb35ca</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>003177cd87a9a5104c1fc99d0ebb35cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_2de05916c31332002841b63b12d3aee1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>values</field>
+        <id>4c3177cd87a9a5104c1fc99d0ebb35ca</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>c03177cd87a9a5104c1fc99d0ebb35cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_2de05916c31332002841b63b12d3aee1</table>
+        <value>event={{936c525b-b16c-4950-bbd5-f24642a4ea39.club_event}}^introduced_by={{936c525b-b16c-4950-bbd5-f24642a4ea39.user_details}}^abv={{936c525b-b16c-4950-bbd5-f24642a4ea39.abv}}^brand={{936c525b-b16c-4950-bbd5-f24642a4ea39.brand}}^country={{936c525b-b16c-4950-bbd5-f24642a4ea39.country}}^description={{936c525b-b16c-4950-bbd5-f24642a4ea39.description}}^name={{936c525b-b16c-4950-bbd5-f24642a4ea39.name}}^proof={{936c525b-b16c-4950-bbd5-f24642a4ea39.proof}}^region={{936c525b-b16c-4950-bbd5-f24642a4ea39.region}}^style={{936c525b-b16c-4950-bbd5-f24642a4ea39.style}}^taste={{936c525b-b16c-4950-bbd5-f24642a4ea39.taste}}^type={{936c525b-b16c-4950-bbd5-f24642a4ea39.type}}^type_other={{936c525b-b16c-4950-bbd5-f24642a4ea39.type_other}}</value>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=4c3177cd87a9a5104c1fc99d0ebb35ca"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=4c3177cd87a9a5104c1fc99d0ebb35ca"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Get Catalog Variables">330ba3abc31013002841b63b12d3aee8</action_type>
+        <action_type_parent display_value="Get Catalog Variables">22f0b88cc3c632002841b63b12d3aeff</action_type_parent>
+        <comment/>
+        <display_text/>
+        <flow display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</flow>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>732177cd87a9a5104c1fc99d0ebb35b7</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <ui_id>936c525b-b16c-4950-bbd5-f24642a4ea39</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=732177cd87a9a5104c1fc99d0ebb35b7"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>732177cd87a9a5104c1fc99d0ebb35b7</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>7b2177cd87a9a5104c1fc99d0ebb35b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>3f69a38587a9a5104c1fc99d0ebb359a</value>
+        <variable display_value="Template Catalog Items and Variable Sets">bb0ba3abc31013002841b63b12d3aef1</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>732177cd87a9a5104c1fc99d0ebb35b7</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>b32177cd87a9a5104c1fc99d0ebb35b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <value>d5b9e78587a9a5104c1fc99d0ebb35ee:item_option_new,fcc92b8587a9a5104c1fc99d0ebb358c:item_option_new,c4d96b8587a9a5104c1fc99d0ebb3553:item_option_new,83ca6fc587a9a5104c1fc99d0ebb3561:item_option_new,2a0b6fc587a9a5104c1fc99d0ebb35b8:item_option_new,ab4b670987a9a5104c1fc99d0ebb3598:item_option_new,c6ebaf0987a9a5104c1fc99d0ebb35d3:item_option_new,996ba70987a9a5104c1fc99d0ebb351a:item_option_new,38cbaf0987a9a5104c1fc99d0ebb35cb:item_option_new,651ce34987a9a5104c1fc99d0ebb35a8:item_option_new,4b6ca74987a9a5104c1fc99d0ebb3537:item_option_new,01cc2f4987a9a5104c1fc99d0ebb3595:item_option_new,001d238987a9a5104c1fc99d0ebb35f4:item_option_new,93ecaf4987a9a5104c1fc99d0ebb35d2:item_option_new</value>
+        <variable display_value="Catalog Variables">7b0ba3abc31013002841b63b12d3aef7</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=732177cd87a9a5104c1fc99d0ebb35b7"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>catalog_variables</field>
+        <id>732177cd87a9a5104c1fc99d0ebb35b7</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>bb2177cd87a9a5104c1fc99d0ebb35b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_330ba3abc31013002841b63b12d3aee8</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>requested_item</field>
+        <id>732177cd87a9a5104c1fc99d0ebb35b7</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>332177cd87a9a5104c1fc99d0ebb35b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_330ba3abc31013002841b63b12d3aee8</table>
+        <value>{{Service Catalog_1.request_item}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>template_catalog_item</field>
+        <id>732177cd87a9a5104c1fc99d0ebb35b7</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>7f2177cd87a9a5104c1fc99d0ebb35b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_action_input_330ba3abc31013002841b63b12d3aee8</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=732177cd87a9a5104c1fc99d0ebb35b7"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=732177cd87a9a5104c1fc99d0ebb35b7"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_hub_flow_logic action="delete_multiple" query="flow=7b2177cd87a9a5104c1fc99d0ebb3565^sys_idNOT IN7b2177cd87a9a5104c1fc99d0ebb3594"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">53d0bf8d87a9a5104c1fc99d0ebb350d</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="CC Add Beverage to Cellar">7b2177cd87a9a5104c1fc99d0ebb3565</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <inputs/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <outputs_to_assign/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>7b2177cd87a9a5104c1fc99d0ebb3594</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <ui_id>00b4615b-8507-4792-8782-ea569d9b5d64</ui_id>
+        <workflow_inputs/>
+        <workflow_reference/>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=7b2177cd87a9a5104c1fc99d0ebb3594"/>
+    <sys_element_mapping action="delete_multiple" query="id=7b2177cd87a9a5104c1fc99d0ebb3594"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>condition</field>
+        <id>7b2177cd87a9a5104c1fc99d0ebb3594</id>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>bf2177cd87a9a5104c1fc99d0ebb3597</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <table>var__m_sys_hub_flow_logic_input_af4e1945c3e232002841b63b12d3ae3e</table>
+        <value>{{abafdc60-c5f3-4336-b114-8557e765d9de.approval_state}}=approved</value>
+    </sys_element_mapping>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=7b2177cd87a9a5104c1fc99d0ebb3594"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=7b2177cd87a9a5104c1fc99d0ebb3594"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_7b2177cd87a9a5104c1fc99d0ebb3565^sys_idNOT IN7b2177cd87a9a5104c1fc99d0ebb358d,ff2177cd87a9a5104c1fc99d0ebb3578"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>request_item</element>
+        <help/>
+        <hint/>
+        <label>Request Item</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_7b2177cd87a9a5104c1fc99d0ebb3565</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>7b2177cd87a9a5104c1fc99d0ebb358d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>table_name</element>
+        <help/>
+        <hint/>
+        <label>Table Name</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_7b2177cd87a9a5104c1fc99d0ebb3565</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 21:47:14</sys_created_on>
+        <sys_id>ff2177cd87a9a5104c1fc99d0ebb3578</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 21:47:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_output_7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_7b2177cd87a9a5104c1fc99d0ebb3565"/>
+    <sys_hub_flow action="UPDATE">
+        <sys_id>cb7fef0d87a9a5104c1fc99d0ebb3536</sys_id>
+        <latest_snapshot>7b2177cd87a9a5104c1fc99d0ebb3565</latest_snapshot>
+        <compiler_build/>
+    </sys_hub_flow>
+</record_update>
