@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="Cast a Vote">a065f70587e9a5104c1fc99d0ebb3547</sc_cat_item>
+        <sc_category display_value="Club Member Resources">558656858765a5104c1fc99d0ebb35cc</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 22:06:36</sys_created_on>
+        <sys_id>af95bb0587e9a5104c1fc99d0ebb35c0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Club Member Resources.Cast a Vote</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sc_cat_item_category_af95bb0587e9a5104c1fc99d0ebb35c0</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 22:06:36</sys_updated_on>
+    </sc_cat_item_category>
+</record_update>

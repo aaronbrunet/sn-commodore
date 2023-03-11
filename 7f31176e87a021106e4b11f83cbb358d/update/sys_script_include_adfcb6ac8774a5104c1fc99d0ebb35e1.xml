@@ -19,6 +19,20 @@ CCUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 		}
 		return;
 	},
+	getAttendanceAjax: function(){
+		var event_id = this.getParameter('sysparm_event_id');
+		var user_id = this.getParameter('sysparm_user_id');
+		gs.info([event_id,user_id]);
+		var attendance = '';
+		var ea = new GlideRecord('x_snc_commodore_0_club_event_attendances');
+		ea.addQuery('event',event_id);
+		ea.addQuery('user',user_id);
+		ea.query();
+		if(ea.next()){
+			attendance = ea.sys_id;
+		}
+		return attendance;
+	},
 	getSignupAjax: function(){
 		var event_id = this.getParameter('sysparm_event_id');
 		var user_id = this.getParameter('sysparm_user_id');
@@ -87,13 +101,13 @@ CCUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-31 21:56:49</sys_created_on>
         <sys_id>adfcb6ac8774a5104c1fc99d0ebb35e1</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>CCUtils</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sys_script_include_adfcb6ac8774a5104c1fc99d0ebb35e1</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-11 21:52:02</sys_updated_on>
+        <sys_updated_on>2023-03-11 22:19:34</sys_updated_on>
     </sys_script_include>
 </record_update>
