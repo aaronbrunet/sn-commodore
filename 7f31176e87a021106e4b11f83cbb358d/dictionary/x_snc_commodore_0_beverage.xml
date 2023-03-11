@@ -4,6 +4,7 @@
         <element label="Brand" max_length="40" name="brand" type="string"/>
         <element label="Country of Origin" max_length="5000" name="country" type="string"/>
         <element label="Description" max_length="5000" name="description" type="string"/>
+        <element label="Event" max_length="32" name="event" reference="x_snc_commodore_0_events" type="reference"/>
         <element label="Introduced by" max_length="32" name="introduced_by" reference="sys_user" type="reference"/>
         <element label="Masked Name" max_length="1000" name="masked_name" type="string"/>
         <element display="true" label="Name" max_length="1000" name="name" type="string"/>
@@ -21,9 +22,12 @@
         </element>
         <element label="Type (Other)" max_length="40" name="type_other" type="string"/>
         <index name="index">
-            <element name="introduced_by"/>
+            <element name="event"/>
         </index>
         <index name="index2">
+            <element name="introduced_by"/>
+        </index>
+        <index name="index3">
             <element name="sys_class_name"/>
         </index>
     </element>

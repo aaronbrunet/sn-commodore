@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function($scope,$rootScope) {
+        <client_script><![CDATA[api.controller=function($scope,$rootScope,$timeout,spUtil) {
   /* widget controller */
   var c = this;
   var data = c.data;
 
 	$rootScope.$on('cat_item_id', function(event,parms) {
 		console.log('receiving cat_item_id');
-		$scope.data.type = 'cat_item';
-		$scope.data.event_id = parms;
-		$scope.data.input = {
-			type: 'cat_item',
-			event_id: parms
+			$scope.data.action = 'cat_item';
+			$scope.data.event_id = parms;
+			$scope.data.input = {
+				type: 'cat_item',
+				event_id: parms
 		};
-		c.server.update();
+		//$timeout(function(){					
+			//c.server.update().then(function(e){
+			spUtil.update($scope).then(function(e){
+				console.log('Hello from the promise!');	
+			});
+		//},200);
 		//console.log(parms);
 	});
+
+	c.checkAttendance = function(id){
+		var a_list = c.data.a_list;
+		
+		var chkEvent = new GlideRecord('x_snc_commodore_0_events');
+		chkEvent.get(id);
+		console.log(a_list);
+		console.log(chkEvent.slots);
+		if(a_list.length >= chkEvent.slots){
+			$scope.page.g_form.setValue('allow_signup','false');
+			console.log('no more attendees');
+		}
+
+	};
 
 };]]></client_script>
         <controller_as>c</controller_as>
@@ -51,15 +70,15 @@ outline: 2px solid grey;&#13;
 	//var event_id = '';
 	//data.event = '';
 	data.cat_item = false;
-	console.log('Hello world');
-	console.log(input);
+	//console.log(input);
 	if(input && input.event_id != ''){
 		console.log('input received');
+		console.log(input);
 		data.event = input.event_id;
 		data.cat_item = true;
 		buildCard(data.event);
 	}
-	if(input && input.type == 'widget_schema'){
+	if(input && input.action == 'widget_schema'){
 		console.log('schema received');
 		if(options && options.event_id && options.event_id != ''){
 			console.log('getting options event id: '+options.event_id);
@@ -87,6 +106,8 @@ function buildCard(event_id){
 				return;
 			}
 
+			data.cat_item_href = "/cc?id=sc_cat_item&sys_id=037fee2b871961104c1fc99d0ebb3534&event_id="+event_id;
+
 			// Pull essential fields and write to named fields in data obj
 			var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
 			data.voting_open = event.getValue('voting_open') == 1;
@@ -107,11 +128,14 @@ function buildCard(event_id){
 			data.time = time;
 			data.past = start.onOrBefore(new GlideDateTime());
 
-			var a_list = event.attendees.toString();
-			data.attendees_curr_count = a_list.split(',').length;
+			//var a_list = event.attendees.toString();
+			var a_list = new CCUtils().getAttendees(event_id);
+			
+			data.attendees_curr_count = a_list.length;
+			//data.slots = event.getValue('slots');
 
-			var b_list = event.drinks.toString();
-			data.beverage_curr_count = b_list.split(',').length;
+			var b_list = new CCUtils().getBevRecords(event_id);
+			data.beverage_curr_count = b_list.length;
 
 			data.registered = false;
 			if(a_list.indexOf(gs.getUserID())>-1){
@@ -140,9 +164,9 @@ function buildCard(event_id){
 				//console.log(beverages[targetBeverage]);
 			}
 			data.votes = votes;
-			console.log(data.votes);
+			//console.log(data.votes);
 			data.my_vote_info = votes.find(v => v.user.value == gs.getUserID());
-			console.log(data.my_vote_info);
+			//console.log(data.my_vote_info);
 		} else {
 			console.log('no event id');
 		}
@@ -152,14 +176,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>95</sys_mod_count>
+        <sys_mod_count>126</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-11 18:11:26</sys_updated_on>
+        <sys_updated_on>2023-03-11 19:52:00</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.event || data.event ==''">
   <h2>No event found</h2>
 </div>
@@ -186,7 +210,7 @@ function buildCard(event_id){
   </div>
   <div ng-if="!data.cat_item">
   <div class="box" ng-if="!data.past">
-    <button ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value">Join This Event</button>
+    <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.cat_item_href}}">Join This Event</a>
     <button ng-disabled="data.beverage_curr_count >= data.beverage_count.value">Bring A Beverage</button>
   </div>
   <div class="box">
