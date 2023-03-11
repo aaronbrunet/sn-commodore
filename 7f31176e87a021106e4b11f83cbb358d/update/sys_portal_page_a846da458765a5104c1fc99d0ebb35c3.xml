@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update node_type="sys_portal_page" unload_date="2023-03-11 18:13:38">
+    <sys_portal_page action="INSERT_OR_UPDATE">
+        <layout display_value="layout_2_across">f6defafa0a0a0b12000d5016bd12ff06</layout>
+        <order/>
+        <read_roles/>
+        <roles/>
+        <selectable>false</selectable>
+        <sys_class_name>sys_portal_page</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 15:09:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a846da458765a5104c1fc99d0ebb35c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>catalog_commodore_club_resources</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sys_portal_page_a846da458765a5104c1fc99d0ebb35c3</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 15:09:58</sys_updated_on>
+        <title>catalog_commodore_club_resources</title>
+        <user/>
+        <view>catalog_commodore_club_resources</view>
+    </sys_portal_page>
+</record_update>
