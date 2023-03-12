@@ -4,13 +4,13 @@
             <element>user</element>
             <position>0</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-01-26 17:20:19</sys_created_on>
-            <sys_id>782e488b872c21106e4b11f83cbb35f2</sys_id>
+            <sys_created_on>2023-03-12 01:00:21</sys_created_on>
+            <sys_id>fc6d9819876da5104c1fc99d0ebb35ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_club_event_attendances" sys_domain="global" view="Default view">35777b7a87e821106e4b11f83cbb351c</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-01-26 17:20:19</sys_updated_on>
+            <sys_updated_on>2023-03-12 01:00:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,29 +18,29 @@
             <element>event</element>
             <position>1</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-01-26 17:20:19</sys_created_on>
-            <sys_id>702e488b872c21106e4b11f83cbb35f3</sys_id>
+            <sys_created_on>2023-03-12 01:00:21</sys_created_on>
+            <sys_id>f46d9819876da5104c1fc99d0ebb35cb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_club_event_attendances" sys_domain="global" view="Default view">35777b7a87e821106e4b11f83cbb351c</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-01-26 17:20:19</sys_updated_on>
+            <sys_updated_on>2023-03-12 01:00:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>votes</element>
+            <element>12M.x_snc_commodore_0_club_event_attendances.x_snc_commodore_0_votes.event_attendances</element>
             <position>2</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-01-26 17:20:19</sys_created_on>
-            <sys_id>742e488b872c21106e4b11f83cbb35f3</sys_id>
+            <sys_created_on>2023-03-12 01:00:21</sys_created_on>
+            <sys_id>f86d9819876da5104c1fc99d0ebb35cb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_club_event_attendances" sys_domain="global" view="Default view">35777b7a87e821106e4b11f83cbb351c</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-01-26 17:20:19</sys_updated_on>
+            <sys_updated_on>2023-03-12 01:00:21</sys_updated_on>
             <sys_user/>
-            <type/>
+            <type>list</type>
         </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>

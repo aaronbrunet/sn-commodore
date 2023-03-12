@@ -70,6 +70,7 @@ outline: 2px solid grey;&#13;
 	//var event_id = '';
 	//data.event = '';
 	data.cat_item = false;
+	data.live = false;
 	//console.log(input);
 	if(input && input.event_id != ''){
 		console.log('input received');
@@ -86,10 +87,14 @@ outline: 2px solid grey;&#13;
 			buildCard(data.event);
 		}
 	} 
-	if (!input && $sp.getParameter('id')=='event' && $sp.getParameter('sys_id')!=''){
-		console.log('no input received');
+	if (!input && ($sp.getParameter('id')=='event' || $sp.getParameter('id')=='live_event') && $sp.getParameter('sys_id')!=''){
+		//console.log('no input received');
 		data.event = $sp.getParameter('sys_id');
+		if($sp.getParameter('id')=='live_event'){
+			data.live = true;
+		}
 		buildCard(data.event);
+
 	}
 })();
 
@@ -178,14 +183,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>129</sys_mod_count>
+        <sys_mod_count>132</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 00:38:39</sys_updated_on>
+        <sys_updated_on>2023-03-12 01:13:26</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.event || data.event ==''">
   <h2>No event selected</h2>
 </div>
@@ -205,27 +210,27 @@ function buildCard(event_id){
       <h4>Theme: {{data.theme.display_value}}</h4>
     </div>
   </div>
-  <div class="box">
+  <div class="box" ng-if="!data.live">
     <h3><i class="ri-map-pin-2-fill"></i> {{data.location.display_value}}</h3>
     <h3><i class="ri-user-fill"></i> {{data.attendees_curr_count}}/{{data.slots.value}}</h3>
     <h3><i class="ri-goblet-fill"></i> {{data.beverage_curr_count}}/{{data.beverage_count.value}}</h3>
   </div>
-  <div ng-if="!data.cat_item">
-  <div class="box" ng-if="!data.past">
-    <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">Join This Event</a>
-    <a ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}">Bring A Beverage</a>
-  </div>
-  <div class="box">
-    <div ng-switch="data.my_vote">
-      <div ng-switch-when="true"> 
-        I voted for {{data.my_vote_info.beverage.masked_name}}!
-      </div>
-      <div ng-switch-when="false"> 
-        <div ng-if="data.voting_open">
-          <button>Vote</button>
+  <div ng-if="!data.cat_item && !data.live">
+    <div class="box" ng-if="!data.past">
+      <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">Join This Event</a>
+      <a ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}">Bring A Beverage</a>
+    </div>
+    <div class="box">
+      <div ng-switch="data.my_vote">
+        <div ng-switch-when="true"> 
+          I voted for {{data.my_vote_info.beverage.masked_name}}!
+        </div>
+        <div ng-switch-when="false"> 
+          <div ng-if="data.voting_open">
+            <button>Vote</button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
 </div>
 ]]></template>
