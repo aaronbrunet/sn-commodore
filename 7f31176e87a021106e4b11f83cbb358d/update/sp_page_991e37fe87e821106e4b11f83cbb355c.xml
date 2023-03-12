@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
     <sp_page action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <css>$banner-768-svg : "d9bc1319533130101865ddeeff7b12ba.iix";&#13;
+        <css>/*$banner-768-svg : "d9bc1319533130101865ddeeff7b12ba.iix";*/&#13;
 &#13;
 main.body {&#13;
   padding-top: 0rem !important;&#13;
@@ -18,7 +18,7 @@ main.body {&#13;
 }&#13;
 &#13;
 .mobile-banner {&#13;
-  background-position: right bottom !important;&#13;
+  /*background-position: right bottom !important;*/&#13;
 }&#13;
 &#13;
 /* Max width for Containers to stay in view port*/&#13;
@@ -28,9 +28,9 @@ main.body {&#13;
 &#13;
 @media (max-width: 48em) {&#13;
   .ng-scope.mobile-banner {&#13;
-    background-image:url($banner-768-svg) !important;&#13;
+    /*background-image:url($banner-768-svg) !important;&#13;
     background-repeat: no-repeat;&#13;
-    background-size: cover;&#13;
+    background-size: cover;*/&#13;
   }&#13;
   .child-b-margin &gt; span &gt; div &gt; *{&#13;
     margin-bottom: 1.6rem;&#13;
@@ -90,14 +90,14 @@ main.body {&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:10:10</sys_created_on>
         <sys_id>991e37fe87e821106e4b11f83cbb355c</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>cc_index</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_page_991e37fe87e821106e4b11f83cbb355c</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-01-26 16:10:24</sys_updated_on>
+        <sys_updated_on>2023-03-12 23:13:28</sys_updated_on>
         <title>CC Home</title>
         <use_seo_script>false</use_seo_script>
     </sp_page>

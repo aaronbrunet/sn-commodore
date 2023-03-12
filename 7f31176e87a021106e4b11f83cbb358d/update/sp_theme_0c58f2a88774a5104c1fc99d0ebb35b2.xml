@@ -58,9 +58,9 @@
 &#13;
       // Define NavBar&#13;
       $sp-navbar-height: 		                60px;&#13;
-      $sp-navbar-divider-color:               #333579 !default; //--now-color_chrome--divider-10&#13;
+      $sp-navbar-divider-color:               black !default; //--now-color_chrome--divider-10&#13;
       $sp-navbar-inverse-bg:                  $navbar-inverse-bg !default;&#13;
-      $navbar-inverse-bg:                     #8f4335 !default; //#181826 !default; //--now-color_chrome--brand-10&#13;
+      $navbar-inverse-bg:                     black !default;//#8f4335 !default; //#181826 !default; //--now-color_chrome--brand-10&#13;
       $navbar-inverse-link-color:             #DADDE2 !default; //--now-color--neutral-2&#13;
       $navbar-inverse-link-hover-color:       #ffffff !default; //--now-color--neutral-0&#13;
       $sp-logo-margin-x: 		                6px !default;&#13;
@@ -531,21 +531,21 @@
     </css_variables>
         <footer display_value="Employee Center Footer">ce046d5773603010c94f54eb7df6a7ec</footer>
         <footer_fixed>false</footer_fixed>
-        <header display_value="CC Header">472b8c2187a9e5104c1fc99d0ebb3574</header>
+        <header display_value="CC Header">d6db49a5876de5104c1fc99d0ebb359f</header>
         <name>CC Theme</name>
         <navbar_fixed>false</navbar_fixed>
         <sys_class_name>sp_theme</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-31 21:34:42</sys_created_on>
         <sys_id>0c58f2a88774a5104c1fc99d0ebb35b2</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>CC Theme</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_theme_0c58f2a88774a5104c1fc99d0ebb35b2</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 18:30:05</sys_updated_on>
+        <sys_updated_on>2023-03-12 23:09:09</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>
