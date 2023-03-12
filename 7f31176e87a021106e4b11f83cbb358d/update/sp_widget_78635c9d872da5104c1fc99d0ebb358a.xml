@@ -46,6 +46,7 @@ flex-direction: row;&#13;
 		var event = {};
 	// Pull essential fields and write to named fields in data obj
 			var fields = $sp.getFields(events, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
+			event.sys_id = events.getValue('sys_id');
 			event.voting_open = events.getValue('voting_open') == 1;
 			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
 			event.required = events.getValue('required') == 1;
@@ -86,14 +87,14 @@ flex-direction: row;&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 00:41:49</sys_updated_on>
+        <sys_updated_on>2023-03-12 01:25:24</sys_updated_on>
         <template><![CDATA[<div>
   <h2>Upcoming Events</h2>
   <div class="event-row">
@@ -102,6 +103,7 @@ flex-direction: row;&#13;
         <div class="warning-box" ng-if="event.past">
             <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
         </div>
+        <a href="/cc?id=event&sys_id={{event.sys_id}}" target="_blank">
         <h2>{{event.date}} at {{event.time}}</h2>  
         <h1>{{event.short_description.display_value}}</h1>        
         <!--<div ng-if="!event.cat_item"><i class="ri-{{event.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{event.voting_open ? 'open' : 'closed'}}</div> -->
@@ -113,7 +115,9 @@ flex-direction: row;&#13;
           <h3><i class="ri-goblet-fill"></i> {{event.beverage_curr_count}}/{{event.beverage_count.value}}</h3>
         </div>
         <br/>        
+          </a>
       </div>
+      
   	</div>
   </div>
 </div>]]></template>
