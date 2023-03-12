@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.box {&#13;
+outline: 2px solid grey;&#13;
+  display: block;&#13;
+}&#13;
+.warning-box {&#13;
+	height: 4rem;&#13;
+  background-color: yellow;&#13;
+}&#13;
+&#13;
+.event-row  {&#13;
+display: flex;&#13;
+flex-direction: row;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cc-event-list</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CC Event List</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.events = [];
+	var events = new GlideRecord('x_snc_commodore_0_events');
+	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()');
+	events.orderBy('start');
+	events.query();
+	while(events.next()){
+		var event = {};
+	// Pull essential fields and write to named fields in data obj
+			var fields = $sp.getFields(events, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
+			event.voting_open = events.getValue('voting_open') == 1;
+			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
+			event.required = events.getValue('required') == 1;
+			for(i in fields){
+				var field = fields[i];
+				event[field.name] = field;
+			}
+
+			//Date handling
+			var gdt = events.getValue('start');
+			var start = new GlideDateTime(gdt);
+			//user getLocalDate/Time for SN TZ 
+			var date = start.getLocalDate().getByFormat('MMMM d, YYYY');
+			var time = start.getLocalTime().getByFormat('hh:mm a');
+			event.date = date;
+			event.time = time;
+			event.past = start.onOrBefore(new GlideDateTime());
+			
+			//var a_list = event.attendees.toString();
+			var a_list = new CCUtils().getAttendeesID(events.getValue('sys_id'));			
+			event.attendees_curr_count = a_list.length;
+			var b_list = new CCUtils().getBevRecords(events.getValue('sys_id'));
+			event.beverage_curr_count = b_list.length;
+			
+			event.registered = false;
+			if(a_list.indexOf(gs.getUserID())>-1){
+				event.registered = true;
+			}
+			console.log(JSON.stringify(a_list));
+			console.log(gs.getUserID());
+			console.log(event.registered);
+
+			data.events.push(event);
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-12 00:23:42</sys_created_on>
+        <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>CC Event List</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-12 00:41:49</sys_updated_on>
+        <template><![CDATA[<div>
+  <h2>Upcoming Events</h2>
+  <div class="event-row">
+	<div ng-repeat="event in data.events">
+      <div class="box">  
+        <div class="warning-box" ng-if="event.past">
+            <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
+        </div>
+        <h2>{{event.date}} at {{event.time}}</h2>  
+        <h1>{{event.short_description.display_value}}</h1>        
+        <!--<div ng-if="!event.cat_item"><i class="ri-{{event.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{event.voting_open ? 'open' : 'closed'}}</div> -->
+        <div ng-if="event.required"><i class="ri-alert-fill"></i>This event is required</div>  
+        <div ng-if="event.registered"><i class="ri-check-line"></i>You've joined this event.</div>
+        <div class="box">
+          <h3><i class="ri-map-pin-2-fill"></i> {{event.location.display_value}}</h3>
+          <h3><i class="ri-user-fill"></i> {{event.attendees_curr_count}}/{{event.slots.value}}</h3>
+          <h3><i class="ri-goblet-fill"></i> {{event.beverage_curr_count}}/{{event.beverage_count.value}}</h3>
+        </div>
+        <br/>        
+      </div>
+  	</div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
