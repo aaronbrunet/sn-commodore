@@ -16,8 +16,13 @@ outline: 2px solid grey;&#13;
 }&#13;
 &#13;
 .event-row  {&#13;
-display: flex;&#13;
-flex-direction: row;&#13;
+display: grid; &#13;
+  grid-template-columns: 1fr 1fr 1fr; &#13;
+  grid-template-rows: 1fr 1fr; &#13;
+  gap: 5px 5px; &#13;
+  grid-template-areas: &#13;
+    ". . ."&#13;
+    ". . ."; &#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -33,7 +38,7 @@ flex-direction: row;&#13;
         <name>CC Event List</name>
         <option_schema/>
         <public>false</public>
-        <roles/>
+        <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
@@ -87,14 +92,14 @@ flex-direction: row;&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 01:25:24</sys_updated_on>
+        <sys_updated_on>2023-03-12 14:27:59</sys_updated_on>
         <template><![CDATA[<div>
   <h2>Upcoming Events</h2>
   <div class="event-row">

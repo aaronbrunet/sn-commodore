@@ -48,7 +48,7 @@
         <name>CC Event Voting</name>
         <option_schema/>
         <public>false</public>
-        <roles/>
+        <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
@@ -71,9 +71,24 @@ data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
 data.refreshed = getTime();
 data.vote_href = '/cc?id=sc_cat_item&sys_id=a065f70587e9a5104c1fc99d0ebb3547&event_id='+data.event_id;
 data.vote_msg = 'VOTE!';
+data.live = event.getValue('live') == 1;
 
 if(input){
 	var action = input.action;
+	if(action == 'goLive'){
+		event.setValue('drink_names_hidden','1');
+		event.setValue('voting_open','1');
+		event.setValue('live','1');
+		event.update();
+
+	}
+	if(action == 'endLive'){
+		event.setValue('drink_names_hidden','0');
+		event.setValue('voting_open','0');
+		event.setValue('live','0');
+		event.update();
+
+	}
 	if(action == 'toggleDrinkVisibility'){
 		var toggleDrink = data.drink_names_hidden ? '0' : '1';
 		event.setValue('drink_names_hidden',toggleDrink);
@@ -148,19 +163,19 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>169</sys_mod_count>
+        <sys_mod_count>173</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 14:10:28</sys_updated_on>
+        <sys_updated_on>2023-03-12 14:44:23</sys_updated_on>
         <template><![CDATA[<div>
   <div>
     <h2>Event Info</h2>
     <div>
-      <a href="{{data.vote_href}}">{{data.vote_msg}}</a>
+      <a href="{{data.vote_href}}" ng-if="data.voting_open">{{data.vote_msg}}</a>
     </div>
     <div>
       <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
@@ -168,6 +183,12 @@ data.votes = votes;
     </div>
   </div>  
   <div ng-if="data.auth">
+    <button ng-click="toggleAction('goLive')" ng-if="!data.live">
+      Go Live!
+    </button>
+    <button ng-click="toggleAction('endLive')" ng-if="data.live">
+      End Live Event
+    </button>
     <button ng-click="toggleAction('toggleVoting')">
       <i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}
     </button>

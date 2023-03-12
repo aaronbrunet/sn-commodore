@@ -4,209 +4,195 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b2123b0187e9a5104c1fc99d0ebb3548</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>78699f5587e5e5104c1fc99d0ebb35ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>required</element>
-            <position>1</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>ba123b0187e9a5104c1fc99d0ebb3548</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>short_description</element>
-            <position>2</position>
+            <position>1</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>be123b0187e9a5104c1fc99d0ebb3548</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>70699f5587e5e5104c1fc99d0ebb35ad</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>description</element>
-            <position>3</position>
+            <position>2</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b2123b0187e9a5104c1fc99d0ebb3549</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>74699f5587e5e5104c1fc99d0ebb35ad</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>beverage_count</element>
-            <position>4</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b6123b0187e9a5104c1fc99d0ebb3549</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>drinks</element>
-            <position>5</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>ba123b0187e9a5104c1fc99d0ebb3549</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>voting_open</element>
-            <position>6</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>be123b0187e9a5104c1fc99d0ebb3549</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>drink_names_hidden</element>
-            <position>7</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b2123b0187e9a5104c1fc99d0ebb354a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>slots</element>
-            <position>8</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b6123b0187e9a5104c1fc99d0ebb354a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>attendees</element>
-            <position>9</position>
-            <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>ba123b0187e9a5104c1fc99d0ebb354a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
-            <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>start</element>
-            <position>10</position>
+            <position>3</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>be123b0187e9a5104c1fc99d0ebb354a</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>78699f5587e5e5104c1fc99d0ebb35ad</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>required</element>
+            <position>4</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>7c699f5587e5e5104c1fc99d0ebb35ad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>location</element>
-            <position>11</position>
+            <position>5</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b2123b0187e9a5104c1fc99d0ebb354b</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>70699f5587e5e5104c1fc99d0ebb35ae</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>slots</element>
+            <position>6</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>74699f5587e5e5104c1fc99d0ebb35ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>beverage_count</element>
+            <position>7</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>78699f5587e5e5104c1fc99d0ebb35ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>live</element>
+            <position>8</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>7c699f5587e5e5104c1fc99d0ebb35ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>voting_open</element>
+            <position>9</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>70699f5587e5e5104c1fc99d0ebb35af</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>drink_names_hidden</element>
+            <position>10</position>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>74699f5587e5e5104c1fc99d0ebb35af</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>theme</element>
-            <position>12</position>
+            <position>11</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>b6123b0187e9a5104c1fc99d0ebb354b</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>78699f5587e5e5104c1fc99d0ebb35af</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>12M.x_snc_commodore_0_events.x_snc_commodore_0_beverage.event</element>
-            <position>13</position>
+            <position>12</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>ba123b0187e9a5104c1fc99d0ebb354b</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>7c699f5587e5e5104c1fc99d0ebb35af</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type>list</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>12M.x_snc_commodore_0_events.x_snc_commodore_0_club_event_attendances.event</element>
-            <position>14</position>
+            <position>13</position>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-03-11 21:51:15</sys_created_on>
-            <sys_id>be123b0187e9a5104c1fc99d0ebb354b</sys_id>
+            <sys_created_on>2023-03-12 14:41:44</sys_created_on>
+            <sys_id>70699f5587e5e5104c1fc99d0ebb35b0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_commodore_0_events" sys_domain="global" view="Default view">402ca4ba87a021106e4b11f83cbb350f</sys_ui_section>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-03-11 21:51:15</sys_updated_on>
+            <sys_updated_on>2023-03-12 14:41:44</sys_updated_on>
             <sys_user/>
             <type>list</type>
         </sys_ui_element>
