@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Join The Club">dc8d6ee7871961104c1fc99d0ebb3544</sc_cat_item>
+        <sc_category display_value="Club Member Resources">558656858765a5104c1fc99d0ebb35cc</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 15:11:44</sys_created_on>
+        <sys_id>eaa61a858765a5104c1fc99d0ebb35a8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Club Member Resources.Join The Club</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sc_cat_item_category_eaa61a858765a5104c1fc99d0ebb35a8</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 15:11:44</sys_updated_on>
+    </sc_cat_item_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sc_cat_item_category_eaa61a858765a5104c1fc99d0ebb35a8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Join The Club">dc8d6ee7871961104c1fc99d0ebb3544</sc_cat_item><sc_category display_value="Club Member Resources">558656858765a5104c1fc99d0ebb35cc</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>aaron.brunet</sys_created_by><sys_created_on>2023-03-11 15:11:44</sys_created_on><sys_id>eaa61a858765a5104c1fc99d0ebb35a8</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Club Member Resources.Join The Club</sys_name><sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package><sys_policy/><sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope><sys_update_name>sc_cat_item_category_eaa61a858765a5104c1fc99d0ebb35a8</sys_update_name><sys_updated_by>aaron.brunet</sys_updated_by><sys_updated_on>2023-03-11 15:11:44</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+        <payload_hash>-341806859</payload_hash>
+        <record_name>Club Member Resources.Join The Club</record_name>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-11 15:11:44</sys_created_on>
+        <sys_id>62a61a858765a5104c1fc99d0ebb35ac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>186d13a4dad0000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-11 15:11:44</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>a6a61a855a65a510816a39e6ac094bab</update_guid>
+        <update_guid_history>a6a61a855a65a510816a39e6ac094bab:-341806859</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Club Member Resources.Join The Club">dba840ad8769e5104c1fc99d0ebb3536</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-12 18:08:21</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>099311cfb833441081044337a3f61b29</sys_id>
+        <sys_metadata>eaa61a858765a5104c1fc99d0ebb35a8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Club Member Resources.Join The Club</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_eaa61a858765a5104c1fc99d0ebb35a8</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_eaa61a858765a5104c1fc99d0ebb35a8">62a61a858765a5104c1fc99d0ebb35ac</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-12 18:08:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

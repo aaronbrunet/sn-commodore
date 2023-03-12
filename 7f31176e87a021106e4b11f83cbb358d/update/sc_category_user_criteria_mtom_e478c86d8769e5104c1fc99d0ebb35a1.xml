@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_category_user_criteria_mtom">
+    <sc_category_user_criteria_mtom action="INSERT_OR_UPDATE">
+        <sc_category display_value="Club Founder Resources">a49656858765a5104c1fc99d0ebb35f8</sc_category>
+        <sys_class_name>sc_category_user_criteria_mtom</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-12 18:07:21</sys_created_on>
+        <sys_id>e478c86d8769e5104c1fc99d0ebb35a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Club Founder Resources.CC Founders</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sc_category_user_criteria_mtom_e478c86d8769e5104c1fc99d0ebb35a1</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-12 18:07:21</sys_updated_on>
+        <user_criteria display_value="CC Founders">a238086d8769e5104c1fc99d0ebb3591</user_criteria>
+    </sc_category_user_criteria_mtom>
+</record_update>

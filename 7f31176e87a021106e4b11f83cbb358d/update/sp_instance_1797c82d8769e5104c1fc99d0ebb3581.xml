@@ -6,27 +6,27 @@
         <css/>
         <glyph/>
         <id/>
-        <order>3</order>
+        <order>1</order>
         <roles/>
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">298693d187e5e5104c1fc99d0ebb35de</sp_column>
-        <sp_widget display_value="CC Event List">78635c9d872da5104c1fc99d0ebb358a</sp_widget>
+        <sp_widget display_value="CC Signup CTA">a4c68ce98769e5104c1fc99d0ebb357c</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-03-12 00:24:28</sys_created_on>
-        <sys_id>9b259c11876da5104c1fc99d0ebb358c</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_created_on>2023-03-12 18:03:42</sys_created_on>
+        <sys_id>1797c82d8769e5104c1fc99d0ebb3581</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
-        <sys_update_name>sp_instance_9b259c11876da5104c1fc99d0ebb358c</sys_update_name>
+        <sys_update_name>sp_instance_1797c82d8769e5104c1fc99d0ebb3581</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 18:03:43</sys_updated_on>
+        <sys_updated_on>2023-03-12 18:03:42</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=9b259c11876da5104c1fc99d0ebb358c"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=1797c82d8769e5104c1fc99d0ebb3581"/>
 </record_update>
