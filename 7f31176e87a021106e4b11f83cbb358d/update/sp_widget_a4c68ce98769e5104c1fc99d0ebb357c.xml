@@ -6,7 +6,43 @@
   var c = this;
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.signup-cta {&#13;
+  	text-align: center;&#13;
+  &#13;
+  a {&#13;
+  	color: $cc-gold;&#13;
+    border: 0.5rem solid $cc-gold;&#13;
+    padding: 0.5rem;&#13;
+  }&#13;
+}&#13;
+.triangle {&#13;
+	width: 100%;&#13;
+    height: 20rem;&#13;
+    background-image:&#13;
+      linear-gradient(to top right, transparent 50%, black 0), &#13;
+      linear-gradient(to bottom right, black 50%, transparent 0);&#13;
+    background-size: 50% 100%;&#13;
+    background-repeat: no-repeat;&#13;
+    background-position: left, right;&#13;
+}&#13;
+&#13;
+.logo {&#13;
+	width: 15rem;&#13;
+    height: 15rem;&#13;
+    position: absolute;&#13;
+    background-image: url(cc-badge-logo-small.png);&#13;
+    background-size: contain;&#13;
+    background-repeat: no-repeat;&#13;
+    top: 50%;&#13;
+    left: 50%;&#13;
+    transform: translate(-50%, -80%);&#13;
+}&#13;
+@media screen and (min-width: 993px) {&#13;
+  .logo {&#13;
+    width: 20rem;&#13;
+    height: 20rem;&#13;
+  }&#13;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -38,15 +74,20 @@ data.href_signup = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_JOINCLUB;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 18:02:31</sys_created_on>
         <sys_id>a4c68ce98769e5104c1fc99d0ebb357c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>CC Signup CTA</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_a4c68ce98769e5104c1fc99d0ebb357c</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 18:02:31</sys_updated_on>
-        <template><![CDATA[<div ng-if="data.new_member">
+        <sys_updated_on>2023-03-13 00:37:54</sys_updated_on>
+        <template><![CDATA[<!--<div ng-if="data.new_member">-->
+<div class="logo">
+</div>
+<div class="triangle">
+</div>
+<div class="signup-cta">
   <h1><a href="{{data.href_signup}}">Join the Cellar Club</a></h1>
 </div>]]></template>
     </sp_widget>

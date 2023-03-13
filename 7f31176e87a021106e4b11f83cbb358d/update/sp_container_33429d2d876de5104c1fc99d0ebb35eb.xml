@@ -4,25 +4,25 @@
         <background_image/>
         <background_style>default</background_style>
         <bootstrap_alt>false</bootstrap_alt>
-        <class_name>padding-top</class_name>
-        <container_class_name>container</container_class_name>
-        <name>CC Home - Container 3</name>
-        <order>3</order>
+        <class_name/>
+        <container_class_name>full-width-container</container_class_name>
+        <name>CC Home - Container 1</name>
+        <order>1</order>
         <sp_page display_value="cc_index">991e37fe87e821106e4b11f83cbb355c</sp_page>
         <subheader>false</subheader>
         <sys_class_name>sp_container</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-01-26 16:10:12</sys_created_on>
-        <sys_id>311e37fe87e821106e4b11f83cbb357c</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>CC Home - Container 3</sys_name>
+        <sys_created_on>2023-03-12 23:30:03</sys_created_on>
+        <sys_id>33429d2d876de5104c1fc99d0ebb35eb</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>CC Home - Container 1</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
-        <sys_update_name>sp_container_311e37fe87e821106e4b11f83cbb357c</sys_update_name>
+        <sys_update_name>sp_container_33429d2d876de5104c1fc99d0ebb35eb</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 23:30:04</sys_updated_on>
+        <sys_updated_on>2023-03-12 23:40:10</sys_updated_on>
         <title/>
-        <width>container-fluid</width>
+        <width>container</width>
     </sp_container>
 </record_update>

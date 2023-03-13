@@ -75,6 +75,7 @@ main.body {&#13;
     padding-left: 2.4rem;&#13;
     padding-right: 1.6rem;&#13;
   }	&#13;
+  &#13;
 }</css>
         <draft>false</draft>
         <dynamic_title_structure/>
@@ -90,14 +91,14 @@ main.body {&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:10:10</sys_created_on>
         <sys_id>991e37fe87e821106e4b11f83cbb355c</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>cc_index</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_page_991e37fe87e821106e4b11f83cbb355c</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 23:13:28</sys_updated_on>
+        <sys_updated_on>2023-03-12 23:40:26</sys_updated_on>
         <title>CC Home</title>
         <use_seo_script>false</use_seo_script>
     </sp_page>
