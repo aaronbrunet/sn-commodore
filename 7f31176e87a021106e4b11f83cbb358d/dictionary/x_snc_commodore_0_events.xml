@@ -12,6 +12,14 @@
         <element display="true" label="Short description" max_length="500" name="short_description" type="string"/>
         <element label="Attendance Slots" max_length="40" name="slots" type="integer"/>
         <element label="Date &amp; Time" max_length="40" name="start" type="glide_date_time"/>
+        <element choice="3" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Scheduled" sequence="0" value="scheduled"/>
+                <element inactive_on_update="false" label="Live" sequence="1" value="live"/>
+                <element inactive_on_update="false" label="Completed" sequence="2" value="completed"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
+            </choice>
+        </element>
         <element label="Theme" max_length="1000" name="theme" type="string"/>
         <element label="Voting open" max_length="255" name="voting_open" type="boolean"/>
         <element label="Winner" max_length="32" name="winner" reference="sys_user" type="reference"/>
