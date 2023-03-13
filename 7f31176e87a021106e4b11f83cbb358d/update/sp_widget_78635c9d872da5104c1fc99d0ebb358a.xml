@@ -33,7 +33,7 @@
   margin-top: 2rem;&#13;
   display: grid; &#13;
   grid-template-columns: 1fr 1fr 1fr; &#13;
-  grid-template-rows: 1fr 1fr; &#13;
+  /*grid-template-rows: 1fr 1fr; */&#13;
   gap: 1rem;&#13;
 }&#13;
 &#13;
@@ -108,12 +108,15 @@
   
 }]]></link>
         <name>CC Event List</name>
-        <option_schema/>
+        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Events","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"}]}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.options = options;
+	data.limit = data.options.limit;
 	data.events = [];
 	var events = new GlideRecord('x_snc_commodore_0_events');
 	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
@@ -166,18 +169,18 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>44</sys_mod_count>
+        <sys_mod_count>47</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 12:23:47</sys_updated_on>
+        <sys_updated_on>2023-03-13 12:35:29</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
   <div class="event-row">
-	<div ng-repeat="event in data.events">
+	<div ng-repeat="event in data.events | limitTo : data.limit">
       <div class="box event-card {{event.live ? 'event-live' : ''}}">  
         <div class="warning-box" ng-if="event.past">
             <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
