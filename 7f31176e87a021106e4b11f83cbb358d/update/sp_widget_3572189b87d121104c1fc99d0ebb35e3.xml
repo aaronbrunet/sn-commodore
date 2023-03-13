@@ -40,7 +40,7 @@
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>.box {&#13;
-outline: 2px solid grey;&#13;
+/*outline: 2px solid grey;*/&#13;
   display: block;&#13;
 }&#13;
 .warning-box {&#13;
@@ -95,7 +95,7 @@ outline: 2px solid grey;&#13;
 		data.event = $sp.getParameter('sys_id');
 		data.page_id = $sp.getParameter('id');
 		if($sp.getParameter('id')=='live_event'){
-			data.live = true;
+			//data.live = true;
 		}
 		buildCard(data.event);
 
@@ -122,9 +122,10 @@ function buildCard(event_id){
 
 			// Pull essential fields and write to named fields in data obj
 			var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
+			data.live = event.getValue('state') == 'live';
 			data.voting_open = event.getValue('voting_open') == 1;
-			if(data.voting_open){
-				data.live = true;
+			if(data.live){
+				//data.live = true;
 				data.live_href = "/cc?id=live_event&sys_id="+event_id;
 			}
 			data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
@@ -192,63 +193,74 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>144</sys_mod_count>
+        <sys_mod_count>149</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 17:57:03</sys_updated_on>
-        <template><![CDATA[<div ng-if="!data.event || data.event ==''">
-  <h2>No event selected</h2>
-</div>
-<div ng-if="data.event && data.event != ''">
-  <div class="box">  
-    <div ng-if="data.auth">
-      <a href="/cc?id=form&table=x_snc_commodore_0_events&v=update_event&sys_id={{data.event}}">Edit Event</a>
-    </div>
-    <div class="warning-box" ng-if="data.past">
-        <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
-    </div>
-    <h2>{{data.date}} at {{data.time}}</h2>  
-    <h1>{{data.short_description.display_value}}</h1>
-    <div ng-if="!data.cat_item"><i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}</div>
-    <div ng-if="data.required"><i class="ri-alert-fill"></i>This event is required</div>  
-    <div ng-if="data.registered && !data.cat_item"><i class="ri-check-line"></i>You've joined this event.</div>
-    <br/>
-    <div>    
-    <p>{{data.description.display_value}}</p>
-      <h4>Theme: {{data.theme.display_value}}</h4>
-    </div>
+        <sys_updated_on>2023-03-13 16:44:53</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel">
+  <div ng-if="!data.event || data.event ==''">
+  	<h2 class="cc-title">No event selected</h2>
   </div>
-  <div class="box" ng-if="data.live && data.page_id !='live_event'">
-    <h1>The Cellar Is Open!</h1>
-  	<h2><a href="{{data.live_href}}">Join the Live Event!</a></h2>
-  </div>
-  <div class="box" ng-if="data.page_id != 'live_event'">
-    <h3><i class="ri-map-pin-2-fill"></i> {{data.location.display_value}}</h3>
-    <h3><i class="ri-user-fill"></i> {{data.attendees_curr_count}}/{{data.slots.value}}</h3>
-    <h3><i class="ri-goblet-fill"></i> {{data.beverage_curr_count}}/{{data.beverage_count.value}}</h3>
-  </div>
-  <div ng-if="!data.cat_item && data.page_id != 'live_event'">
-    <div class="box" ng-if="!data.past">
-      <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">Join This Event</a>
-      <a ng-if="data.registered" href="{{data.signup_href}}">Modify RSVP</a>
-      <a ng-if="data.registered" ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}">Bring A Beverage</a>
-    </div>
-    <div class="box">
-      <div ng-switch="data.my_vote">
-        <div ng-switch-when="true"> 
-          I voted for {{data.my_vote_info.beverage.masked_name}}!
+  <div ng-if="data.event && data.event != ''">
+    <div class="box event-card {{data.live ? 'event-live' : ''}}">  
+      <div ng-if="data.auth">
+        <a href="/cc?id=form&table=x_snc_commodore_0_events&v=update_event&sys_id={{data.event}}">Edit Event</a>
+      </div>
+      <div class="warning-box" ng-if="data.past">
+          <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
+      </div>
+      <h2 class="date">{{data.date}}</h2>  
+      <h3 class="time">{{data.time}}</h3>  
+      <div class="event-info">
+        	<h1>
+          		<a href="/cc?id=event&sys_id={{event.sys_id}}" target="_blank">{{data.short_description.display_value}}</a>
+        	</h1>        
+        	<div class="event-description">
+              <p>{{data.description.display_value}}</p>
+          </div>
         </div>
-        <div ng-switch-when="false"> 
-          <div ng-if="data.voting_open">
-            <button>Vote</button>
+      <div ng-if="!data.cat_item"><i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}</div>
+      <div ng-if="data.required"><i class="ri-alert-fill"></i>This event is required</div>  
+      <div ng-if="data.registered && !data.cat_item"><i class="ri-check-line"></i>You've joined this event.</div>
+      <br/>
+      <div>    
+        <h4>Theme: {{data.theme.display_value}}</h4>
+      </div>
+    </div>
+    <div class="box" ng-if="data.live && data.page_id !='live_event'">
+      <h1>The Cellar Is Open!</h1>
+      <h2><a href="{{data.live_href}}">Join the Live Event!</a></h2>
+    </div>
+    <div class="box event-details" ng-if="data.page_id != 'live_event'">
+      <h4><i class="ri-map-pin-2-fill"></i> {{data.location.display_value}}</h4>
+      <div class="event-slots">
+      	<h4><i class="ri-user-fill"></i> {{data.attendees_curr_count}}/{{data.slots.value}}</h4>
+      	<h4><i class="ri-goblet-fill"></i> {{data.beverage_curr_count}}/{{data.beverage_count.value}}</h4>
+      </div>
+    </div>
+    <div ng-if="!data.cat_item && data.page_id != 'live_event'">
+      <div class="box" ng-if="!data.past">
+        <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">Join This Event</a>
+        <a ng-if="data.registered" href="{{data.signup_href}}">Modify RSVP</a>
+        <a ng-if="data.registered" ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}">Bring A Beverage</a>
+      </div>
+      <div class="box">
+        <div ng-switch="data.my_vote">
+          <div ng-switch-when="true"> 
+            I voted for {{data.my_vote_info.beverage.masked_name}}!
+          </div>
+          <div ng-switch-when="false"> 
+            <div ng-if="data.voting_open">
+              <button>Vote</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  </div>
 </div>
 ]]></template>
     </sp_widget>

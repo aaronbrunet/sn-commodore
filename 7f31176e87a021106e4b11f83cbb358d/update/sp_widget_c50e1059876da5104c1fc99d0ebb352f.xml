@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function() {
+        <client_script><![CDATA[api.controller=function(spUtil) {
   /* widget controller */
   var c = this;
+ var data = c.data;
+// 	createWidget(data.event);
+
+//   createWidget = function(value){
+		spUtil.get("cc-event-card",{action:'cat_item',event_id:data.event}).then(function(response){
+			c.eventWidget = response;
+		});
+	// };
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.cc-cellar-card {&#13;
+display: grid; &#13;
+  grid-template-columns: 2fr 1fr; &#13;
+  grid-template-rows: 1fr; &#13;
+  gap: 5px 5px; &#13;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
         <docs/>
         <field_list/>
         <has_preview>false</has_preview>
-        <id>cc-open-cellar</id>
+        <id>cc-cellar-status</id>
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {
   
 }]]></link>
-        <name>CC Cellar Is Open</name>
+        <name>CC Cellar Status</name>
         <option_schema/>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
@@ -27,8 +40,9 @@
   /* e.g., data.table = $sp.getValue('table'); */
 	data.user = gs.getUserID();
 	data.event = '';
+	data.live = false;
 	var live = new GlideRecord('x_snc_commodore_0_events');
-	live.addQuery('voting_open',true);
+	live.addQuery('state','live');
 	live.query();
 	if(live.next()){
 		var registered = new GlideRecord('x_snc_commodore_0_club_event_attendances');
@@ -36,10 +50,23 @@
 		registered.addQuery('user',data.user);
 		registered.query();
 		if(registered.next()){
-			data.event = live.sys_id;
-			data.live_href = "/cc?id=live_event&sys_id="+data.event;
+			data.event = live.getValue('sys_id');
+			data.live = true;
+			data.href = "/cc?id=live_event&sys_id="+data.event;
+		}
+	} else {
+		data.live = false;
+		var next = new GlideRecord('x_snc_commodore_0_events');
+		next.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
+		next.orderBy('start');
+		next.query();
+		if(next.next()){
+			data.event = next.getValue('sys_id');
+			data.href = "/cc?id=event&sys_id="+data.event;
 		}
 	}
+	data.widgetOptions = {action:'cat_item',event_id:data.event};
+	console.log(data.widgetOptions);
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -47,18 +74,34 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>CC Cellar Is Open</sys_name>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 17:52:02</sys_updated_on>
-        <template><![CDATA[<div>
-<div ng-if="data.event && data.event !=''">
-  <h1>The Cellar Is Open!</h1>
-  	<h2><a href="{{data.live_href}}" target="_blank">Join the Live Event!</a></h2>
+        <sys_updated_on>2023-03-13 16:34:37</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel">
+  <div ng-if="data.event && data.live" class="cc-cellar-card">
+	<div class="left-area">
+  		<h1>The Cellar Is Open!</h1>
+  		<h2><a href="{{data.href}}" target="_blank">Join the Live Event!</a></h2>
+    </div>
+    <div class="right-area">
+      <h2>Upcoming Events</h2>
+      <sp-widget id="cc-event-card" options='data.widgetOptions'/>
+    </div>
+  </div>
+  <div ng-if="data.event && !data.live"  class="cc-cellar-card">
+    <div class="left-area">
+  		<h1>The Cellar Is Closed</h1>
+  		<h2><a href="{{data.href}}" target="_blank">No event</a></h2>
+    </div>
+    <div class="right-area">
+      <h2>Upcoming Events</h2>
+      <sp-widget widget="c.eventWidget"/>
+    </div>
   </div>
 </div>]]></template>
     </sp_widget>

@@ -11,7 +11,7 @@
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">298693d187e5e5104c1fc99d0ebb35de</sp_column>
-        <sp_widget display_value="CC Cellar Is Open">c50e1059876da5104c1fc99d0ebb352f</sp_widget>
+        <sp_widget display_value="CC Cellar Status">c50e1059876da5104c1fc99d0ebb352f</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:08:48</sys_created_on>
