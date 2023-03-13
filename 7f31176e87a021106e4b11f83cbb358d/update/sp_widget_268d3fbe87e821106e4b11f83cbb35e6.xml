@@ -72,7 +72,8 @@ data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
 data.refreshed = getTime();
 data.vote_href = '/cc?id=sc_cat_item&sys_id='+constants.CAT_ITEM_VOTE+'&event_id='+data.event_id;
 data.vote_msg = 'VOTE!';
-data.live = event.getValue('live') == 1;
+data.state = event.getValue('state');
+data.live = data.state == 'live';
 
 if(input){
 	var action = input.action;
@@ -164,14 +165,14 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>174</sys_mod_count>
+        <sys_mod_count>175</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 17:53:34</sys_updated_on>
+        <sys_updated_on>2023-03-13 12:25:29</sys_updated_on>
         <template><![CDATA[<div>
   <div>
     <h2>Event Info</h2>

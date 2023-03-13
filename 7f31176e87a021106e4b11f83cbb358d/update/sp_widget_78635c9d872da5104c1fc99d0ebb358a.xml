@@ -116,7 +116,7 @@
   /* e.g., data.table = $sp.getValue('table'); */
 	data.events = [];
 	var events = new GlideRecord('x_snc_commodore_0_events');
-	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()');
+	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
 	events.orderBy('start');
 	events.query();
 	while(events.next()){
@@ -127,7 +127,8 @@
 			event.voting_open = events.getValue('voting_open') == 1;
 			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
 			event.required = events.getValue('required') == 1;
-			event.live = events.getValue('live') == 1;
+			event.state = events.getValue('state');
+			event.live = event.state == 'live';
 			for(i in fields){
 				var field = fields[i];
 				event[field.name] = field;
@@ -165,14 +166,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>42</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 02:03:00</sys_updated_on>
+        <sys_updated_on>2023-03-13 12:23:47</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
   <div class="event-row">

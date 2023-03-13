@@ -12,7 +12,7 @@
         <element display="true" label="Short description" max_length="500" name="short_description" type="string"/>
         <element label="Attendance Slots" max_length="40" name="slots" type="integer"/>
         <element label="Date &amp; Time" max_length="40" name="start" type="glide_date_time"/>
-        <element choice="3" label="State" max_length="40" name="state" type="choice">
+        <element choice="3" default="scheduled" label="State" max_length="40" name="state" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Scheduled" sequence="0" value="scheduled"/>
                 <element inactive_on_update="false" label="Live" sequence="1" value="live"/>
