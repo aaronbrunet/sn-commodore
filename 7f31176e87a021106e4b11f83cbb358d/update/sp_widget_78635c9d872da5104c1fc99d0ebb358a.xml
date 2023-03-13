@@ -6,7 +6,21 @@
   var c = this;
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css>.box {&#13;
+        <css>.cc-panel {&#13;
+	background: white;&#13;
+    padding: 2rem;    &#13;
+    margin-top: 2rem;&#13;
+    border-radius: 20px;&#13;
+    box-shadow: 0 0 1rem #e5e5e5;&#13;
+}&#13;
+.cc-title {&#13;
+  	margin: 0;&#13;
+	font-style: normal;&#13;
+    font-size: 2rem;&#13;
+}&#13;
+&#13;
+&#13;
+.box {&#13;
 /*outline: 2px solid grey;*/&#13;
   display: block;&#13;
 }&#13;
@@ -16,15 +30,11 @@
 }&#13;
 &#13;
 .event-row  {&#13;
-display: grid; &#13;
+  margin-top: 2rem;&#13;
+  display: grid; &#13;
   grid-template-columns: 1fr 1fr 1fr; &#13;
   grid-template-rows: 1fr 1fr; &#13;
-  gap: 1rem; &#13;
-  &#13;
-  background: white;&#13;
-    padding: 20px;&#13;
-    border-radius: 20px;&#13;
-    box-shadow: 0 0 1rem #e5e5e5;&#13;
+  gap: 1rem;&#13;
 }&#13;
 &#13;
 .event-card {&#13;
@@ -155,22 +165,23 @@ display: grid; &#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 01:50:16</sys_updated_on>
-        <template><![CDATA[<div>
-  <h2>Upcoming Events</h2>
+        <sys_updated_on>2023-03-13 02:03:00</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel">
+  <h3 class="cc-title">Upcoming Events</h3>
   <div class="event-row">
 	<div ng-repeat="event in data.events">
       <div class="box event-card {{event.live ? 'event-live' : ''}}">  
         <div class="warning-box" ng-if="event.past">
             <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
         </div>        
+        <div ng-if="event.live">LIVE</div>
         <h2 class="date">{{event.date}}</h2>  
         <h3 class="time">{{event.time}}</h3>
 		<div class="event-info">
