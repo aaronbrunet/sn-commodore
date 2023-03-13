@@ -12,17 +12,14 @@
 }&#13;
 .warning-box {&#13;
 	height: 4rem;&#13;
-  background-color: yellow;&#13;
+	background-color: yellow;&#13;
 }&#13;
 &#13;
 .event-row  {&#13;
 display: grid; &#13;
   grid-template-columns: 1fr 1fr 1fr; &#13;
   grid-template-rows: 1fr 1fr; &#13;
-  gap: 5px 5px; &#13;
-  grid-template-areas: &#13;
-    ". . ."&#13;
-    ". . ."; &#13;
+  gap: 1rem; &#13;
   &#13;
   background: white;&#13;
     padding: 20px;&#13;
@@ -34,6 +31,60 @@ display: grid; &#13;
 	padding: 15px;&#13;
   	border-radius: 5px;&#13;
     box-shadow: 0 0 1rem #e5e5e5;&#13;
+}&#13;
+&#13;
+.date {&#13;
+	margin-bottom: 0;&#13;
+}&#13;
+.time {&#13;
+	margin-top: 0;&#13;
+}&#13;
+&#13;
+.event-info {&#13;
+  h1 a {&#13;
+  	color: $cc-gold;&#13;
+  }&#13;
+  .event-description {&#13;
+      display: -webkit-box;&#13;
+      -webkit-line-clamp: 2;&#13;
+      -webkit-box-orient: vertical;  &#13;
+      overflow: hidden;&#13;
+      height: 5rem;&#13;
+  }&#13;
+}&#13;
+.event-reqs {&#13;
+	height: 5rem;&#13;
+}&#13;
+&#13;
+.event-details h4{&#13;
+  font-size: 1.5rem;&#13;
+  &#13;
+  i {&#13;
+      vertical-align: bottom;&#13;
+  }  &#13;
+}&#13;
+.event-slots {&#13;
+  h4 {&#13;
+  	display: inline-block;&#13;
+    margin-right: 2rem;&#13;
+  }&#13;
+}&#13;
+&#13;
+@keyframes border-live {&#13;
+  0% { box-shadow: 0 0 1rem transparent; }&#13;
+  50% { box-shadow: 0 0 2rem $cc-gold; }&#13;
+  100% { box-shadow: 0 0 1rem transparent; }&#13;
+}&#13;
+.event-live {&#13;
+  	outline: 1px solid $cc-gold;&#13;
+	animation: border-live 2s infinite;&#13;
+}&#13;
+&#13;
+@media (max-width: 767px){&#13;
+	.event-row  {&#13;
+		display: grid; &#13;
+      	grid-template-columns: 1fr; &#13;
+  }&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -66,6 +117,7 @@ display: grid; &#13;
 			event.voting_open = events.getValue('voting_open') == 1;
 			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
 			event.required = events.getValue('required') == 1;
+			event.live = events.getValue('live') == 1;
 			for(i in fields){
 				var field = fields[i];
 				event[field.name] = field;
@@ -103,35 +155,47 @@ display: grid; &#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 18:35:29</sys_updated_on>
+        <sys_updated_on>2023-03-13 01:50:16</sys_updated_on>
         <template><![CDATA[<div>
   <h2>Upcoming Events</h2>
   <div class="event-row">
 	<div ng-repeat="event in data.events">
-      <div class="box event-card">  
+      <div class="box event-card {{event.live ? 'event-live' : ''}}">  
         <div class="warning-box" ng-if="event.past">
             <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
+        </div>        
+        <h2 class="date">{{event.date}}</h2>  
+        <h3 class="time">{{event.time}}</h3>
+		<div class="event-info">
+        	<h1>
+          		<a href="/cc?id=event&sys_id={{event.sys_id}}" target="_blank">{{event.short_description.display_value}}</a>
+        	</h1>        
+        	<div class="event-description">
+              <p>{{event.description.display_value}}</p>
+          </div>
         </div>
-        <a href="/cc?id=event&sys_id={{event.sys_id}}" target="_blank">
-        <h2>{{event.date}} at {{event.time}}</h2>  
-        <h1>{{event.short_description.display_value}}</h1>        
         <!--<div ng-if="!event.cat_item"><i class="ri-{{event.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{event.voting_open ? 'open' : 'closed'}}</div> -->
-        <div ng-if="event.required"><i class="ri-alert-fill"></i>This event is required</div>  
-        <div ng-if="event.registered"><i class="ri-check-line"></i>You've joined this event.</div>
-        <div class="box">
-          <h3><i class="ri-map-pin-2-fill"></i> {{event.location.display_value}}</h3>
-          <h3><i class="ri-user-fill"></i> {{event.attendees_curr_count}}/{{event.slots.value}}</h3>
-          <h3><i class="ri-goblet-fill"></i> {{event.beverage_curr_count}}/{{event.beverage_count.value}}</h3>
+        <!--
+        <div class="event-reqs" >
+        	<div ng-if="event.required"><i class="ri-alert-fill"></i>This event is required</div>  
+        	<div ng-if="event.registered"><i class="ri-check-line"></i>You've joined this event.</div>
         </div>
-        <br/>        
-          </a>
+		-->
+        <div class="box event-details">
+          <h4><i class="ri-map-pin-2-fill"></i> {{event.location.display_value}}</h4>
+          <div class="event-slots">
+          	<h4><i class="ri-user-fill"></i> {{event.attendees_curr_count}}/{{event.slots.value}}</h4>
+          	<h4><i class="ri-goblet-fill"></i> {{event.beverage_curr_count}}/{{event.beverage_count.value}}</h4>
+          </div>
+        </div>
+        <br/>    
       </div>
       
   	</div>
