@@ -193,21 +193,21 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>149</sys_mod_count>
+        <sys_mod_count>153</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 16:44:53</sys_updated_on>
-        <template><![CDATA[<div class="cc-panel">
+        <sys_updated_on>2023-03-13 16:55:40</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel {{data.live ? 'event-live' : ''}}">
   <div ng-if="!data.event || data.event ==''">
   	<h2 class="cc-title">No event selected</h2>
   </div>
   <div ng-if="data.event && data.event != ''">
-    <div class="box event-card {{data.live ? 'event-live' : ''}}">  
-      <div ng-if="data.auth">
+    <div class="box">  
+      <div ng-if="data.auth && data.page_id=='event'">
         <a href="/cc?id=form&table=x_snc_commodore_0_events&v=update_event&sys_id={{data.event}}">Edit Event</a>
       </div>
       <div class="warning-box" ng-if="data.past">
@@ -217,7 +217,7 @@ function buildCard(event_id){
       <h3 class="time">{{data.time}}</h3>  
       <div class="event-info">
         	<h1>
-          		<a href="/cc?id=event&sys_id={{event.sys_id}}" target="_blank">{{data.short_description.display_value}}</a>
+          		<a href="/cc?id=event&sys_id={{data.event}}" target="_blank">{{data.short_description.display_value}}</a>
         	</h1>        
         	<div class="event-description">
               <p>{{data.description.display_value}}</p>
@@ -231,7 +231,7 @@ function buildCard(event_id){
         <h4>Theme: {{data.theme.display_value}}</h4>
       </div>
     </div>
-    <div class="box" ng-if="data.live && data.page_id !='live_event'">
+    <div class="box" ng-if="data.live && data.page_id =='event'">
       <h1>The Cellar Is Open!</h1>
       <h2><a href="{{data.live_href}}">Join the Live Event!</a></h2>
     </div>
