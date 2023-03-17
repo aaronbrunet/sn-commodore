@@ -14,13 +14,8 @@
 				type: 'cat_item',
 				event_id: parms
 		};
-		//$timeout(function(){					
-			//c.server.update().then(function(e){
-			spUtil.update($scope).then(function(e){
-				console.log('Hello from the promise!');	
+			spUtil.update($scope).then(function(e){	
 			});
-		//},200);
-		//console.log(parms);
 	});
 
 	c.checkAttendance = function(id){
@@ -59,7 +54,7 @@
   
 }]]></link>
         <name>CC Event Card</name>
-        <option_schema>[{"displayValue":"Club Events","name":"event_id","section":"Data","label":"Event ID","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}}]</option_schema>
+        <option_schema>[{"displayValue":"Club Events","name":"event_id","section":"Data","label":"Event ID","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"display","section":"Presentation","default_value":"full","label":"Display","type":"choice","choices":[{"label":"full","value":"full"},{"label":"list","value":"list"},{"label":"feature","value":"feature"}]}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
@@ -72,7 +67,7 @@
 	data.auth = gs.hasRole('x_snc_commodore_0.cc_founder');
 	data.cat_item = false;
 	data.live = false;
-	
+	data.options = options;
 
 	//console.log(input);
 	if(input && input.event_id != ''){
@@ -80,6 +75,7 @@
 		console.log(input);
 		data.event = input.event_id;
 		data.cat_item = true;
+		data.options.display = input.display;
 		buildCard(data.event);
 	}
 	if(input && input.action == 'widget_schema'){
@@ -124,9 +120,11 @@ function buildCard(event_id){
 			var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
 			data.live = event.getValue('state') == 'live';
 			data.voting_open = event.getValue('voting_open') == 1;
+			data.event_href = "/cc?id=event&sys_id="+event_id;
 			if(data.live){
 				//data.live = true;
 				data.live_href = "/cc?id=live_event&sys_id="+event_id;
+				data.event_href = "/cc?id=live_event&sys_id="+event_id;
 			}
 			data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
 			data.required = event.getValue('required') == 1;
@@ -193,17 +191,17 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>153</sys_mod_count>
+        <sys_mod_count>162</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 16:55:40</sys_updated_on>
+        <sys_updated_on>2023-03-17 00:28:40</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{data.live ? 'event-live' : ''}}">
   <div ng-if="!data.event || data.event ==''">
-  	<h2 class="cc-title">No event selected</h2>
+  	<h2 class="cc-title">No event found</h2>
   </div>
   <div ng-if="data.event && data.event != ''">
     <div class="box">  
@@ -242,9 +240,12 @@ function buildCard(event_id){
       	<h4><i class="ri-goblet-fill"></i> {{data.beverage_curr_count}}/{{data.beverage_count.value}}</h4>
       </div>
     </div>
+    <div ng-if="data.options.display == 'feature'">
+      <a href="{{data.event_href}}">{{data.live ? 'Join Live Event' : 'View Event Details'}}</a>
+    </div>
     <div ng-if="!data.cat_item && data.page_id != 'live_event'">
       <div class="box" ng-if="!data.past">
-        <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">Join This Event</a>
+        <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}">RSVP This Event</a>
         <a ng-if="data.registered" href="{{data.signup_href}}">Modify RSVP</a>
         <a ng-if="data.registered" ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}">Bring A Beverage</a>
       </div>
