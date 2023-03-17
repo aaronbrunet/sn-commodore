@@ -18,7 +18,17 @@
 display: grid; &#13;
   grid-template-columns: 2fr 1fr; &#13;
   grid-template-rows: 1fr; &#13;
+  grid-auto-rows: 1fr&#13;
   gap: 5px 5px; &#13;
+}&#13;
+&#13;
+.left-area {&#13;
+	display: flex;&#13;
+  flex-direction: column;&#13;
+  &#13;
+  img {&#13;
+  	max-width: 50vw;&#13;
+  }&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -66,6 +76,9 @@ display: grid; &#13;
 		}
 	}
 	data.widgetOptions = {action:'cat_item',event_id:data.event};
+
+	data.cellar_img = data.live ? 'cc-cellar-open-md.png' : 'cc-cellar-closed-md.png';
+
 	console.log(data.widgetOptions);
 
 })();]]></script>
@@ -74,19 +87,22 @@ display: grid; &#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 16:52:13</sys_updated_on>
+        <sys_updated_on>2023-03-17 00:04:38</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <div ng-if="data.event" class="cc-cellar-card">
 	<div class="left-area">
   		<h1>The Cellar Is {{data.live ? 'Open!' : 'Closed'}}</h1>
-    </div>
+      	<div>
+    		<img src="{{data.cellar_img}}" alt="Cellar Door">
+    	</div>
+    </div>    
     <div class="right-area">
       <h2>{{data.live ? 'Live':'Next'}} Event</h2>
       <sp-widget widget="c.eventWidget"/>
@@ -95,8 +111,9 @@ display: grid; &#13;
   <div ng-if="!data.event"  class="cc-cellar-card">
     <div class="left-area">
   		<h1>The Cellar Is Closed</h1>
-  		<h2><a href="{{data.href}}" target="_blank">No event</a></h2>
-    </div>
+        <div>
+       		<img src="{{data.cellar_img}}" alt="Cellar Door"></div>
+     	</div>
     <div class="right-area">
       <h2>Next Event</h2>
       <sp-widget widget="c.eventWidget"/>

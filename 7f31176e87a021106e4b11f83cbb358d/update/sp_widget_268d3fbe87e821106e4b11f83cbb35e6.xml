@@ -80,14 +80,14 @@ if(input){
 	if(action == 'goLive'){
 		event.setValue('drink_names_hidden','1');
 		event.setValue('voting_open','1');
-		event.setValue('live','1');
+		event.setValue('state','live');
 		event.update();
 
 	}
 	if(action == 'endLive'){
 		event.setValue('drink_names_hidden','0');
 		event.setValue('voting_open','0');
-		event.setValue('live','0');
+		event.setValue('state','completed');
 		event.update();
 
 	}
@@ -165,14 +165,14 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>175</sys_mod_count>
+        <sys_mod_count>177</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-13 12:25:29</sys_updated_on>
+        <sys_updated_on>2023-03-16 14:00:24</sys_updated_on>
         <template><![CDATA[<div>
   <div>
     <h2>Event Info</h2>
