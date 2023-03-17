@@ -85,16 +85,15 @@ display: grid; &#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-17 00:30:55</sys_updated_on>
+        <sys_updated_on>2023-03-17 00:45:50</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
-{{data.event}}
   <div ng-if="data.event" class="cc-cellar-card">
 	<div class="left-area">
   		<h1>The Cellar Is {{data.live ? 'Open!' : 'Closed'}}</h1>
