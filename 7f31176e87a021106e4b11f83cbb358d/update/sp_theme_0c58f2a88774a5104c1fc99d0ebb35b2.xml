@@ -10,6 +10,8 @@
       $cc-gold: 							  #e2b152;&#13;
       $cc-gold-dark:                          #ab863f;&#13;
       $cc-red: 								  #8f4335;&#13;
+      $cc-red-dark:							  #4b2722;&#13;
+      $cc-grey:								  #31292e;&#13;
 &#13;
       //==Backgrounds&#13;
       $background-primary:                    #ffffff; //--now-color_background--primary&#13;
@@ -542,14 +544,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-31 21:34:42</sys_created_on>
         <sys_id>0c58f2a88774a5104c1fc99d0ebb35b2</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>CC Theme</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_theme_0c58f2a88774a5104c1fc99d0ebb35b2</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-17 00:48:32</sys_updated_on>
+        <sys_updated_on>2023-03-19 17:50:32</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>
