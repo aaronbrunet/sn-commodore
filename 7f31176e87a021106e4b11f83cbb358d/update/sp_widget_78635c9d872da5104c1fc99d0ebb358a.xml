@@ -118,6 +118,7 @@
 	data.options = options;
 	data.limit = data.options.limit;
 	data.events = [];
+	data.widgets = [];
 	var events = new GlideRecord('x_snc_commodore_0_events');
 	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
 	events.orderBy('start');
@@ -160,32 +161,34 @@
 			// console.log(JSON.stringify(a_list));
 			// console.log(gs.getUserID());
 			// console.log(event.registered);
-
+			event.options = {action:'cat_item',event_id:event.sys_id,display:'list'};
+			data.widgets.push($sp.getWidget("cc-event-card",event.options));
 			data.events.push(event);
 	}
+	console.log(data.widgets);
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>48</sys_mod_count>
+        <sys_mod_count>61</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 18:22:51</sys_updated_on>
+        <sys_updated_on>2023-03-19 19:03:05</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
   <div class="event-row">
+	<!--
 	<div ng-repeat="event in data.events | limitTo : data.limit">
       <div class="box event-card {{event.live ? 'event-live' : ''}}">  
         <div class="warning-box" ng-if="event.past">
             <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
         </div>        
-        <!--<div ng-if="event.live">LIVE</div>-->
         <h2 class="date">{{event.date}}</h2>  
         <h3 class="time">{{event.time}}</h3>
 		<div class="event-info">
@@ -196,14 +199,13 @@
               <p>{{event.description.display_value}}</p>
           </div>
         </div>
-        <!--<div ng-if="!event.cat_item"><i class="ri-{{event.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{event.voting_open ? 'open' : 'closed'}}</div> -->
-        <!--
-        <div class="event-reqs" >
-        	<div ng-if="event.required"><i class="ri-alert-fill"></i>This event is required</div>  
-        	<div ng-if="event.registered"><i class="ri-check-line"></i>You've joined this event.</div>
-        </div>
 		-->
-        <div class="box event-details">
+    
+        <!--<div ng-if="!event.cat_item"><i class="ri-{{event.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{event.voting_open ? 'open' : 'closed'}}</div> -->
+        <!--<div class="event-reqs" ><div ng-if="event.required"><i class="ri-alert-fill"></i>This event is required</div><div ng-if="event.registered"><i class="ri-check-line"></i>You've joined this event.</div></div>-->
+        
+    <!--
+    <div class="box event-details">
           <h4><i class="ri-map-pin-2-fill"></i> {{event.location.display_value}}</h4>
           <div class="event-slots">
           	<h4><i class="ri-user-fill"></i> {{event.attendees_curr_count}}/{{event.slots.value}}</h4>
@@ -211,10 +213,16 @@
           </div>
         </div>
         <br/>    
-      </div>
-      
+      </div>      
   	</div>
+	-->
+    <div ng-repeat="e in data.widgets | limitTo : data.limit">
+      <sp-widget widget="e"></sp-widget>
+    </div>
+    
   </div>
+  
+  
 </div>]]></template>
     </sp_widget>
 </record_update>
