@@ -40,14 +40,18 @@
 		if(bev_id != ''){
 			var bev = new GlideRecord('x_snc_commodore_0_beverage');
 			bev.get(bev_id);
-			var fields = $sp.getFields(bev,'name,brand,style,description,country,region,abv,proof,type,taste,sys_created_on,introduced_by,event');
+			var fields = $sp.getFields(bev,'name,brand,style,description,country,region,abv,proof,type,type_other,taste,sys_created_on,introduced_by,event');
 			for(i in fields){
 				var field = fields[i];
-				console.log(field);
-				if(field.name && field.display_value !=''){
+				//console.log(field);
+				if(field.name && field.display_value && field.display_value !=''){
 					data.bev[field.name] = field;
 				}
 			}
+			if(!data.bev.type && data.bev.type_other){
+				data.bev.type = data.bev.type_other;
+			}
+			console.log(data.bev);
 		}
 	}
 })();]]></script>
@@ -56,14 +60,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-19 19:16:00</sys_created_on>
         <sys_id>1a4a5c7f87edad104c1fc99d0ebb35fe</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>39</sys_mod_count>
         <sys_name>CC Beverage Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_1a4a5c7f87edad104c1fc99d0ebb35fe</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 19:53:18</sys_updated_on>
+        <sys_updated_on>2023-03-19 20:27:53</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <div ng-if="!data.bev">
     <h2>No beverage found</h2>
@@ -74,7 +78,7 @@
       <div><h3 class="inline">{{data.bev.type.display_value}} |</h3><h3 class="inline">{{data.bev.style.display_value}}</h3><h3 class="inline">by {{data.bev.brand.display_value}}</h3></div>
 		<div ng-if="data.options.display != 'compact'">
           <div>
-            <h4 class="inline">Origin</h4><p class="inline">{{data.bev.country.display_value}}<span ng-if="data.bev.region">({{data.bev.region.display_value}})</span></p> 
+            <h4 class="inline">Origin</h4><p class="inline">{{data.bev.country.display_value}}<span ng-if="data.bev.region"> ({{data.bev.region.display_value}})</span></p> 
             <h4 class="inline" ng-if="data.bev.abv">ABV {{data.bev.abv.display_value}}%</h4><h4 ng-if="data.bev.abv && data.bev.proof" class="inline">|</h4><h4 class="inline" ng-if="data.bev.proof">{{data.bev.proof.display_value}} Proof</h4>
           </div>          
           <p class="description">{{data.bev.description.display_value}}</p>
@@ -83,7 +87,7 @@
           <p class="taste inline">{{data.bev.taste.display_value}}</p>
           </div>
           <div class="event-info">
-            <h3>Introduced by {{data.bev.introduced_by.display_value}}{{data.bev.event ? ' for Event Name':''}}</h3>
+            <h3>Introduced by {{data.bev.introduced_by.display_value}}<span ng-if="data.bev.event"> for the <a href="/cc?id=live_event&sys_id={{data.bev.event.value}}" target="_blank">{{data.bev.event.display_value}}</a> event</span></h3>
           </div>
        </div>
     </div>
