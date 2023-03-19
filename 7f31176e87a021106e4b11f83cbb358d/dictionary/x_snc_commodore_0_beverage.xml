@@ -10,6 +10,15 @@
         <element display="true" label="Name" max_length="1000" name="name" type="string"/>
         <element label="Proof" max_length="40" name="proof" type="string"/>
         <element label="Region of Origin" max_length="5000" name="region" type="string"/>
+        <element choice="3" default="pending" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Approved" sequence="1" value="approved"/>
+                <element inactive_on_update="false" label="Rejected" sequence="2" value="rejected"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
+                <element inactive_on_update="false" label="Retired" sequence="4" value="retired"/>
+            </choice>
+        </element>
         <element label="Style" max_length="500" name="style" type="string"/>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element label="Taste" max_length="5000" name="taste" type="string"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="36c73bba87e821106e4b11f83cbb35af" label="Votes" max_length="40" name="x_snc_commodore_0_votes" type="collection">
         <element label="Beverage" max_length="32" name="beverage" reference="x_snc_commodore_0_beverage" type="reference"/>
-        <element label="Event Attendances" max_length="32" name="event_attendances" reference="x_snc_commodore_0_club_event_attendances" type="reference"/>
+        <element label="Event Attendance" max_length="32" name="event_attendances" reference="x_snc_commodore_0_club_event_attendances" type="reference"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Score" max_length="40" name="score" type="integer"/>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
