@@ -16,17 +16,26 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-19 19:16:18</sys_created_on>
         <sys_id>0b5b1cbf87edad104c1fc99d0ebb354a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 19:16:18</sys_updated_on>
+        <sys_updated_on>2023-03-19 19:45:41</sys_updated_on>
         <title/>
         <url/>
-        <widget_parameters/>
+        <widget_parameters><![CDATA[{
+	"beverage": {
+		"value": "ec5b710e876da1106e4b11f83cbb350f",
+		"displayValue": "Glenfiddich 12"
+	},
+	"display": {
+		"value": "full",
+		"displayValue": "full"
+	}
+}]]></widget_parameters>
     </sp_instance>
     <sys_translated_text action="delete_multiple" query="documentkey=0b5b1cbf87edad104c1fc99d0ebb354a"/>
 </record_update>

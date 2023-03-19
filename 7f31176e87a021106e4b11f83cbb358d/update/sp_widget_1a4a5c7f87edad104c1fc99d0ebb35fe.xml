@@ -8,6 +8,7 @@
         <controller_as>c</controller_as>
         <css>.inline {&#13;
 	display: inline-block;&#13;
+  	margin: 1rem 0;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -21,39 +22,70 @@
   
 }]]></link>
         <name>CC Beverage Card</name>
-        <option_schema/>
+        <option_schema>[{"displayValue":"Beverages","name":"beverage","section":"Data","label":"Beverage","type":"reference","value":"x_snc_commodore_0_beverage","ed":{"reference":"x_snc_commodore_0_beverage"}},{"name":"display","section":"Presentation","default_value":"full","label":"Display","type":"choice","choices":[{"label":"full","value":"full"},{"label":"compact","value":"compact"},{"label":"list","value":"list"}]}]</option_schema>
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
+	data.options = options;
+	if(data.options.beverage){
+		console.log(data.options.beverage);
+		data.bev_id = data.options.beverage;
+		buildBev(data.bev_id);
+	}
 
+	function buildBev(bev_id){
+		data.bev = {};
+		if(bev_id != ''){
+			var bev = new GlideRecord('x_snc_commodore_0_beverage');
+			bev.get(bev_id);
+			var fields = $sp.getFields(bev,'name,brand,style,description,country,region,abv,proof,type,taste,sys_created_on,introduced_by,event');
+			for(i in fields){
+				var field = fields[i];
+				console.log(field);
+				if(field.name && field.display_value !=''){
+					data.bev[field.name] = field;
+				}
+			}
+		}
+	}
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-19 19:16:00</sys_created_on>
         <sys_id>1a4a5c7f87edad104c1fc99d0ebb35fe</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>CC Beverage Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_1a4a5c7f87edad104c1fc99d0ebb35fe</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 19:20:00</sys_updated_on>
+        <sys_updated_on>2023-03-19 19:53:18</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
-  <div class="box">
-    <h1>Beverage Name</h1>
+  <div ng-if="!data.bev">
+    <h2>No beverage found</h2>
+  </div>
+  <div class="box" ng-if="data.bev">
+    <h1>{{data.bev.name.display_value}}</h1>
     <div class="beverage-info">
-      <div><h3 class="inline">Brand</h3><h3 class="inline">Style</h3></div>
-      <div><h4 class="inline">Country of Origin | Region of Origin</h4> <h4 class="inline">ABV | Proof</h4></div>
-      <h4 class="inline">Type</h4>
-      <p class="description">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus iaculis urna id volutpat lacus laoreet non. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla. In massa tempor nec feugiat nisl. Ipsum suspendisse ultrices gravida dictum fusce ut.</p>
-      <p class="taste">Tasting notes: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <div class="event-info">
-      <h3>Introduced by User for Event Name</h3>
+      <div><h3 class="inline">{{data.bev.type.display_value}} |</h3><h3 class="inline">{{data.bev.style.display_value}}</h3><h3 class="inline">by {{data.bev.brand.display_value}}</h3></div>
+		<div ng-if="data.options.display != 'compact'">
+          <div>
+            <h4 class="inline">Origin</h4><p class="inline">{{data.bev.country.display_value}}<span ng-if="data.bev.region">({{data.bev.region.display_value}})</span></p> 
+            <h4 class="inline" ng-if="data.bev.abv">ABV {{data.bev.abv.display_value}}%</h4><h4 ng-if="data.bev.abv && data.bev.proof" class="inline">|</h4><h4 class="inline" ng-if="data.bev.proof">{{data.bev.proof.display_value}} Proof</h4>
+          </div>          
+          <p class="description">{{data.bev.description.display_value}}</p>
+          <div ng-if="data.bev.taste">
+          <h4 class="inline">Tasting Notes</h4>
+          <p class="taste inline">{{data.bev.taste.display_value}}</p>
+          </div>
+          <div class="event-info">
+            <h3>Introduced by {{data.bev.introduced_by.display_value}}{{data.bev.event ? ' for Event Name':''}}</h3>
+          </div>
+       </div>
     </div>
   </div>
 </div>]]></template>
