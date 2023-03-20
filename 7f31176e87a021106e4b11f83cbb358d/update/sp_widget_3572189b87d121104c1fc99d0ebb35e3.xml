@@ -54,7 +54,7 @@
   
 }]]></link>
         <name>CC Event Card</name>
-        <option_schema>[{"displayValue":"Club Events","name":"event_id","section":"Data","label":"Event ID","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"display","section":"Presentation","default_value":"full","label":"Display","type":"choice","choices":[{"label":"full","value":"full"},{"label":"list","value":"list"},{"label":"feature","value":"feature"},{"label":"compact","value":"compact"}]}]</option_schema>
+        <option_schema>[{"displayValue":"Club Events","name":"event_id","section":"Data","label":"Event ID","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"display","section":"Presentation","default_value":"full","label":"Display","type":"choice","choices":[{"label":"Full","value":"full"},{"label":"List","value":"list"},{"label":"Feature","value":"feature"},{"label":"Compact","value":"compact"}]}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
@@ -206,14 +206,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>179</sys_mod_count>
+        <sys_mod_count>180</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-20 20:43:35</sys_updated_on>
+        <sys_updated_on>2023-03-20 20:44:47</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') ? 'event-live' : ''}}">
   
   <div ng-if="!data.event || data.event ==''">
