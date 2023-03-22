@@ -206,14 +206,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>181</sys_mod_count>
+        <sys_mod_count>183</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-20 20:47:05</sys_updated_on>
+        <sys_updated_on>2023-03-22 00:43:45</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') ? 'event-live' : ''}}">
   
   <div ng-if="!data.event || data.event ==''">
@@ -222,7 +222,7 @@ function buildCard(event_id){
   
   <div ng-if="data.event && data.event != ''">
     
-    <div class="box">  
+    <div class="cc-box">  
       <div id="edit-btn" ng-if="data.auth && data.page_id=='event'">
         <a href="/cc?id=form&table=x_snc_commodore_0_events&v=update_event&sys_id={{data.event}}">Edit Event</a>
       </div>
@@ -254,12 +254,12 @@ function buildCard(event_id){
       </div>
     </div>
     
-    <div class="box" ng-if="data.options.display == 'full' && data.live && data.page_id =='event'">
+    <div class="cc-box" ng-if="data.options.display == 'full' && data.live && data.page_id =='event'">
       <h1>The Cellar Is Open!</h1>
       <h2><a href="{{data.live_href}}">Join the Live Event!</a></h2>
     </div>
     
-    <div class="box event-details" ng-if="data.options.display != 'compact'">
+    <div class="cc-box event-details" ng-if="data.options.display != 'compact'">
       <h4><i class="ri-map-pin-2-fill"></i> {{data.location.display_value}}</h4>
       <div class="event-slots" ng-if="data.page_id != 'live_event'">
       	<h4><i class="ri-user-fill"></i> {{data.attendees_curr_count}}/{{data.slots.value}}</h4>
@@ -267,17 +267,17 @@ function buildCard(event_id){
       </div>
     </div>
     
-    <div ng-if="data.options.display != 'compact' && data.page_id != 'live_event'">
+    <div ng-if="data.options.display != 'compact' && data.page_id != 'live_event'" class="cc-box event-join">
       <a href="{{data.event_href}}" class="cc-button-primary cc-button">{{data.live ? 'Join Live Event' : 'View Event Details'}} <i class="ri-arrow-right-s-line"></i></a>
     </div>
     
     <div ng-if="data.options.display != 'compact' && data.options.display != 'list' && !data.cat_item && data.page_id != 'live_event'">
-      <div class="box" ng-if="!data.past">
+      <div class="cc-box" ng-if="!data.past">
         <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}" class="cc-button-primary cc-button">RSVP to this Event</a>
         <a ng-if="data.registered" href="{{data.signup_href}}" class="cc-button-warning cc-button">Modify RSVP</a>
         <a ng-if="data.registered" ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}" class="cc-button-secondary cc-button">Bring a Beverage</a>
       </div>
-      <div class="box" ng-if="data.options.display == 'full'">
+      <div class="cc-box" ng-if="data.options.display == 'full'">
         <div ng-switch="data.my_vote">
           <div ng-switch-when="true"> 
             I voted for {{data.my_vote_info.beverage.masked_name}}!
