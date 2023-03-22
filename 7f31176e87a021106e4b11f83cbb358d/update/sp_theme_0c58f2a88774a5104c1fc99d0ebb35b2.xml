@@ -9,9 +9,15 @@
       &#13;
       $cc-gold: 							  #e2b152;&#13;
       $cc-gold-dark:                          #ab863f;&#13;
+      $cc-gold-light: 						  #f0e0c1;&#13;
       $cc-red: 								  #8f4335;&#13;
+      $cc-orange: #E26952;&#13;
       $cc-red-dark:							  #4b2722;&#13;
       $cc-grey:								  #31292e;&#13;
+      $cc-green: #52E269;&#13;
+      $cc-green-light: #CBE252;&#13;
+      $cc-purple: #B152E2;&#13;
+      $cc-blue: #5283E2;&#13;
 &#13;
       //==Backgrounds&#13;
       $background-primary:                    #ffffff; //--now-color_background--primary&#13;
@@ -89,12 +95,12 @@
       $gray-light:                            #656E81; //--now-color--neutral-9&#13;
       $gray-lighter:                          #F6F6F8; //--now-color--neutral-1&#13;
 &#13;
-      $brand-primary:                         #4f52bd!default; //--now-color--primary-1&#13;
-      $brand-danger:                          #E42338!default; //--now-color_alert--critical-2&#13;
-      $brand-warning:                         #F0E000!default; //--now-color_alert--warning-2&#13;
-      $brand-moderate:                        #8B6BFF!default; //--now-color_alert--moderate-2 NEW&#13;
+      $brand-primary:                         $cc-gold !default;//#4f52bd!default; //--now-color--primary-1&#13;
+      $brand-danger:                          $cc-red !default;//#E42338!default; //--now-color_alert--critical-2&#13;
+      $brand-warning:                         $cc-orange !default;//#F0E000!default; //--now-color_alert--warning-2&#13;
+      $brand-moderate:                        $cc-purple !default;//#8B6BFF!default; //--now-color_alert--moderate-2 NEW&#13;
       $brand-low:                            	#9698A4!default; //--now-color_alert--low-2 NEW&#13;
-      $brand-success:                         #51ae00!default; //--now-color_alert--positive-2&#13;
+      $brand-success:                         $cc-green !default;//#51ae00!default; //--now-color_alert--positive-2&#13;
       $brand-info:                            #38aaf4!default; //--now-color_alert--info-2&#13;
 &#13;
       $primary:                               $brand-primary;&#13;
@@ -544,14 +550,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-31 21:34:42</sys_created_on>
         <sys_id>0c58f2a88774a5104c1fc99d0ebb35b2</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>CC Theme</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_theme_0c58f2a88774a5104c1fc99d0ebb35b2</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 20:28:43</sys_updated_on>
+        <sys_updated_on>2023-03-22 00:28:27</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>

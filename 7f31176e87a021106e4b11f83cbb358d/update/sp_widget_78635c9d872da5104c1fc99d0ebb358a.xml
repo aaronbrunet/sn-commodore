@@ -6,7 +6,8 @@
   var c = this;
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css>.cc-panel {&#13;
+        <css>/*&#13;
+.cc-panel {&#13;
 	background: white;&#13;
     padding: 2rem;    &#13;
     margin-top: 2rem;&#13;
@@ -21,7 +22,6 @@
 &#13;
 &#13;
 .box {&#13;
-/*outline: 2px solid grey;*/&#13;
   display: block;&#13;
 }&#13;
 .warning-box {&#13;
@@ -29,11 +29,10 @@
 	background-color: yellow;&#13;
 }&#13;
 &#13;
-.event-row  {&#13;
+.cc-list-row  {&#13;
   margin-top: 2rem;&#13;
   display: grid; &#13;
   grid-template-columns: 1fr 1fr 1fr; &#13;
-  /*grid-template-rows: 1fr 1fr; */&#13;
   gap: 1rem;&#13;
 }&#13;
 &#13;
@@ -91,11 +90,11 @@
 }&#13;
 &#13;
 @media (max-width: 767px){&#13;
-	.event-row  {&#13;
+	.cc-list-row  {&#13;
 		display: grid; &#13;
       	grid-template-columns: 1fr; &#13;
   }&#13;
-}</css>
+}*/</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -119,20 +118,24 @@
 	data.limit = data.options.limit;
 	data.events = [];
 	data.widgets = [];
+
 	var events = new GlideRecord('x_snc_commodore_0_events');
 	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
 	events.orderBy('start');
 	events.query();
+
 	while(events.next()){
 		var event = {};
-	// Pull essential fields and write to named fields in data obj
+			// Pull essential fields and write to named fields in data obj
 			var fields = $sp.getFields(events, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
 			event.sys_id = events.getValue('sys_id');
+			
 			event.voting_open = events.getValue('voting_open') == 1;
 			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
 			event.required = events.getValue('required') == 1;
 			event.state = events.getValue('state');
 			event.live = event.state == 'live';
+			
 			for(i in fields){
 				var field = fields[i];
 				event[field.name] = field;
@@ -165,24 +168,24 @@
 			data.widgets.push($sp.getWidget("cc-event-card",event.options));
 			data.events.push(event);
 	}
-	console.log(data.widgets);
+	// console.log(data.widgets);
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>61</sys_mod_count>
+        <sys_mod_count>63</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 19:03:05</sys_updated_on>
+        <sys_updated_on>2023-03-20 20:49:58</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
-  <div class="event-row">
+  <div class="cc-list-row">
 	<!--
 	<div ng-repeat="event in data.events | limitTo : data.limit">
       <div class="box event-card {{event.live ? 'event-live' : ''}}">  

@@ -12,7 +12,7 @@
         <controller_as>c</controller_as>
         <css>.cc-cellar-card {&#13;
 	display: grid; &#13;
-  grid-template-columns: 2fr 1fr; &#13;
+  grid-template-columns: 1fr 1fr; &#13;
   grid-template-rows: 1fr; &#13;
   grid-auto-rows: 1fr&#13;
   gap: 5px 5px; &#13;
@@ -27,6 +27,9 @@
   	max-width: 40vw;&#13;
     max-height: 40rem;&#13;
   }&#13;
+}&#13;
+.right-area {&#13;
+	padding: 0 4rem;&#13;
 }&#13;
 &#13;
 &#13;
@@ -94,15 +97,15 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>38</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 18:33:46</sys_updated_on>
-        <template><![CDATA[<div class="cc-panel">
+        <sys_updated_on>2023-03-22 00:35:47</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel emphasis">
   <div ng-if="data.event" class="cc-cellar-card">
 	<div class="left-area">
   		<h1>The Cellar Is {{data.live ? 'Open!' : 'Closed'}}</h1>
