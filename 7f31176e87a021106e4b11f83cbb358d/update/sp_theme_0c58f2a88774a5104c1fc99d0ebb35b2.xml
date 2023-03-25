@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_theme">
     <sp_theme action="INSERT_OR_UPDATE">
-        <css_variables>      //=New Variables&#13;
+        <css_variables>      *:focus {&#13;
+      	border: 0.1rem solid $cc-gold;&#13;
+    	box-shadow: 0rem 0rem 0.5rem $cc-gold;&#13;
+      }      &#13;
+      .modal-header &gt; .tooltip {&#13;
+        display: none !important;&#13;
+      }&#13;
+      .modal-open .modal {&#13;
+      	padding-top: 10vh;&#13;
+        transition: all 0.5s ease;&#13;
+      }&#13;
+      //=New Variables&#13;
       //==Text color&#13;
       $text-primary:                          #181A1F; //$text-color --now-color_text--primary&#13;
       $text-secondary:                        #474D5A; //--now-color_text--secondary&#13;
@@ -251,7 +262,7 @@
       $input-color:                           $text-primary; &#13;
       $input-border:                          $border-primary; &#13;
 &#13;
-      $input-border-focus:                    #3c59e7; //--now-color--focus-2&#13;
+      $input-border-focus:                    $cc-gold;//#3c59e7; //--now-color--focus-2&#13;
       $input-color-placeholder:               $text-tertiary; &#13;
 &#13;
       $form-group-margin-bottom:              $sp-space--lg;&#13;
@@ -550,14 +561,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-31 21:34:42</sys_created_on>
         <sys_id>0c58f2a88774a5104c1fc99d0ebb35b2</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>CC Theme</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_theme_0c58f2a88774a5104c1fc99d0ebb35b2</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-22 00:48:31</sys_updated_on>
+        <sys_updated_on>2023-03-25 16:14:59</sys_updated_on>
         <turn_off_scss_compilation>false</turn_off_scss_compilation>
     </sp_theme>
 </record_update>

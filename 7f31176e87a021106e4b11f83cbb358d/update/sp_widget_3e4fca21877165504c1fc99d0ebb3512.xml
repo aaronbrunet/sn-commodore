@@ -11,7 +11,7 @@
 	  console.log(data.hello);
 		options.display = 'full';
 		spModal.open({
-			title: data.modal_title || '',
+			title: data.modal_title || 'More Information',
 			widget: 'cc-beverage-card',
 			widgetInput: options,
 			buttons: []
@@ -84,14 +84,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 14:12:12</sys_created_on>
         <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>CC Beverage List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 15:45:13</sys_updated_on>
+        <sys_updated_on>2023-03-25 15:54:49</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Cellar Treasures {{data.event_page ? 'for this event' : ''}}</h3>
   <div class="cc-list-row">
