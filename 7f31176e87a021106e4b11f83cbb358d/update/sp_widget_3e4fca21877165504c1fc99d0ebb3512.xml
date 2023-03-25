@@ -19,7 +19,7 @@
 			console.log('Modal closed');
 		})
 
-  }
+  };
 };]]></client_script>
         <controller_as>c</controller_as>
         <css/>
@@ -84,26 +84,23 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 14:12:12</sys_created_on>
         <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>29</sys_mod_count>
         <sys_name>CC Beverage List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 15:54:49</sys_updated_on>
-        <template><![CDATA[<div class="cc-panel">
-  <h3 class="cc-title">Cellar Treasures {{data.event_page ? 'for this event' : ''}}</h3>
-  <div class="cc-list-row">
-    <div ng-repeat="b in data.widgets | limitTo : data.limit">
-      <div ng-click="c.clickCard(b,b.options)">
-        <sp-widget widget="b" ></sp-widget>
-      </div>
+        <sys_updated_on>2023-03-25 16:32:43</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel" ng-if="data.bevs.length > 0">
+    <h3 class="cc-title">Cellar Treasures {{data.event_page ? 'for this event' : ''}}</h3>
+    <div class="cc-list-row">
+      <div ng-repeat="b in data.widgets | limitTo : data.limit">
+        <div ng-click="c.clickCard(b,b.options)">
+          <sp-widget widget="b" ></sp-widget>
+        </div>
+      </div>    
     </div>
-    
-  </div>
-  
-  
 </div>]]></template>
     </sp_widget>
 </record_update>

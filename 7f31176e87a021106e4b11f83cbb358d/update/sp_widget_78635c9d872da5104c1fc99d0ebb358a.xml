@@ -1,100 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function() {
+        <client_script><![CDATA[api.controller=function(spModal,$window,$scope) {
   /* widget controller */
   var c = this;
+  var data = c.data;
+
+  c.clickCard = function(event,options){
+	  console.log([event,options]);
+	  if(data.allow_modal){
+		options.display = 'modal';
+		spModal.open({
+			title: data.modal_title || 'More Information',
+			widget: 'cc-event-card',
+			widgetInput: options,
+			buttons: options.buttons
+		}).then(function(){
+			console.log('Modal closed');
+			$window.location.href = event.data.event_href;
+		})
+	  }
+
+  };
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css>/*&#13;
-.cc-panel {&#13;
-	background: white;&#13;
-    padding: 2rem;    &#13;
-    margin-top: 2rem;&#13;
-    border-radius: 20px;&#13;
-    box-shadow: 0 0 1rem #e5e5e5;&#13;
-}&#13;
-.cc-title {&#13;
-  	margin: 0;&#13;
-	font-style: normal;&#13;
-    font-size: 2rem;&#13;
-}&#13;
-&#13;
-&#13;
-.box {&#13;
-  display: block;&#13;
-}&#13;
-.warning-box {&#13;
-	height: 4rem;&#13;
-	background-color: yellow;&#13;
-}&#13;
-&#13;
-.cc-list-row  {&#13;
-  margin-top: 2rem;&#13;
-  display: grid; &#13;
-  grid-template-columns: 1fr 1fr 1fr; &#13;
-  gap: 1rem;&#13;
-}&#13;
-&#13;
-.event-card {&#13;
-	padding: 15px;&#13;
-  	border-radius: 5px;&#13;
-    box-shadow: 0 0 1rem #e5e5e5;&#13;
-}&#13;
-&#13;
-.date {&#13;
-	margin-bottom: 0;&#13;
-}&#13;
-.time {&#13;
-	margin-top: 0;&#13;
-}&#13;
-&#13;
-.event-info {&#13;
-  h1 a {&#13;
-  	color: $cc-gold;&#13;
-  }&#13;
-  .event-description {&#13;
-      display: -webkit-box;&#13;
-      -webkit-line-clamp: 2;&#13;
-      -webkit-box-orient: vertical;  &#13;
-      overflow: hidden;&#13;
-      height: 5rem;&#13;
-  }&#13;
-}&#13;
-.event-reqs {&#13;
-	height: 5rem;&#13;
-}&#13;
-&#13;
-.event-details h4{&#13;
-  font-size: 1.5rem;&#13;
-  &#13;
-  i {&#13;
-      vertical-align: bottom;&#13;
-  }  &#13;
-}&#13;
-.event-slots {&#13;
-  h4 {&#13;
-  	display: inline-block;&#13;
-    margin-right: 2rem;&#13;
-  }&#13;
-}&#13;
-&#13;
-@keyframes border-live {&#13;
-  0% { box-shadow: 0 0 1rem transparent; }&#13;
-  50% { box-shadow: 0 0 2rem $cc-gold; }&#13;
-  100% { box-shadow: 0 0 1rem transparent; }&#13;
-}&#13;
-.event-live {&#13;
-  	outline: 1px solid $cc-gold;&#13;
-	animation: border-live 2s infinite;&#13;
-}&#13;
-&#13;
-@media (max-width: 767px){&#13;
-	.cc-list-row  {&#13;
-		display: grid; &#13;
-      	grid-template-columns: 1fr; &#13;
-  }&#13;
-}*/</css>
+        <css/>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -126,47 +56,35 @@
 
 	while(events.next()){
 		var event = {};
-			// Pull essential fields and write to named fields in data obj
-			var fields = $sp.getFields(events, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
+			event.buttons = [];
 			event.sys_id = events.getValue('sys_id');
-			
-			event.voting_open = events.getValue('voting_open') == 1;
-			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
-			event.required = events.getValue('required') == 1;
-			event.state = events.getValue('state');
-			event.live = event.state == 'live';
-			
-			for(i in fields){
-				var field = fields[i];
-				event[field.name] = field;
-			}
-
-			//Date handling
-			var gdt = events.getValue('start');
-			var start = new GlideDateTime(gdt);
-			//user getLocalDate/Time for SN TZ 
-			var date = start.getLocalDate().getByFormat('MMMM d, YYYY');
-			var time = start.getLocalTime().getByFormat('hh:mm a');
-			event.date = date;
-			event.time = time;
-			event.past = start.onOrBefore(new GlideDateTime());
-			
-			//var a_list = event.attendees.toString();
-			var a_list = new CCUtils().getAttendeesID(events.getValue('sys_id'));			
-			event.attendees_curr_count = a_list.length;
-			var b_list = new CCUtils().getBevRecords(events.getValue('sys_id'));
-			event.beverage_curr_count = b_list.length;
-			
-			event.registered = false;
-			if(a_list.indexOf(gs.getUserID())>-1){
-				event.registered = true;
-			}
-			// console.log(JSON.stringify(a_list));
-			// console.log(gs.getUserID());
-			// console.log(event.registered);
+			event.live = events.getValue('state') == 'live';
 			event.options = {action:'cat_item',event_id:event.sys_id,display:'list'};
+			if(event.live){
+				event.buttons.push({
+					label: 'Join Live Event >',
+					primary: true
+				});
+				event.href = '/cc?id=live_event&sys_id='+event.sys_id;
+			} else {
+				event.buttons.push({
+					label: 'View Event Details >',
+					primary: true
+				});
+				event.href = '/cc?id=event&sys_id='+event.sys_id;
+			}
+			event.options.buttons = event.buttons;
+			console.log(event.buttons);
 			data.widgets.push($sp.getWidget("cc-event-card",event.options));
 			data.events.push(event);
+	}
+	if($sp.getParameter('id') != 'event' && $sp.getParameter('id') != 'live_event'){
+		data.event_page = true;
+		data.modal_title = 'Cellar Club Event Details';
+		data.allow_modal = true;
+	} else {
+		data.allow_modal = false;
+		data.event_page = false;
 	}
 	// console.log(data.widgets);
 })();]]></script>
@@ -175,57 +93,23 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>63</sys_mod_count>
+        <sys_mod_count>80</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-20 20:49:58</sys_updated_on>
+        <sys_updated_on>2023-03-25 19:11:10</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
   <div class="cc-list-row">
-	<!--
-	<div ng-repeat="event in data.events | limitTo : data.limit">
-      <div class="box event-card {{event.live ? 'event-live' : ''}}">  
-        <div class="warning-box" ng-if="event.past">
-            <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
-        </div>        
-        <h2 class="date">{{event.date}}</h2>  
-        <h3 class="time">{{event.time}}</h3>
-		<div class="event-info">
-        	<h1>
-          		<a href="/cc?id=event&sys_id={{event.sys_id}}" target="_blank">{{event.short_description.display_value}}</a>
-        	</h1>        
-        	<div class="event-description">
-              <p>{{event.description.display_value}}</p>
-          </div>
-        </div>
-		-->
-    
-        <!--<div ng-if="!event.cat_item"><i class="ri-{{event.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{event.voting_open ? 'open' : 'closed'}}</div> -->
-        <!--<div class="event-reqs" ><div ng-if="event.required"><i class="ri-alert-fill"></i>This event is required</div><div ng-if="event.registered"><i class="ri-check-line"></i>You've joined this event.</div></div>-->
-        
-    <!--
-    <div class="box event-details">
-          <h4><i class="ri-map-pin-2-fill"></i> {{event.location.display_value}}</h4>
-          <div class="event-slots">
-          	<h4><i class="ri-user-fill"></i> {{event.attendees_curr_count}}/{{event.slots.value}}</h4>
-          	<h4><i class="ri-goblet-fill"></i> {{event.beverage_curr_count}}/{{event.beverage_count.value}}</h4>
-          </div>
-        </div>
-        <br/>    
-      </div>      
-  	</div>
-	-->
     <div ng-repeat="e in data.widgets | limitTo : data.limit">
-      <sp-widget widget="e"></sp-widget>
-    </div>
-    
-  </div>
-  
-  
+      <div ng-click="c.clickCard(e,e.options)">
+      	<sp-widget widget="e"></sp-widget>
+      </div>
+    </div>    
+  </div>  
 </div>]]></template>
     </sp_widget>
 </record_update>
