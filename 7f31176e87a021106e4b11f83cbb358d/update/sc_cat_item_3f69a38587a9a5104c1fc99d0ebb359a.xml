@@ -28,7 +28,7 @@
         <mobile_picture/>
         <mobile_picture_type>use_desktop_picture</mobile_picture_type>
         <model/>
-        <name>Add a Beverage to the Cellar</name>
+        <name>Add a Treasure to the Cellar</name>
         <no_attachment_v2>false</no_attachment_v2>
         <no_cart>false</no_cart>
         <no_cart_v2>true</no_cart_v2>
@@ -64,14 +64,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-11 21:14:01</sys_created_on>
         <sys_id>3f69a38587a9a5104c1fc99d0ebb359a</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Add a Beverage to the Cellar</sys_name>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Add a Treasure to the Cellar</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sc_cat_item_3f69a38587a9a5104c1fc99d0ebb359a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-11 21:47:58</sys_updated_on>
+        <sys_updated_on>2023-03-25 19:14:59</sys_updated_on>
         <taxonomy_topic/>
         <template/>
         <template_manager_roles/>

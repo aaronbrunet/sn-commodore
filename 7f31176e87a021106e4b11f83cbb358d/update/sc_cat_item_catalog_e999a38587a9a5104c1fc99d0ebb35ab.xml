@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
     <sc_cat_item_catalog action="INSERT_OR_UPDATE">
-        <sc_cat_item display_value="Add a Beverage to the Cellar">3f69a38587a9a5104c1fc99d0ebb359a</sc_cat_item>
+        <sc_cat_item display_value="Add a Treasure to the Cellar">3f69a38587a9a5104c1fc99d0ebb359a</sc_cat_item>
         <sc_catalog display_value="Commodore Club Resources">f436da458765a5104c1fc99d0ebb3523</sc_catalog>
         <sys_class_name>sc_cat_item_catalog</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
