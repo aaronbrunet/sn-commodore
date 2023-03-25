@@ -6,36 +6,27 @@
         <css/>
         <glyph/>
         <id/>
-        <order>1</order>
+        <order>2</order>
         <roles/>
         <short_description/>
         <size>md</size>
-        <sp_column display_value="1">876694bb87edad104c1fc99d0ebb3519</sp_column>
+        <sp_column display_value="1">8cead453871521104c1fc99d0ebb357e</sp_column>
         <sp_widget display_value="CC Beverage List">3e4fca21877165504c1fc99d0ebb3512</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-03-25 14:16:43</sys_created_on>
-        <sys_id>8d505a61877165504c1fc99d0ebb3517</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_created_on>2023-03-25 14:44:31</sys_created_on>
+        <sys_id>d4b692e5877165504c1fc99d0ebb3541</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
-        <sys_update_name>sp_instance_8d505a61877165504c1fc99d0ebb3517</sys_update_name>
+        <sys_update_name>sp_instance_d4b692e5877165504c1fc99d0ebb3541</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 14:43:30</sys_updated_on>
+        <sys_updated_on>2023-03-25 14:44:31</sys_updated_on>
         <title/>
         <url/>
-        <widget_parameters><![CDATA[{
-	"limit": {
-		"value": "3",
-		"displayValue": "3"
-	},
-	"event": {
-		"value": "",
-		"displayValue": ""
-	}
-}]]></widget_parameters>
+        <widget_parameters/>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=8d505a61877165504c1fc99d0ebb3517"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=d4b692e5877165504c1fc99d0ebb3541"/>
 </record_update>
