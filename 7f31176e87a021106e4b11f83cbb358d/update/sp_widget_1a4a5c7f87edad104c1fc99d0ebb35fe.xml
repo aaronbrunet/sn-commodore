@@ -30,7 +30,7 @@
   /* e.g., data.table = $sp.getValue('table'); */
 	data.options = options;
 	if(data.options.beverage){
-		console.log(data.options.beverage);
+		//console.log(data.options.beverage);
 		data.bev_id = data.options.beverage;
 		buildBev(data.bev_id);
 	}
@@ -40,7 +40,7 @@
 		if(bev_id != ''){
 			var bev = new GlideRecord('x_snc_commodore_0_beverage');
 			bev.get(bev_id);
-			var fields = $sp.getFields(bev,'name,brand,style,description,country,region,abv,proof,type,type_other,taste,sys_created_on,introduced_by,event');
+			var fields = $sp.getFields(bev,'name,masked_name,brand,style,description,country,region,abv,proof,type,type_other,taste,sys_created_on,introduced_by,event');
 			for(i in fields){
 				var field = fields[i];
 				//console.log(field);
@@ -51,7 +51,15 @@
 			if(!data.bev.type && data.bev.type_other){
 				data.bev.type = data.bev.type_other;
 			}
-			console.log(data.bev);
+			console.log(data.bev.event.value);
+			var name_hidden = new x_snc_commodore_0.CCUtils().getBevVisible(data.bev.event.value);
+			console.log(name_hidden);
+			if(name_hidden){
+				data.bev.name = data.bev.masked_name;
+				data.bev.brand = null;
+			}
+			
+			//console.log(data.bev);
 		}
 	}
 })();]]></script>
@@ -60,14 +68,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-19 19:16:00</sys_created_on>
         <sys_id>1a4a5c7f87edad104c1fc99d0ebb35fe</sys_id>
-        <sys_mod_count>39</sys_mod_count>
+        <sys_mod_count>43</sys_mod_count>
         <sys_name>CC Beverage Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_1a4a5c7f87edad104c1fc99d0ebb35fe</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 20:27:53</sys_updated_on>
+        <sys_updated_on>2023-03-25 13:59:12</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <div ng-if="!data.bev">
     <h2>No beverage found</h2>
@@ -75,7 +83,7 @@
   <div class="box" ng-if="data.bev">
     <h1>{{data.bev.name.display_value}}</h1>
     <div class="beverage-info">
-      <div><h3 class="inline">{{data.bev.type.display_value}} |</h3><h3 class="inline">{{data.bev.style.display_value}}</h3><h3 class="inline">by {{data.bev.brand.display_value}}</h3></div>
+      <div><h3 class="inline">{{data.bev.type.display_value}} |</h3><h3 class="inline">{{data.bev.style.display_value}}</h3><h3 class="inline" ng-if="data.bev.brand">by {{data.bev.brand.display_value}}</h3></div>
 		<div ng-if="data.options.display != 'compact'">
           <div>
             <h4 class="inline">Origin</h4><p class="inline">{{data.bev.country.display_value}}<span ng-if="data.bev.region"> ({{data.bev.region.display_value}})</span></p> 

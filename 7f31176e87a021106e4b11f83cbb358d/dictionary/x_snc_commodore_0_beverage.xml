@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="18fde8fa87a021106e4b11f83cbb35b3" label="Beverages" max_length="40" name="x_snc_commodore_0_beverage" type="collection">
         <element label="ABV" max_length="40" name="abv" type="integer"/>
-        <element label="Brand" max_length="40" name="brand" type="string"/>
+        <element label="Brand" mandatory="true" max_length="40" name="brand" type="string"/>
         <element label="Country of Origin" max_length="5000" name="country" type="string"/>
         <element label="Description" max_length="5000" name="description" type="string"/>
-        <element label="Event" max_length="32" name="event" reference="x_snc_commodore_0_events" type="reference"/>
-        <element label="Introduced by" max_length="32" name="introduced_by" reference="sys_user" type="reference"/>
-        <element label="Masked Name" max_length="1000" name="masked_name" type="string"/>
-        <element display="true" label="Name" max_length="1000" name="name" type="string"/>
+        <element label="Event" mandatory="true" max_length="32" name="event" reference="x_snc_commodore_0_events" type="reference"/>
+        <element label="Introduced by" mandatory="true" max_length="32" name="introduced_by" reference="sys_user" type="reference"/>
+        <element label="Masked Name" max_length="1000" name="masked_name" read_only="true" type="string"/>
+        <element display="true" label="Name" mandatory="true" max_length="1000" name="name" type="string"/>
         <element label="Proof" max_length="40" name="proof" type="string"/>
         <element label="Region of Origin" max_length="5000" name="region" type="string"/>
-        <element choice="3" default="pending" label="State" max_length="40" name="state" type="choice">
+        <element choice="3" default="pending" label="State" max_length="40" name="state" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
                 <element inactive_on_update="false" label="Approved" sequence="1" value="approved"/>
@@ -22,7 +22,7 @@
         <element label="Style" max_length="500" name="style" type="string"/>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element label="Taste" max_length="5000" name="taste" type="string"/>
-        <element choice="3" label="Type" max_length="40" name="type" type="choice">
+        <element choice="3" label="Type" mandatory="true" max_length="40" name="type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Beer" sequence="0" value="beer"/>
                 <element inactive_on_update="false" label="Wine" sequence="1" value="wine"/>

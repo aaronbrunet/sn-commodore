@@ -2,14 +2,14 @@
     <element db_object_id="b23b647a87a021106e4b11f83cbb3561" label="Member Registration" max_length="40" name="x_snc_commodore_0_member_registration" type="collection">
         <element default="true" label="Active" max_length="255" name="active" type="boolean"/>
         <element default="javascript:new GlideDate()" label="Join Date" max_length="255" name="join_date" type="glide_date"/>
-        <element choice="3" label="Role" max_length="40" name="role" type="choice">
+        <element choice="3" label="Role" mandatory="true" max_length="40" name="role" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Member" sequence="0" value="member"/>
                 <element inactive_on_update="false" label="Founder" sequence="1" value="founder"/>
                 <element inactive_on_update="false" label="Poobah" sequence="2" value="poobah"/>
             </choice>
         </element>
-        <element display="true" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element display="true" label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
         <index name="index">
             <element name="user"/>
         </index>
