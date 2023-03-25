@@ -28,6 +28,9 @@
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
+  
+  console.log(['input',input]);
+  console.log(['options',options]);
 	data.options = options;
 	if(data.options.beverage){
 		//console.log(data.options.beverage);
@@ -51,9 +54,9 @@
 			if(!data.bev.type && data.bev.type_other){
 				data.bev.type = data.bev.type_other;
 			}
-			console.log(data.bev.event.value);
+			//console.log(data.bev.event.value);
 			var name_hidden = new x_snc_commodore_0.CCUtils().getBevVisible(data.bev.event.value);
-			console.log(name_hidden);
+			//console.log(name_hidden);
 			if(name_hidden){
 				data.bev.name = data.bev.masked_name;
 				data.bev.brand = null;
@@ -68,15 +71,15 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-19 19:16:00</sys_created_on>
         <sys_id>1a4a5c7f87edad104c1fc99d0ebb35fe</sys_id>
-        <sys_mod_count>43</sys_mod_count>
+        <sys_mod_count>49</sys_mod_count>
         <sys_name>CC Beverage Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_1a4a5c7f87edad104c1fc99d0ebb35fe</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 13:59:12</sys_updated_on>
-        <template><![CDATA[<div class="cc-panel">
+        <sys_updated_on>2023-03-25 14:29:19</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel cc-center-card">
   <div ng-if="!data.bev">
     <h2>No beverage found</h2>
   </div>
@@ -84,7 +87,7 @@
     <h1>{{data.bev.name.display_value}}</h1>
     <div class="beverage-info">
       <div><h3 class="inline">{{data.bev.type.display_value}} |</h3><h3 class="inline">{{data.bev.style.display_value}}</h3><h3 class="inline" ng-if="data.bev.brand">by {{data.bev.brand.display_value}}</h3></div>
-		<div ng-if="data.options.display != 'compact'">
+		<div ng-if="data.options.display == 'full'">
           <div>
             <h4 class="inline">Origin</h4><p class="inline">{{data.bev.country.display_value}}<span ng-if="data.bev.region"> ({{data.bev.region.display_value}})</span></p> 
             <h4 class="inline" ng-if="data.bev.abv">ABV {{data.bev.abv.display_value}}%</h4><h4 ng-if="data.bev.abv && data.bev.proof" class="inline">|</h4><h4 class="inline" ng-if="data.bev.proof">{{data.bev.proof.display_value}} Proof</h4>
@@ -93,11 +96,11 @@
           <div ng-if="data.bev.taste">
           <h4 class="inline">Tasting Notes</h4>
           <p class="taste inline">{{data.bev.taste.display_value}}</p>
-          </div>
-          <div class="event-info">
-            <h3>Introduced by {{data.bev.introduced_by.display_value}}<span ng-if="data.bev.event"> for the <a href="/cc?id=live_event&sys_id={{data.bev.event.value}}" target="_blank">{{data.bev.event.display_value}}</a> event</span></h3>
-          </div>
+          </div>          
        </div>
+      <div class="event-info">
+            <h3>Introduced by {{data.bev.introduced_by.display_value}}<span ng-if="data.bev.event"> for the <a href="/cc?id=live_event&sys_id={{data.bev.event.value}}" target="_blank">{{data.bev.event.display_value}}</a> event</span></h3>
+      </div>
     </div>
   </div>
 </div>]]></template>

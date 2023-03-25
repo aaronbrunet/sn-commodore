@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {
+  /* widget controller */
+  var c = this;
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CC Beverage List</name>
+        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Beverages","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"}]}]</option_schema>
+        <public>false</public>
+        <roles>x_snc_commodore_0.cc_user</roles>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.options = options;
+	data.limit = data.options.limit;
+	data.bevs = [];
+	data.widgets = [];
+
+	var bevs = new GlideRecord('x_snc_commodore_0_beverage');	
+	bevs.query();
+
+	while(bevs.next()){
+		
+		var bev = {};
+		bev.sys_id = bevs.getValue('sys_id');
+		bev.event = bevs.getValue('event');
+		/*
+		
+			// Pull essential fields and write to named fields in data obj
+			var fields = $sp.getFields(bevs, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
+			event.sys_id = events.getValue('sys_id');
+			
+			event.voting_open = events.getValue('voting_open') == 1;
+			event.drink_names_hidden = events.getValue('drink_names_hidden') == 1;
+			event.required = events.getValue('required') == 1;
+			event.state = events.getValue('state');
+			event.live = event.state == 'live';
+			
+			for(i in fields){
+				var field = fields[i];
+				event[field.name] = field;
+			}
+
+			//Date handling
+			var gdt = events.getValue('start');
+			var start = new GlideDateTime(gdt);
+			//user getLocalDate/Time for SN TZ 
+			var date = start.getLocalDate().getByFormat('MMMM d, YYYY');
+			var time = start.getLocalTime().getByFormat('hh:mm a');
+			event.date = date;
+			event.time = time;
+			event.past = start.onOrBefore(new GlideDateTime());
+			
+			//var a_list = event.attendees.toString();
+			var a_list = new CCUtils().getAttendeesID(events.getValue('sys_id'));			
+			event.attendees_curr_count = a_list.length;
+			var b_list = new CCUtils().getBevRecords(events.getValue('sys_id'));
+			event.beverage_curr_count = b_list.length;
+			
+			event.registered = false;
+			if(a_list.indexOf(gs.getUserID())>-1){
+				event.registered = true;
+			}
+			// console.log(JSON.stringify(a_list));
+			// console.log(gs.getUserID());
+			// console.log(event.registered);
+			*/
+
+			bev.options = {beverage:bev.sys_id,event_id:bev.event,display:'list'};
+			console.log(['bev',bev]);
+			data.widgets.push($sp.getWidget("cc-beverage-card",bev.options));
+			data.bevs.push(bev);
+	}
+	console.log(data.widgets);
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-25 14:12:12</sys_created_on>
+        <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>CC Beverage List</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-25 14:27:56</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel">
+  <h3 class="cc-title">Cellar Treasures</h3>
+  <div class="cc-list-row">
+    <div ng-repeat="b in data.widgets | limitTo : data.limit">
+      <sp-widget widget="b"></sp-widget>
+    </div>
+    
+  </div>
+  
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

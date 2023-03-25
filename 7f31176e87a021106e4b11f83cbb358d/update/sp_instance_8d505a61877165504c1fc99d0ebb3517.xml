@@ -11,31 +11,27 @@
         <short_description/>
         <size>md</size>
         <sp_column display_value="1">876694bb87edad104c1fc99d0ebb3519</sp_column>
-        <sp_widget display_value="CC Beverage Card">1a4a5c7f87edad104c1fc99d0ebb35fe</sp_widget>
+        <sp_widget display_value="CC Beverage List">3e4fca21877165504c1fc99d0ebb3512</sp_widget>
         <sys_class_name>sp_instance</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
-        <sys_created_on>2023-03-19 19:16:18</sys_created_on>
-        <sys_id>0b5b1cbf87edad104c1fc99d0ebb354a</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_created_on>2023-03-25 14:16:43</sys_created_on>
+        <sys_id>8d505a61877165504c1fc99d0ebb3517</sys_id>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name/>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
-        <sys_update_name>sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a</sys_update_name>
+        <sys_update_name>sp_instance_8d505a61877165504c1fc99d0ebb3517</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-22 01:13:20</sys_updated_on>
+        <sys_updated_on>2023-03-25 14:31:09</sys_updated_on>
         <title/>
         <url/>
         <widget_parameters><![CDATA[{
-	"beverage": {
-		"value": "a7f073cd87a9a5104c1fc99d0ebb3566",
-		"displayValue": "Lagavulin 12"
-	},
-	"display": {
-		"value": "full",
-		"displayValue": "full"
+	"limit": {
+		"value": "9",
+		"displayValue": "9"
 	}
 }]]></widget_parameters>
     </sp_instance>
-    <sys_translated_text action="delete_multiple" query="documentkey=0b5b1cbf87edad104c1fc99d0ebb354a"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=8d505a61877165504c1fc99d0ebb3517"/>
 </record_update>

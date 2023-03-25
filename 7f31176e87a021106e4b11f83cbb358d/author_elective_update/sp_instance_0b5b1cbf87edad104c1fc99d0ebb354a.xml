@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">876694bb87edad104c1fc99d0ebb3519</sp_column>
+        <sp_widget display_value="CC Beverage Card">1a4a5c7f87edad104c1fc99d0ebb35fe</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-19 19:16:18</sys_created_on>
+        <sys_id>0b5b1cbf87edad104c1fc99d0ebb354a</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-25 14:09:09</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"beverage": {
+		"value": "a7f073cd87a9a5104c1fc99d0ebb3566",
+		"displayValue": "Lagavulin 12"
+	},
+	"display": {
+		"value": "full",
+		"displayValue": "full"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=0b5b1cbf87edad104c1fc99d0ebb354a"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_instance"&gt;&lt;sp_instance action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;class_name/&gt;&lt;color&gt;default&lt;/color&gt;&lt;css/&gt;&lt;glyph/&gt;&lt;id/&gt;&lt;order&gt;1&lt;/order&gt;&lt;roles/&gt;&lt;short_description/&gt;&lt;size&gt;md&lt;/size&gt;&lt;sp_column display_value="1"&gt;876694bb87edad104c1fc99d0ebb3519&lt;/sp_column&gt;&lt;sp_widget display_value="CC Beverage Card"&gt;1a4a5c7f87edad104c1fc99d0ebb35fe&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_instance&lt;/sys_class_name&gt;&lt;sys_created_by&gt;aaron.brunet&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-03-19 19:16:18&lt;/sys_created_on&gt;&lt;sys_id&gt;0b5b1cbf87edad104c1fc99d0ebb354a&lt;/sys_id&gt;&lt;sys_mod_count&gt;8&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Commodore's Club" source="x_snc_commodore_0"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Commodore's Club"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;aaron.brunet&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-03-25 14:09:09&lt;/sys_updated_on&gt;&lt;title/&gt;&lt;url/&gt;&lt;widget_parameters&gt;&lt;![CDATA[{
+	"beverage": {
+		"value": "a7f073cd87a9a5104c1fc99d0ebb3566",
+		"displayValue": "Lagavulin 12"
+	},
+	"display": {
+		"value": "full",
+		"displayValue": "full"
+	}
+}]]&gt;&lt;/widget_parameters&gt;&lt;/sp_instance&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=0b5b1cbf87edad104c1fc99d0ebb354a"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-307150662</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-25 14:09:09</sys_created_on>
+        <sys_id>469e4221877165504c1fc99d0ebb3580</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>187191a08370000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-25 14:09:09</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>ca9e42213f71655034ccbcfb90af4e7f</update_guid>
+        <update_guid_history>ca9e42213f71655034ccbcfb90af4e7f:-307150662,8e7e4eed493165505dc7ae114de76332:306450926,6840cce8ab756150d9068f421f51f278:-307150662,d6caac3f0521ed100951ccc15a0393b5:-958946978,a112e8376c21ed10aa13ef775abfded2:-1185203574,27f16c37b321ed109cc4ddb430de4970:-955315609,177dd833c821ed101658d9be3da5f865:-1185203574,205d58334721ed105b07c85b81518a19:-997598545,c35b1cbf1cedad1041871e8ad77eeb4c:1478979111</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">bbd192a1877165504c1fc99d0ebb359f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-25 14:23:28</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>4774ca0ea29740eeb27f27646d332959</sys_id>
+        <sys_metadata>0b5b1cbf87edad104c1fc99d0ebb354a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a</sys_update_name>
+        <sys_update_version display_value="sp_instance_0b5b1cbf87edad104c1fc99d0ebb354a">469e4221877165504c1fc99d0ebb3580</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-25 14:23:28</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
