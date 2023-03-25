@@ -17,6 +17,9 @@ CCUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 		constants.CAT_ITEM_BEVSIGNUP = '3f69a38587a9a5104c1fc99d0ebb359a';
 		constants.CAT_ITEM_EVENTSIGNUP = '037fee2b871961104c1fc99d0ebb3534';
 		constants.CAT_ITEM_JOINCLUB = 'dc8d6ee7871961104c1fc99d0ebb3544';
+		
+		constants.EVENT_EDIT = '/cc?id=form&table=x_snc_commodore_0_events&v=update_event&sys_id=';
+		constants.BEV_EDIT = '/cc?id=form&table=x_snc_commodore_0_beverage&v=update_beverage&sys_id=';
 		return constants;
 	},
 	getRegistrationCount: function(){
@@ -170,13 +173,13 @@ CCUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-31 21:56:49</sys_created_on>
         <sys_id>adfcb6ac8774a5104c1fc99d0ebb35e1</sys_id>
-        <sys_mod_count>49</sys_mod_count>
+        <sys_mod_count>50</sys_mod_count>
         <sys_name>CCUtils</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sys_script_include_adfcb6ac8774a5104c1fc99d0ebb35e1</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 20:13:18</sys_updated_on>
+        <sys_updated_on>2023-03-25 20:26:18</sys_updated_on>
     </sys_script_include>
 </record_update>

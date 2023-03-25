@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>true</cleared>
+        <disabled>ignore</disabled>
+        <field>type_other</field>
+        <mandatory>true</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-25 20:22:49</sys_created_on>
+        <sys_id>5514276d877565504c1fc99d0ebb350b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>type_other</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sys_ui_policy_action_5514276d877565504c1fc99d0ebb350b</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-25 20:22:49</sys_updated_on>
+        <table>x_snc_commodore_0_beverage</table>
+        <ui_policy display_value="Show Type (Other)">47f3a36d877565504c1fc99d0ebb3516</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>

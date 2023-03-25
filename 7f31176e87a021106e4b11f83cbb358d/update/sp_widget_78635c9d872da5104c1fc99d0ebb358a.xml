@@ -74,18 +74,23 @@
 		var rsvp_btn_label = event.rsvp ? 'Modify RSVP' : 'RSVP to Event'; 		
 		var rsvp_btn = {
 			label: rsvp_btn_label,
-			class: 'cc-button-warning',
+			class: 'cc-button-secondary',
 			url: event.signup_href
 		};	
 		event.buttons.push(rsvp_btn);
 
 		var myBev = new x_snc_commodore_0.CCUtils().getMyBev(gs.getUserID(),event.sys_id);
 		console.log(myBev);
-		var bev_btn_label = myBev.sys_id ? 'Modify Beverage' : 'Bring a Beverage';
+		var bev_btn_label = 'Bring a Beverage';
+		var bev_btn_url = event.bev_href;
+		if(myBev.sys_id){
+			bev_btn_label = 'Modify Beverage';
+			bev_btn_url = constants.BEV_EDIT + myBev.sys_id;
+		}
 		var bev_btn = {
 			label: bev_btn_label,
 			class: 'cc-button-secondary',
-			url: event.bev_href
+			url: bev_btn_url
 		};
 		event.buttons.push(bev_btn);
 			
@@ -122,14 +127,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>89</sys_mod_count>
+        <sys_mod_count>90</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 20:14:57</sys_updated_on>
+        <sys_updated_on>2023-03-25 20:28:12</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
   <div class="cc-list-row">
