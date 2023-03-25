@@ -15,9 +15,10 @@
 			widget: 'cc-event-card',
 			widgetInput: options,
 			buttons: options.buttons
-		}).then(function(){
+		}).then(function(btn){
 			console.log('Modal closed');
-			$window.location.href = event.data.event_href;
+			console.log(btn);
+			$window.location.href = btn.url;//event.data.event_href;
 		})
 	  }
 
@@ -43,40 +44,68 @@
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
+	var constants = new x_snc_commodore_0.CCUtils().getConstants();
 	
+	data.attendances = new x_snc_commodore_0.CCUtils().getMyRSVPEvents(gs.getUserID());
 	data.options = options;
 	data.limit = data.options.limit;
 	data.events = [];
 	data.widgets = [];
-
+	
 	var events = new GlideRecord('x_snc_commodore_0_events');
 	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
 	events.orderBy('start');
-	events.query();
-
+	events.query();	
+	
 	while(events.next()){
-		var event = {};
-			event.buttons = [];
-			event.sys_id = events.getValue('sys_id');
-			event.live = events.getValue('state') == 'live';
-			event.options = {action:'cat_item',event_id:event.sys_id,display:'list'};
-			if(event.live){
-				event.buttons.push({
-					label: 'Join Live Event >',
-					primary: true
-				});
-				event.href = '/cc?id=live_event&sys_id='+event.sys_id;
-			} else {
-				event.buttons.push({
-					label: 'View Event Details >',
-					primary: true
-				});
-				event.href = '/cc?id=event&sys_id='+event.sys_id;
-			}
-			event.options.buttons = event.buttons;
-			console.log(event.buttons);
-			data.widgets.push($sp.getWidget("cc-event-card",event.options));
-			data.events.push(event);
+		var event = {};		
+			
+		event.sys_id = events.getValue('sys_id');
+		event.live = events.getValue('state') == 'live';
+
+		event.signup_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_EVENTSIGNUP+"&event_id="+event.sys_id;
+		event.bev_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_BEVSIGNUP+"&event_id="+event.sys_id;
+		
+		event.rsvp = data.attendances.includes(event.sys_id);
+		event.options = {action:'cat_item',event_id:event.sys_id,display:'list'};
+		
+		event.buttons = [];	
+
+		var rsvp_btn_label = event.rsvp ? 'Modify RSVP' : 'RSVP to Event'; 		
+		var rsvp_btn = {
+			label: rsvp_btn_label,
+			class: 'cc-button-warning',
+			url: event.signup_href
+		};	
+		event.buttons.push(rsvp_btn);
+
+		var myBev = new x_snc_commodore_0.CCUtils().getMyBev(gs.getUserID(),event.sys_id);
+		console.log(myBev);
+		var bev_btn_label = myBev.sys_id ? 'Modify Beverage' : 'Bring a Beverage';
+		var bev_btn = {
+			label: bev_btn_label,
+			class: 'cc-button-secondary',
+			url: event.bev_href
+		};
+		event.buttons.push(bev_btn);
+			
+		if(event.live){
+			event.buttons.push({
+				label: 'Join Live Event',
+				primary: true,
+				url: '/cc?id=live_event&sys_id='+event.sys_id
+			});
+		} else {
+			event.buttons.push({
+				label: 'View Event Details',
+				primary: true,
+				url:'/cc?id=event&sys_id='+event.sys_id
+			});
+		}
+		event.options.buttons = event.buttons;
+		//console.log(event.buttons);
+		data.widgets.push($sp.getWidget("cc-event-card",event.options));
+		data.events.push(event);
 	}
 	if($sp.getParameter('id') != 'event' && $sp.getParameter('id') != 'live_event'){
 		data.event_page = true;
@@ -93,14 +122,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>80</sys_mod_count>
+        <sys_mod_count>89</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 19:11:10</sys_updated_on>
+        <sys_updated_on>2023-03-25 20:14:57</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">Upcoming Events</h3>
   <div class="cc-list-row">
