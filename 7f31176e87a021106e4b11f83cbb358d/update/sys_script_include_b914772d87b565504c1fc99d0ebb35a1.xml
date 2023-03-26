@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_commodore_0.CCApprovalUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>CCApprovalUtils</name>
+        <script><![CDATA[var CCApprovalUtils = Class.create();
+CCApprovalUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getMyApprovals: function() {
+	var u = gs.getUserID();
+	var answer = new Array();
+	var i = 0;
+	answer[i++] = new String(u);
+	var g = new GlideRecord("sys_user_delegate");
+	g.addQuery("delegate", u);
+	g.addQuery("approvals", "true");
+	g.addQuery("starts", "<=", gs.daysAgo(0));
+	g.addQuery("ends", ">=", gs.daysAgo(0));
+	g.query();
+	while( g.next())
+		answer[i++] = new String(g.user);
+	
+	return answer;
+},
+
+getMyAssignments: function() {
+	var u = gs.getUserID();
+	var answer = new Array();
+	var i = 0;
+	answer[i++] = new String(u);
+	var g = new GlideRecord("sys_user_delegate");
+	g.addQuery("delegate", u);
+	g.addQuery("assignments", "true");
+	g.addQuery("starts", "<=", gs.daysAgo(0));
+	g.addQuery("ends", ">=", gs.daysAgo(0));
+	g.query();
+	while( g.next()) {
+		answer[i++] = new String(g.user);
+	}
+	return answer;
+},
+isApprovalMine: function(gr) {
+	var approver = gr.approver + '';
+	// if this is the sysapproval_group table, gr.approver
+	// would evaluate to 'undefined'
+	if (!gr.isValidField('approver'))
+		approver = '';
+	var approverSysId = gr.sys_id + '';
+	// Check if approver is nil due to being on a list
+	// of records that contain a related list of approvers
+	// or due to checking a group approval
+	if(global.JSUtil.nil(approver) && global.JSUtil.notNil(approverSysId)) {
+		// Look at the sysapprover_approval table
+		var app = new GlideRecord('sysapproval_approver');
+		if (gr.getTableName() == 'sysapproval_group')
+			app.addQuery('group', approverSysId);
+		else
+			app.addQuery('sysapproval', approverSysId);
+		app.query();
+		while(app.next()) {
+			approver = app.approver;
+			if(this.checkAllApprovers(approver))
+				return true;
+		}
+	}
+
+	return this.checkAllApprovers(approver);
+},
+
+checkAllApprovers: function(approver){
+	if(global.JSUtil.nil(approver))
+	   return false;
+	   
+	var apps = this.getMyApprovals();
+	for (key in apps) {
+		if (apps[key] == approver)
+			return true;
+	}
+	
+	return false;
+},
+    type: 'CCApprovalUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-25 21:33:54</sys_created_on>
+        <sys_id>b914772d87b565504c1fc99d0ebb35a1</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>CCApprovalUtils</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sys_script_include_b914772d87b565504c1fc99d0ebb35a1</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-25 21:36:33</sys_updated_on>
+    </sys_script_include>
+</record_update>
