@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>other</category>
-        <client_script><![CDATA[function client($scope, $animate, $rootScope) {
+        <client_script><![CDATA[function client($scope, $animate, $rootScope, spUtil) {
   $scope.$watch("data.task", function() {
     $scope.task = $scope.data.task; // copy for shortcuts above
   })
+	var c = this;
+  	var data = c.data;
+	spUtil.get("cc-event-card",{action:'cat_item',event_id:data.event.event_id,display:'list'}).then(function(response){
+		c.eventWidget = response;
+		$rootScope.$emit('approval_clear',data.all_clear);
+		console.log('broadcasting approval_clear state: '+data.all_clear);
+	});
+	//console.log('broadcasting ID '+value);
+		
 
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -18,6 +27,10 @@
 &#13;
 .timeline-badge.success {&#13;
 	background-color: $cc-gold-dark;&#13;
+}&#13;
+&#13;
+.approval-details {&#13;
+	padding: 1.6rem 2.4rem;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -40,10 +53,13 @@
 	var cat_rsvp = constants.CAT_ITEM_EVENTSIGNUP;
 	var cat_bev = constants.CAT_ITEM_BEVSIGNUP;
 
+	data.all_clear = true;
+
 	g_approval_form_request = true;
 	var gr = $sp.getRecord();
 	if (gr == null || !gr.isValid()) {
 		data.isValid = false;
+		data.all_clear = false;
 		return;
 	}
 	if (gr.getValue("approver") != gs.getUserID())
@@ -52,6 +68,7 @@
 	var task = getRecordBeingApproved(gr);
 	if (task == null) {
 		data.isValid = false;
+		data.all_clear = false;
 		return;
 	}
 
@@ -69,13 +86,29 @@
 	data.type = t.type;
 
 	if(data.type == 'event'){
-		data.event_choice = data.details.filter(o => o.name == 'club_event');
-		console.log(data.event_choice);
+		console.log(data.details);
+		var event_choice = data.details.find(o => o.name == 'club_event');
+		console.log(event_choice);
+		var ref = getRefData(event_choice.table,event_choice.value);
+		
+		data.event = {
+			event_id: ref.sys_id.toString(),
+			short_description: ref.short_description.toString(),
+			slots: ref.slots.toString()
+
+		};
+		var attendees_curr_count = new CCUtils().getAttendeesID(data.event.event_id).length;
+		data.event.attendees_curr_count = attendees_curr_count;
+		data.all_clear = data.event.attendees_curr_count < data.event.slots;
+		data.banner_msg = 'This event has available capacity and can be safely approved.';
+		if(!data.all_clear){
+			data.banner_msg = 'This event has reached capacity. Approval will increase the max capacity.';
+		}
 		//var ref_table 
 		//data.ref = getRefData(data.details.)
 	}
 
-	console.log(data.details);
+	//console.log(data.details);
 
 	var items = [];
 	var idx = 0;
@@ -177,48 +210,66 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:15:07</sys_created_on>
         <sys_id>42107b2987b565504c1fc99d0ebb35ba</sys_id>
-        <sys_mod_count>53</sys_mod_count>
+        <sys_mod_count>81</sys_mod_count>
         <sys_name>CC Approval Record</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_42107b2987b565504c1fc99d0ebb35ba</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 01:23:58</sys_updated_on>
+        <sys_updated_on>2023-03-26 02:07:03</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.isValid">
   ${Record not found}
 </div>
 <div ng-if="data.isValid">
 <div class="panel panel-{{::options.color}} b">
   <div class="panel-heading">
-    <h2 class="panel-title">${Approval request for {{::task.table}} {{::task.number.display_value}}}</h2>
+    <h2 class="panel-title">${Approval request for {{::task.number.display_value}}}</h2>
   </div>
 
   <div class="panel-body">
-    <div ng-if="task.cat_item">{{task.cat_item.display_value}}</div>
+    <div ng-if="task.cat_item  && task.opened_by">New {{task.cat_item.display_value}} by {{::task.opened_by.display_value}}</div>
     <!--<div ng-if="task.short_description">{{task.short_description.display_value}}</div>-->
-    <div ng-if="task.opened_by"><label>${Opened by}</label> {{::task.opened_by.display_value}}</div>
+    <!--<div ng-if="task.opened_by"><label>${Opened by}</label> {{::task.opened_by.display_value}}</div>-->
     <div ng-if="task.requested_by"><label>${Requestor}</label> {{::task.requested_by.display_value}}</div>
     <div ng-if="::data.approver"><label>${Approver}</label> {{::data.approver}}</div>
     </div>
-
-    <div ng-if="data.items.length > 0">
-      <h3 class="h4">${Items in this Request}</h3>
-      <div ng-repeat="item in data.items">
-        <h4>
-          {{::item.short_description}}
-        </h4>
-        <div ng-if="item.price">${Price} {{::item.price}}
-          <span ng-if="item.recurring_price">${Recurring price} {{::item.recurring_price}} {{::item.recurring_frequency}}</span>
+  	<div class="approval-details">
+        <div ng-if="data.event">
+          <h2>Event Details</h2>
+          <div>
+            <sp-widget widget="c.eventWidget"></sp-widget>
+          </div>
+          <h4><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.attendees_curr_count}} attendees out of {{data.event.slots}} allowed</h4>
         </div>
-        <sp-widget ng-if="item.variableSummarizerWidget" widget="item.variableSummarizerWidget"></sp-widget>
 
-      </div>
+        <div ng-if="data.items.length > 0">
+          <h3 class="h4">${Items in this Request}</h3>
+          <div ng-repeat="item in data.items">
+            <h4>
+              {{::item.short_description}}
+            </h4>
+            <div ng-if="item.price">${Price} {{::item.price}}
+              <span ng-if="item.recurring_price">${Recurring price} {{::item.recurring_price}} {{::item.recurring_frequency}}</span>
+            </div>
+            <sp-widget ng-if="item.variableSummarizerWidget" widget="item.variableSummarizerWidget"></sp-widget>
+
+          </div>
+        </div>
+		<div id="banners">
+          <div class="banner {{data.all_clear ? 'banner-success' : 'banner-warning'}}">
+            <span>
+              <i ng-if="!data.all_clear" class="ri-error-warning-fill"></i>
+              <i ng-if="data.all_clear" class="ri-checkbox-circle-line"></i>
+              {{data.banner_msg}}
+            </span>
+          </div>
+        </div>
+        <!--<sp-widget widget="data.variableSummarizerWidget"></sp-widget>-->
     </div>
-
-    <sp-widget widget="data.variableSummarizerWidget"></sp-widget>
-</div>
-  <sp-widget widget="data.ticketConversation"></sp-widget>
+      <!--<sp-widget widget="data.ticketConversation"></sp-widget>-->
+  	</div>
+  
 </div>]]></template>
     </sp_widget>
 </record_update>

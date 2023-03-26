@@ -214,14 +214,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>198</sys_mod_count>
+        <sys_mod_count>199</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 19:12:18</sys_updated_on>
+        <sys_updated_on>2023-03-26 01:37:31</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') ? 'event-live' : ''}}">
   
   <div ng-if="!data.event || data.event ==''">
@@ -275,7 +275,7 @@ function buildCard(event_id){
       </div>
     </div>
     
-    <div ng-if="(data.options.display == 'full'|| data.options.display == 'feature') && !data.page_id.includes('event')" class="cc-box event-join">
+    <div ng-if="(data.options.display == 'full'|| data.options.display == 'feature') && !data.cat_item && !data.page_id.includes('event')" class="cc-box event-join">
       <a href="{{data.event_href}}" class="cc-button-primary cc-button">{{data.live ? 'Join Live Event' : 'View Event Page'}} <i class="ri-arrow-right-s-line"></i></a>
     </div>
     

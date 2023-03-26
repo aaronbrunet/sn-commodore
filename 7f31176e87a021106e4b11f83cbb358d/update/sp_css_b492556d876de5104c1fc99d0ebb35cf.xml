@@ -225,7 +225,12 @@ i {&#13;
 }&#13;
 &#13;
 .banner-warning {&#13;
-	background: $cc-gold;&#13;
+	background: $cc-red;&#13;
+  	color: white;&#13;
+}&#13;
+&#13;
+.banner-success {&#13;
+	background: $cc-green;&#13;
   	color: white;&#13;
 }&#13;
 &#13;
@@ -243,13 +248,13 @@ i {&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 23:31:41</sys_created_on>
         <sys_id>b492556d876de5104c1fc99d0ebb35cf</sys_id>
-        <sys_mod_count>43</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>cc-css</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_css_b492556d876de5104c1fc99d0ebb35cf</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-25 20:12:11</sys_updated_on>
+        <sys_updated_on>2023-03-26 02:02:33</sys_updated_on>
     </sp_css>
 </record_update>

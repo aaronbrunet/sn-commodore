@@ -34,6 +34,20 @@
 				});
 		}
 	}	
+
+	$rootScope.$on('approval_clear', function(event,parms) {
+		console.log('Receiving approval_clear: '+parms);
+		$scope.data.all_clear = parms;
+		
+		// 	$scope.data.action = 'cat_item';
+		// 	$scope.data.event_id = parms;
+		// 	$scope.data.input = {
+		// 		type: 'cat_item',
+		// 		event_id: parms
+		// };
+			// spUtil.update($scope).then(function(e){	
+			// });
+	});
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>.question {
@@ -86,7 +100,7 @@
 		data.isValid = false;
 		return;
 	}
-	
+	data.all_clear = true;
 	data.isValid = true;
 	data.isMine = new x_snc_commodore_0.CCApprovalUtils().isApprovalMine(gr);
 	var userApprovalAccess = gs.hasRole("approval_admin") || (gs.hasRole("approver_user") && data.isMine);
@@ -160,15 +174,15 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:14:55</sys_created_on>
         <sys_id>0f00772987b565504c1fc99d0ebb3585</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>CC Approval Info</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_0f00772987b565504c1fc99d0ebb3585</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 00:05:10</sys_updated_on>
-        <template><![CDATA[<div ng-if="c.data.isValid" class="panel panel-{{::c.options.color}} b">
+        <sys_updated_on>2023-03-26 02:13:33</sys_updated_on>
+        <template><![CDATA[<div ng-if="c.data.isValid" class="panel panel-{{::c.options.color}} b">  
   <div class="panel-heading">
     <h2 class="panel-title" ng-if="c.data.isMine && (c.data.state == 'requested')">${This request requires your approval}</h2>
     <h2 class="panel-title" ng-if="!c.data.isMine && (c.data.state == 'requested')">${This {{c.data.label}} requires approval <span ng-if="c.data.approverDisplay"> by {{c.data.approverDisplay}}}</span></h2>
@@ -187,7 +201,8 @@
         </div>
       </div>
       <div ng-if="c.data.isMine && (c.data.state == 'requested')" class="question">
-        <button type="button" name="approve" class="btn btn-primary btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('approved')">${Approve}</button>
+        <button ng-if="data.all_clear" type="button" name="approve" class="btn btn-primary btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('approved')">${Approve}</button>
+        <button ng-if="!data.all_clear" type="button" name="approve" class="btn cc-button-warning btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('approved')">${Approve Exception}</button>
         <div class="spacer"></div>
         <button type="button" name="reject" class="btn btn-default btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('rejected')">${Reject}</button>
       </div>
