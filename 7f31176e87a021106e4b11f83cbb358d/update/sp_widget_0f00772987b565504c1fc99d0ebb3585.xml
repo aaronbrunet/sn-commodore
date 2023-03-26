@@ -50,20 +50,22 @@
 	});
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>.question {
-  text-align: center;
-  margin-top: 1em;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.spacer {
-  display:inline-block;
-  width:5%;
-}
-
-.btn-question {
-  flex-grow: 1;
+        <css>.question {&#13;
+  text-align: center;&#13;
+  margin-top: 1em;&#13;
+  display: flex;&#13;
+  flex-wrap: wrap;&#13;
+}&#13;
+&#13;
+.spacer {&#13;
+  display:inline-block;&#13;
+  width:5%;&#13;
+}&#13;
+&#13;
+.btn-question {&#13;
+  flex-grow: 1;&#13;
+  width: -webkit-fill-available;&#13;
+  margin: 0.6rem 0;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data>{
@@ -174,14 +176,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:14:55</sys_created_on>
         <sys_id>0f00772987b565504c1fc99d0ebb3585</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>CC Approval Info</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_0f00772987b565504c1fc99d0ebb3585</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 02:13:33</sys_updated_on>
+        <sys_updated_on>2023-03-26 02:17:46</sys_updated_on>
         <template><![CDATA[<div ng-if="c.data.isValid" class="panel panel-{{::c.options.color}} b">  
   <div class="panel-heading">
     <h2 class="panel-title" ng-if="c.data.isMine && (c.data.state == 'requested')">${This request requires your approval}</h2>
