@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
+    <m2m_sp_widget_dependency action="DELETE">
+        <sp_dependency display_value="angular-truncate">09e1f1416712220023c82e08f585ef1e</sp_dependency>
+        <sp_widget display_value="Copy of Header Menu">bf76e49e87f1e5504c1fc99d0ebb352a</sp_widget>
+        <sys_class_name>m2m_sp_widget_dependency</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:29:47</sys_created_on>
+        <sys_id>b776e49e87f1e5504c1fc99d0ebb35dc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>angular-truncate.Copy of Header Menu</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>m2m_sp_widget_dependency_b776e49e87f1e5504c1fc99d0ebb35dc</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:29:47</sys_updated_on>
+    </m2m_sp_widget_dependency>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>m2m_sp_widget_dependency_b776e49e87f1e5504c1fc99d0ebb35dc</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency"><m2m_sp_widget_dependency action="INSERT_OR_UPDATE"><sp_dependency display_value="angular-truncate">09e1f1416712220023c82e08f585ef1e</sp_dependency><sp_widget display_value="Copy of Header Menu">bf76e49e87f1e5504c1fc99d0ebb352a</sp_widget><sys_class_name>m2m_sp_widget_dependency</sys_class_name><sys_created_by>aaron.brunet</sys_created_by><sys_created_on>2023-03-27 14:29:47</sys_created_on><sys_id>b776e49e87f1e5504c1fc99d0ebb35dc</sys_id><sys_mod_count>0</sys_mod_count><sys_name>angular-truncate.Copy of Header Menu</sys_name><sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package><sys_policy/><sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope><sys_update_name>m2m_sp_widget_dependency_b776e49e87f1e5504c1fc99d0ebb35dc</sys_update_name><sys_updated_by>aaron.brunet</sys_updated_by><sys_updated_on>2023-03-27 14:29:47</sys_updated_on></m2m_sp_widget_dependency></record_update>]]></payload>
+        <payload_hash>502901328</payload_hash>
+        <record_name>angular-truncate.Copy of Header Menu</record_name>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:29:47</sys_created_on>
+        <sys_id>7376e49e87f1e5504c1fc99d0ebb35df</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1872379a3fb0000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:29:47</sys_updated_on>
+        <type>Widget Dependency</type>
+        <update_guid>b776e49e17f1e55064592a884c3e33de</update_guid>
+        <update_guid_history>b776e49e17f1e55064592a884c3e33de:502901328</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="angular-truncate.Copy of Header Menu">76e92c528735e5504c1fc99d0ebb359c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:44:43</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_widget_dependency">m2m_sp_widget_dependency</sys_db_object>
+        <sys_id>0825a4f03a514cdc84dbb5638579fb10</sys_id>
+        <sys_metadata>b776e49e87f1e5504c1fc99d0ebb35dc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>angular-truncate.Copy of Header Menu</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>m2m_sp_widget_dependency_b776e49e87f1e5504c1fc99d0ebb35dc</sys_update_name>
+        <sys_update_version display_value="m2m_sp_widget_dependency_b776e49e87f1e5504c1fc99d0ebb35dc">7376e49e87f1e5504c1fc99d0ebb35df</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:44:43</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

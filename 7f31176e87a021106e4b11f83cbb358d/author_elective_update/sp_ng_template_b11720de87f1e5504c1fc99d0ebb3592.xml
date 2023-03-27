@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="DELETE">
+        <id>cc-item-added-tooltip.html</id>
+        <sp_widget display_value="CC Header Menu">bf76e49e87f1e5504c1fc99d0ebb352a</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:32:22</sys_created_on>
+        <sys_id>b11720de87f1e5504c1fc99d0ebb3592</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>cc-item-added-tooltip.html</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_ng_template_b11720de87f1e5504c1fc99d0ebb3592</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:32:22</sys_updated_on>
+        <template><![CDATA[<div ng-click="toggleCart()" class="item-added-tooltip">${Item has been added to your cart.}</div>]]></template>
+    </sp_ng_template>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sp_ng_template_b11720de87f1e5504c1fc99d0ebb3592</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_ng_template"&gt;&lt;sp_ng_template action="INSERT_OR_UPDATE"&gt;&lt;id&gt;cc-item-added-tooltip.html&lt;/id&gt;&lt;sp_widget display_value="CC Header Menu"&gt;bf76e49e87f1e5504c1fc99d0ebb352a&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_ng_template&lt;/sys_class_name&gt;&lt;sys_created_by&gt;aaron.brunet&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-03-27 14:32:22&lt;/sys_created_on&gt;&lt;sys_id&gt;b11720de87f1e5504c1fc99d0ebb3592&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;cc-item-added-tooltip.html&lt;/sys_name&gt;&lt;sys_package display_value="Commodore's Club" source="x_snc_commodore_0"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Commodore's Club"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_ng_template_b11720de87f1e5504c1fc99d0ebb3592&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;aaron.brunet&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-03-27 14:32:22&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div ng-click="toggleCart()" class="item-added-tooltip"&gt;${Item has been added to your cart.}&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_ng_template&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>854887954</payload_hash>
+        <record_name>cc-item-added-tooltip.html</record_name>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:32:22</sys_created_on>
+        <sys_id>711720de87f1e5504c1fc99d0ebb3594</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>187237c02840000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:32:22</sys_updated_on>
+        <type>Angular ng-template</type>
+        <update_guid>b51720defef1e550ace3fd36fa264f93</update_guid>
+        <update_guid_history>b51720defef1e550ace3fd36fa264f93:854887954</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="cc-item-added-tooltip.html">35e92c528735e5504c1fc99d0ebb350f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:44:39</sys_created_on>
+        <sys_db_object display_value="" name="sp_ng_template">sp_ng_template</sys_db_object>
+        <sys_id>004482979d1745f09050f4da5fc478d9</sys_id>
+        <sys_metadata>b11720de87f1e5504c1fc99d0ebb3592</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>cc-item-added-tooltip.html</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sp_ng_template_b11720de87f1e5504c1fc99d0ebb3592</sys_update_name>
+        <sys_update_version display_value="sp_ng_template_b11720de87f1e5504c1fc99d0ebb3592">711720de87f1e5504c1fc99d0ebb3594</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:44:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="DELETE">
+        <id>ccSpDropdownTreeTemplate</id>
+        <sp_widget display_value="CC Header Menu">bf76e49e87f1e5504c1fc99d0ebb352a</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:32:39</sys_created_on>
+        <sys_id>bd27a0de87f1e5504c1fc99d0ebb3595</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ccSpDropdownTreeTemplate</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_ng_template_bd27a0de87f1e5504c1fc99d0ebb3595</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:33:13</sys_updated_on>
+        <template><![CDATA[<a ng-if="mi.type == 'link'" title="{{::mi.title}}" target="{{::mi.target}}" ng-href="{{::mi.href}}" ng-click="collapse()" role="menuitem">
+  {{::mi.title | characters:60}}
+</a>
+<a ng-if="mi.type == 'record' && !mi.__page" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}" ng-href="?id=ticket&table={{::mi.__table}}&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span>{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'record' && mi.__page" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id={{::mi.__page}}&table={{::mi.__table}}&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span>{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{::mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'request'" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=sc_request&table={{::mi.__table}}&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span>{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{::mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'approval'" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=cc_approval&table={{::mi.__table}}&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span ng-if="mi.short_description">{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{::mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'kb'" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=kb_article&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span ng-if="mi.short_description">{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{::mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'cat_item'" aria-label="${Open} {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=sc_cat_item&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span ng-if="mi.short_description">{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{::mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'guide'" aria-label="${Open} {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=sc_cat_item_guide&sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem">
+  <span ng-if="mi.short_description">{{::mi.short_description | characters:60}}</span>
+  <span class="block color-primary text-muted">
+    <span class="block" style="float: right" id="id_{{::mi.unique_number}}">
+      <sn-time-ago timestamp="::mi.sys_updated_on" />
+    </span>
+    {{::mi.number}}
+  </span>
+</a>
+<a ng-if="mi.type == 'menu' && mi.items.length" aria-label="{{::mi.title}}" ng-click="collapse()" class="menu_trigger right-caret" role="menuitem">
+  {{::mi.title | characters:60}}
+</a>
+<sp-dropdown-tree ng-if="mi.type == 'menu' && mi.items.length" items="mi.items" />]]></template>
+    </sp_ng_template>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sp_ng_template_bd27a0de87f1e5504c1fc99d0ebb3595</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_ng_template"&gt;&lt;sp_ng_template action="INSERT_OR_UPDATE"&gt;&lt;id&gt;ccSpDropdownTreeTemplate&lt;/id&gt;&lt;sp_widget display_value="CC Header Menu"&gt;bf76e49e87f1e5504c1fc99d0ebb352a&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_ng_template&lt;/sys_class_name&gt;&lt;sys_created_by&gt;aaron.brunet&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-03-27 14:32:39&lt;/sys_created_on&gt;&lt;sys_id&gt;bd27a0de87f1e5504c1fc99d0ebb3595&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;ccSpDropdownTreeTemplate&lt;/sys_name&gt;&lt;sys_package display_value="Commodore's Club" source="x_snc_commodore_0"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Commodore's Club"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_ng_template_bd27a0de87f1e5504c1fc99d0ebb3595&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;aaron.brunet&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-03-27 14:33:13&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;a ng-if="mi.type == 'link'" title="{{::mi.title}}" target="{{::mi.target}}" ng-href="{{::mi.href}}" ng-click="collapse()" role="menuitem"&gt;
+  {{::mi.title | characters:60}}
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'record' &amp;&amp; !mi.__page" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}" ng-href="?id=ticket&amp;table={{::mi.__table}}&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'record' &amp;&amp; mi.__page" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id={{::mi.__page}}&amp;table={{::mi.__table}}&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{::mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'request'" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=sc_request&amp;table={{::mi.__table}}&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{::mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'approval'" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=cc_approval&amp;table={{::mi.__table}}&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span ng-if="mi.short_description"&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{::mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'kb'" aria-label="${Open} {{::mi.number}} : {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=kb_article&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span ng-if="mi.short_description"&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{::mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'cat_item'" aria-label="${Open} {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=sc_cat_item&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span ng-if="mi.short_description"&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{::mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'guide'" aria-label="${Open} {{::mi.short_description}}" aria-describedby="id_{{::mi.unique_number}}"  ng-href="?id=sc_cat_item_guide&amp;sys_id={{::mi.sys_id}}" ng-click="collapse()" role="menuitem"&gt;
+  &lt;span ng-if="mi.short_description"&gt;{{::mi.short_description | characters:60}}&lt;/span&gt;
+  &lt;span class="block color-primary text-muted"&gt;
+    &lt;span class="block" style="float: right" id="id_{{::mi.unique_number}}"&gt;
+      &lt;sn-time-ago timestamp="::mi.sys_updated_on" /&gt;
+    &lt;/span&gt;
+    {{::mi.number}}
+  &lt;/span&gt;
+&lt;/a&gt;
+&lt;a ng-if="mi.type == 'menu' &amp;&amp; mi.items.length" aria-label="{{::mi.title}}" ng-click="collapse()" class="menu_trigger right-caret" role="menuitem"&gt;
+  {{::mi.title | characters:60}}
+&lt;/a&gt;
+&lt;sp-dropdown-tree ng-if="mi.type == 'menu' &amp;&amp; mi.items.length" items="mi.items" /&gt;]]&gt;&lt;/template&gt;&lt;/sp_ng_template&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-279461339</payload_hash>
+        <record_name>ccSpDropdownTreeTemplate</record_name>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:33:13</sys_created_on>
+        <sys_id>1e47e0de87f1e5504c1fc99d0ebb35a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>187237cc92e0000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:33:13</sys_updated_on>
+        <type>Angular ng-template</type>
+        <update_guid>d247e0dea3f1e5507c71fbb71c4dc6a1</update_guid>
+        <update_guid_history>d247e0dea3f1e5507c71fbb71c4dc6a1:-279461339,c227a0de1cf1e550b7c566159a364197:1519790996</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="ccSpDropdownTreeTemplate">bde92c528735e5504c1fc99d0ebb3520</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:44:39</sys_created_on>
+        <sys_db_object display_value="" name="sp_ng_template">sp_ng_template</sys_db_object>
+        <sys_id>6a82066ec8eb4774af6f6b1704d51310</sys_id>
+        <sys_metadata>bd27a0de87f1e5504c1fc99d0ebb3595</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ccSpDropdownTreeTemplate</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sp_ng_template_bd27a0de87f1e5504c1fc99d0ebb3595</sys_update_name>
+        <sys_update_version display_value="sp_ng_template_bd27a0de87f1e5504c1fc99d0ebb3595">1e47e0de87f1e5504c1fc99d0ebb35a1</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:44:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="DELETE">
+        <id>ccMenuTemplate</id>
+        <sp_widget display_value="CC Header Menu">bf76e49e87f1e5504c1fc99d0ebb352a</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:31:46</sys_created_on>
+        <sys_id>7cf6ac9e87f1e5504c1fc99d0ebb3507</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ccMenuTemplate</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_ng_template_7cf6ac9e87f1e5504c1fc99d0ebb3507</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:39:12</sys_updated_on>
+        <template><![CDATA[<a role="menuitem" ng-if="item.items.length == 0 && !item.scriptedItems" ng-href="{{::item.href}}" ng-click="collapse()" target="{{::item.url_target}}" title="{{::item.hint}}">
+  <fa ng-if="::item.glyph" name="{{::item.glyph}}"></fa>
+  <span ng-bind-html="::item.label"></span>
+</a>
+<a role="menuitem" aria-haspopup="true" aria-expanded="false" ng-if="item.items.length > 0" href class="dropdown-toggle sp-menu-has-items" data-toggle="dropdown" aria-controls="{{::item.label.split(' ').join('')}}" aria-haspopup="true" title="{{::item.hint}}">
+  <fa ng-if="::item.glyph" name="{{::item.glyph}}"></fa>
+  <span ng-bind-html="::item.label"></span> <span class="fa fa-caret-down"></span>
+</a>
+<ul ng-if="item.items.length > 0" class="dropdown-menu" role="menu" id="{{::item.label.split(' ').join('')}}">
+  <li ng-repeat="item in item.items" ng-include="'ccMenuTemplate'" role="presentation" />
+</ul>
+<a role="menuitem" aria-haspopup="true" aria-expanded="false" ng-if="item.scriptedItems.count > 0" href data-toggle="dropdown" aria-label="{{::item.label ? item.label + ': ' : ''}}{{::item.hint ? item.hint + ': ' : ''}}{{::item.scriptedItems.badgeHint ? item.scriptedItems.badgeHint : item.scriptedItems.count}}" title="{{::item.hint}}">
+  <fa ng-if="::item.glyph" name="{{::item.glyph}}"></fa>
+  <span ng-bind-html="::item.label"></span>
+  <span ng-if="::!item.scriptedItems.omitBadge" class="label label-as-badge label-primary sp-navbar-badge-count">{{item.scriptedItems.count}}</span>
+</a>
+<sp-dropdown-tree role="menu" aria-label="{{::item.label}}" ng-if="item.scriptedItems.count > 0" items="item.scriptedItems.items" />]]></template>
+    </sp_ng_template>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sp_ng_template_7cf6ac9e87f1e5504c1fc99d0ebb3507</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_ng_template"&gt;&lt;sp_ng_template action="INSERT_OR_UPDATE"&gt;&lt;id&gt;ccMenuTemplate&lt;/id&gt;&lt;sp_widget display_value="CC Header Menu"&gt;bf76e49e87f1e5504c1fc99d0ebb352a&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_ng_template&lt;/sys_class_name&gt;&lt;sys_created_by&gt;aaron.brunet&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-03-27 14:31:46&lt;/sys_created_on&gt;&lt;sys_id&gt;7cf6ac9e87f1e5504c1fc99d0ebb3507&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;ccMenuTemplate&lt;/sys_name&gt;&lt;sys_package display_value="Commodore's Club" source="x_snc_commodore_0"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Commodore's Club"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_ng_template_7cf6ac9e87f1e5504c1fc99d0ebb3507&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;aaron.brunet&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-03-27 14:39:12&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;a role="menuitem" ng-if="item.items.length == 0 &amp;&amp; !item.scriptedItems" ng-href="{{::item.href}}" ng-click="collapse()" target="{{::item.url_target}}" title="{{::item.hint}}"&gt;
+  &lt;fa ng-if="::item.glyph" name="{{::item.glyph}}"&gt;&lt;/fa&gt;
+  &lt;span ng-bind-html="::item.label"&gt;&lt;/span&gt;
+&lt;/a&gt;
+&lt;a role="menuitem" aria-haspopup="true" aria-expanded="false" ng-if="item.items.length &gt; 0" href class="dropdown-toggle sp-menu-has-items" data-toggle="dropdown" aria-controls="{{::item.label.split(' ').join('')}}" aria-haspopup="true" title="{{::item.hint}}"&gt;
+  &lt;fa ng-if="::item.glyph" name="{{::item.glyph}}"&gt;&lt;/fa&gt;
+  &lt;span ng-bind-html="::item.label"&gt;&lt;/span&gt; &lt;span class="fa fa-caret-down"&gt;&lt;/span&gt;
+&lt;/a&gt;
+&lt;ul ng-if="item.items.length &gt; 0" class="dropdown-menu" role="menu" id="{{::item.label.split(' ').join('')}}"&gt;
+  &lt;li ng-repeat="item in item.items" ng-include="'ccMenuTemplate'" role="presentation" /&gt;
+&lt;/ul&gt;
+&lt;a role="menuitem" aria-haspopup="true" aria-expanded="false" ng-if="item.scriptedItems.count &gt; 0" href data-toggle="dropdown" aria-label="{{::item.label ? item.label + ': ' : ''}}{{::item.hint ? item.hint + ': ' : ''}}{{::item.scriptedItems.badgeHint ? item.scriptedItems.badgeHint : item.scriptedItems.count}}" title="{{::item.hint}}"&gt;
+  &lt;fa ng-if="::item.glyph" name="{{::item.glyph}}"&gt;&lt;/fa&gt;
+  &lt;span ng-bind-html="::item.label"&gt;&lt;/span&gt;
+  &lt;span ng-if="::!item.scriptedItems.omitBadge" class="label label-as-badge label-primary sp-navbar-badge-count"&gt;{{item.scriptedItems.count}}&lt;/span&gt;
+&lt;/a&gt;
+&lt;sp-dropdown-tree role="menu" aria-label="{{::item.label}}" ng-if="item.scriptedItems.count &gt; 0" items="item.scriptedItems.items" /&gt;]]&gt;&lt;/template&gt;&lt;/sp_ng_template&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1659026310</payload_hash>
+        <record_name>ccMenuTemplate</record_name>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:39:12</sys_created_on>
+        <sys_id>cea864128735e5504c1fc99d0ebb3534</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1872382464e0000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:39:12</sys_updated_on>
+        <type>Angular ng-template</type>
+        <update_guid>86a864124e35e5504b1693747da93534</update_guid>
+        <update_guid_history>86a864124e35e5504b1693747da93534:-1659026310,85f6ac9e0ef1e55072e9ab0a9a0e4a09:-1888309062</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="ccMenuTemplate">a9e92c528735e5504c1fc99d0ebb3508</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-03-27 14:44:38</sys_created_on>
+        <sys_db_object display_value="" name="sp_ng_template">sp_ng_template</sys_db_object>
+        <sys_id>3321240debf9413890bb350930010290</sys_id>
+        <sys_metadata>7cf6ac9e87f1e5504c1fc99d0ebb3507</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ccMenuTemplate</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sp_ng_template_7cf6ac9e87f1e5504c1fc99d0ebb3507</sys_update_name>
+        <sys_update_version display_value="sp_ng_template_7cf6ac9e87f1e5504c1fc99d0ebb3507">cea864128735e5504c1fc99d0ebb3534</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-03-27 14:44:38</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
