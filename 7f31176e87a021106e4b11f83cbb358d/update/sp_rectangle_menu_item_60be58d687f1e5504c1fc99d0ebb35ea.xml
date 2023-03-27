@@ -48,7 +48,7 @@ while (z.next()) {
 		continue;
 	
   //a.short_description = rec.short_description + "";
-  a.short_description = rec.cat_item.name + "";
+  a.short_description = rec.cat_item.name + " - " + rec.requested_for.name+"";
   if (rec.getRecordClassName() == "sc_request") {
     var items = new GlideRecord("sc_req_item");
     items.addQuery("request", rec.getUniqueValue());
@@ -64,7 +64,7 @@ while (z.next()) {
   $sp.getRecordValues(a, z, 'sys_id,sys_updated_on');
   a.number = rec.getDisplayValue();
   a.__table = z.getRecordClassName();
-  a.type = 'approval';
+  a.type = 'cc_approval';
   a.href = '?id=cc_approval&table=sysapproval_approver&sys_id='+a.sys_id;
   t.items.push(a);
   t.count++;
@@ -91,14 +91,14 @@ function getRecordBeingApproved(gr) {
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-27 13:55:41</sys_created_on>
         <sys_id>60be58d687f1e5504c1fc99d0ebb35ea</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>Approvals</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_rectangle_menu_item_60be58d687f1e5504c1fc99d0ebb35ea</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-27 14:24:38</sys_updated_on>
+        <sys_updated_on>2023-03-27 14:52:50</sys_updated_on>
         <table/>
         <type>scripted</type>
         <url/>
