@@ -11,6 +11,11 @@
 		c.eventWidget = response;
 		$rootScope.$emit('approval_clear',data.all_clear);
 		console.log('broadcasting approval_clear state: '+data.all_clear);
+
+		if(c.data.exception_record){
+			console.log('Exception record found: '+JSON.stringify(data.exception_record));
+			$rootScope.$emit('exception_record',data.exception_record);
+		}
 	});
 	//console.log('broadcasting ID '+value);
 		
@@ -71,9 +76,12 @@
 		data.all_clear = false;
 		return;
 	}
+	//console.log('state: '+gr.getValue('state'));
+	data.approval_state = gr.getValue('state') == 'approved';
 
 	var t = {};
 	t = $sp.getFieldsObject(task, 'number,cat_item,short_description,opened_by,requested_by,start_date,end_date,quantity,price,recurring_price,recurring_frequency');
+	
 	t.table = task.getLabel();
 	t.sys_id = task.getUniqueValue();
 	if(t.cat_item.value == cat_rsvp){
@@ -86,14 +94,13 @@
 	data.type = t.type;
 
 	if(data.type == 'event'){
-		console.log(data.details);
+		//console.log(data.details);
 		var event_choice = data.details.find(o => o.name == 'club_event');
 		console.log(event_choice);
 		var ref = getRefData(event_choice.table,event_choice.value);
 		
 		data.event = {
 			event_id: ref.sys_id.toString(),
-			short_description: ref.short_description.toString(),
 			slots: ref.slots.toString()
 
 		};
@@ -103,6 +110,16 @@
 		data.banner_msg = 'This event has available capacity and can be safely approved.';
 		if(!data.all_clear){
 			data.banner_msg = 'This event has reached capacity. Approval will increase the max capacity.';
+			// data.exception_record = {
+			// 	table: ,
+			// 	record: data.event,
+			// 	field: 'slots'
+			// };
+			data.exception_record = {
+				table: event_choice.table,
+				record: data.event,
+				msg: data.banner_msg
+			};
 		}
 		//var ref_table 
 		//data.ref = getRefData(data.details.)
@@ -130,7 +147,6 @@
 
 	  if (itemsGR) {
 		  item.variables = new global.GlobalServiceCatalogUtil().getVariablesForTask(itemsGR, true);
-		  //console.log(item.variables);
 		  item.variableSummarizerWidget = $sp.getWidget('sc-variable-summarizer', {'variables' : item.variables, 'toggle' : false, 'task': t.number.value});
 		}
 	  items[idx] = item;
@@ -210,14 +226,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:15:07</sys_created_on>
         <sys_id>42107b2987b565504c1fc99d0ebb35ba</sys_id>
-        <sys_mod_count>81</sys_mod_count>
+        <sys_mod_count>90</sys_mod_count>
         <sys_name>CC Approval Record</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_42107b2987b565504c1fc99d0ebb35ba</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 02:07:03</sys_updated_on>
+        <sys_updated_on>2023-03-27 13:50:23</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.isValid">
   ${Record not found}
 </div>
@@ -235,13 +251,13 @@
     <div ng-if="::data.approver"><label>${Approver}</label> {{::data.approver}}</div>
     </div>
   	<div class="approval-details">
-        <div ng-if="data.event">
+        <!--<div ng-if="data.event">-->
           <h2>Event Details</h2>
           <div>
             <sp-widget widget="c.eventWidget"></sp-widget>
           </div>
           <h4><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.attendees_curr_count}} attendees out of {{data.event.slots}} allowed</h4>
-        </div>
+        <!--</div>-->
 
         <div ng-if="data.items.length > 0">
           <h3 class="h4">${Items in this Request}</h3>
@@ -256,7 +272,7 @@
 
           </div>
         </div>
-		<div id="banners">
+		<div id="banners" ng-if="!data.approval_state">
           <div class="banner {{data.all_clear ? 'banner-success' : 'banner-warning'}}">
             <span>
               <i ng-if="!data.all_clear" class="ri-error-warning-fill"></i>

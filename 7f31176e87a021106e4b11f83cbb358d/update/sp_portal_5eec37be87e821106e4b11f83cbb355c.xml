@@ -2,7 +2,7 @@
     <sp_portal action="INSERT_OR_UPDATE">
         <css_variables/>
         <dark_theme/>
-        <default>false</default>
+        <default>true</default>
         <enable_ais>false</enable_ais>
         <enable_favorites>false</enable_favorites>
         <hide_portal_name>false</hide_portal_name>
@@ -10,7 +10,7 @@
         <icon/>
         <kb_knowledge_base/>
         <kb_knowledge_page/>
-        <login_page display_value="landing">36c61807cb31120000f8d856634c9ca9</login_page>
+        <login_page display_value="cc_login">e3d3541e87b1e5504c1fc99d0ebb352c</login_page>
         <logo>524ac525876de5104c1fc99d0ebb35be</logo>
         <notfound_page display_value="404">3c2c9063cb11020000f8d856634c9c1f</notfound_page>
         <quick_start_config/>
@@ -25,14 +25,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:06:11</sys_created_on>
         <sys_id>5eec37be87e821106e4b11f83cbb355c</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Commodore's Club</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_portal_5eec37be87e821106e4b11f83cbb355c</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-12 22:55:00</sys_updated_on>
+        <sys_updated_on>2023-03-27 13:10:04</sys_updated_on>
         <theme display_value="CC Theme">0c58f2a88774a5104c1fc99d0ebb35b2</theme>
         <title>Commodore's Club</title>
         <ts_index_group/>

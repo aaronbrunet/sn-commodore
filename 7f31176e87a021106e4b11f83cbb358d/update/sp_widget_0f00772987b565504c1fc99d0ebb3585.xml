@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>other</category>
-        <client_script><![CDATA[function client($scope, spUIActionsExecuter, spUtil) {
+        <client_script><![CDATA[function client($scope, spUIActionsExecuter, spUtil, spModal) {
 	var c = this;
 	
 	var ESIGNATURE = {
@@ -33,20 +33,33 @@
 					}
 				});
 		}
-	}	
+	}
+
+	c.exceptionAction = function(state){
+		if(c.data.exception_record){
+			var msg = c.data.exception_record.msg + '<br/>Are you <b>sure</b> you want to do this?';
+			spModal.open({
+				title: 'Approve Exception Request',
+				message: msg,
+				buttons: [
+					{label: 'Cancel', cancel: true},					
+					{label: 'Approve exception', primary: true, class:'cc-button-warning'}
+					]
+			}).then(function(){
+				c.action(state);
+			});
+		}
+
+	};	
 
 	$rootScope.$on('approval_clear', function(event,parms) {
 		console.log('Receiving approval_clear: '+parms);
 		$scope.data.all_clear = parms;
-		
-		// 	$scope.data.action = 'cat_item';
-		// 	$scope.data.event_id = parms;
-		// 	$scope.data.input = {
-		// 		type: 'cat_item',
-		// 		event_id: parms
-		// };
-			// spUtil.update($scope).then(function(e){	
-			// });
+	});
+
+	$rootScope.$on('exception_record', function(event,parms) {
+		console.log('Receiving exception_record: '+JSON.stringify(parms));
+		$scope.data.exception_record = parms;
 	});
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -66,7 +79,16 @@
   flex-grow: 1;&#13;
   width: -webkit-fill-available;&#13;
   margin: 0.6rem 0;&#13;
-}</css>
+}&#13;
+&#13;
+&#13;
+.field-label,.field-span {&#13;
+	display: inline-block;&#13;
+}&#13;
+.field-label {&#13;
+	font-weight: bold;&#13;
+}&#13;
+</css>
         <data_table>sp_instance</data_table>
         <demo_data>{
   "data": {
@@ -121,7 +143,7 @@
 	if (input && input.op && userApprovalAccess) {
 		gr.state = input.op;
 		data.updateID = gr.update();
-		if (global.GlideStringUtil.nil(data.updateID)) {
+		if (!data.updateID || data.updateID == '') {
 			// update failed so fetch again for correct values
 			gr = $sp.getRecord();
 		}
@@ -176,14 +198,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:14:55</sys_created_on>
         <sys_id>0f00772987b565504c1fc99d0ebb3585</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>CC Approval Info</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_0f00772987b565504c1fc99d0ebb3585</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 02:17:46</sys_updated_on>
+        <sys_updated_on>2023-03-27 13:45:58</sys_updated_on>
         <template><![CDATA[<div ng-if="c.data.isValid" class="panel panel-{{::c.options.color}} b">  
   <div class="panel-heading">
     <h2 class="panel-title" ng-if="c.data.isMine && (c.data.state == 'requested')">${This request requires your approval}</h2>
@@ -195,8 +217,8 @@
     <form ng-submit="$event.preventDefault()" class="form-horizontal">
       <div ng-if="c.data.fields.length > 0">
         <div ng-repeat="field in c.data.fields" class="m-b-xs" ng-if="field.value">
-          <label class="m-n">{{field.label}}</label>
-          <span ng-switch="field.type">
+          <label class="m-n field-label">{{field.label}}</label>
+          <span ng-switch="field.type" class="field-span">
             <div ng-switch-when="glide_date_time" title="{{field.display_value}}"><sn-time-ago timestamp="::field.value"></sn-time-ago></div>
             <div ng-switch-default >{{field.display_value}}</div>
           </span>
@@ -204,7 +226,7 @@
       </div>
       <div ng-if="c.data.isMine && (c.data.state == 'requested')" class="question">
         <button ng-if="data.all_clear" type="button" name="approve" class="btn btn-primary btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('approved')">${Approve}</button>
-        <button ng-if="!data.all_clear" type="button" name="approve" class="btn cc-button-warning btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('approved')">${Approve Exception}</button>
+        <button ng-if="!data.all_clear" type="button" name="approve" class="btn cc-button-warning btn-question" ng-disabled="c.approvalInProgress" ng-click="c.exceptionAction('approved')">${Approve Exception}</button>
         <div class="spacer"></div>
         <button type="button" name="reject" class="btn btn-default btn-question" ng-disabled="c.approvalInProgress" ng-click="c.action('rejected')">${Reject}</button>
       </div>

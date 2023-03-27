@@ -2,7 +2,7 @@
     <element db_object_id="cd57bf7a87e821106e4b11f83cbb35ce" label="Club Event Attendances" max_length="40" name="x_snc_commodore_0_club_event_attendances" type="collection">
         <element display="true" label="Event" mandatory="true" max_length="32" name="event" reference="x_snc_commodore_0_events" type="reference"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
-        <element choice="3" default="pending" label="State" max_length="40" name="state" read_only="true" type="choice">
+        <element choice="3" default="pending" label="State" mandatory="true" max_length="40" name="state" read_only="true" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
                 <element inactive_on_update="false" label="Approved" sequence="1" value="approved"/>
