@@ -226,14 +226,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:15:07</sys_created_on>
         <sys_id>42107b2987b565504c1fc99d0ebb35ba</sys_id>
-        <sys_mod_count>90</sys_mod_count>
+        <sys_mod_count>92</sys_mod_count>
         <sys_name>CC Approval Record</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_42107b2987b565504c1fc99d0ebb35ba</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-27 13:50:23</sys_updated_on>
+        <sys_updated_on>2023-03-27 13:54:13</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.isValid">
   ${Record not found}
 </div>
@@ -251,13 +251,13 @@
     <div ng-if="::data.approver"><label>${Approver}</label> {{::data.approver}}</div>
     </div>
   	<div class="approval-details">
-        <!--<div ng-if="data.event">-->
-          <h2>Event Details</h2>
+        <div ng-if="data.event">
+          <h4>Event Details</h4>
           <div>
             <sp-widget widget="c.eventWidget"></sp-widget>
           </div>
-          <h4><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.attendees_curr_count}} attendees out of {{data.event.slots}} allowed</h4>
-        <!--</div>-->
+          <h4 ng-if="!data.approval_state"><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.attendees_curr_count}} attendees out of {{data.event.slots}} allowed</h4>
+        </div>
 
         <div ng-if="data.items.length > 0">
           <h3 class="h4">${Items in this Request}</h3>
