@@ -23,11 +23,11 @@
 		
 		var chkEvent = new GlideRecord('x_snc_commodore_0_events');
 		chkEvent.get(id);
-		console.log(a_list);
-		console.log(chkEvent.slots);
+		//console.log(a_list);
+		//console.log(chkEvent.slots);
 		if(a_list.length >= chkEvent.slots){
 			$scope.page.g_form.setValue('allow_signup','false');
-			console.log('no more attendees');
+			//console.log('no more attendees');
 		}
 
 	};
@@ -214,14 +214,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>199</sys_mod_count>
+        <sys_mod_count>200</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 01:37:31</sys_updated_on>
+        <sys_updated_on>2023-03-27 23:54:50</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') ? 'event-live' : ''}}">
   
   <div ng-if="!data.event || data.event ==''">
