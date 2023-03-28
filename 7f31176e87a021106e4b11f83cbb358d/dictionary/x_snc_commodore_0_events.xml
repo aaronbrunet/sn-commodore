@@ -2,10 +2,10 @@
     <element db_object_id="4f0ce0ba87a021106e4b11f83cbb35b1" label="Club Events" max_length="40" name="x_snc_commodore_0_events" type="collection">
         <element active="false" label="Attendees" max_length="10000" name="attendees" reference="sys_user" type="glide_list"/>
         <element label="Beverage Slots" mandatory="true" max_length="40" name="beverage_count" type="integer"/>
+        <element default="true" label="Blind Event" max_length="255" name="blind_event" type="boolean"/>
         <element label="Description" max_length="5000" name="description" type="string"/>
         <element active="false" label="Beverages" max_length="10000" name="drinks" reference="x_snc_commodore_0_beverage" type="glide_list"/>
         <element label="Drink Names Hidden" max_length="40" name="drink_names_hidden" read_only="true" type="boolean"/>
-        <element label="Live" max_length="255" name="live" type="boolean"/>
         <element label="Location" max_length="5000" name="location" type="string"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
         <element label="Required" max_length="40" name="required" type="boolean"/>
