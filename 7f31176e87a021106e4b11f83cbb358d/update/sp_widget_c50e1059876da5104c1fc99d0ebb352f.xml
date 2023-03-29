@@ -5,7 +5,7 @@
   /* widget controller */
   var c = this;
  var data = c.data;
-		spUtil.get("cc-event-card",{action:'cat_item',event_id:data.event,'display':'feature'}).then(function(response){
+		spUtil.get("cc-event-card",{action:'cellar_status',event_id:data.event,display:'feature'}).then(function(response){
 			c.eventWidget = response;
 		});
 };]]></client_script>
@@ -61,38 +61,40 @@
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
 	data.user = gs.getUserID();
-	data.event = '';
 	data.live = false;
-	var live = new GlideRecord('x_snc_commodore_0_events');
-	live.addQuery('state','live');
-	live.query();
-	if(live.next()){
-		console.log('live event found');
-		var registered = new GlideRecord('x_snc_commodore_0_club_event_attendances');
-		registered.addQuery('event',live.sys_id);
-		registered.addQuery('user',data.user);
-		registered.query();
-		if(registered.next()){
-			
-			data.href = "/cc?id=live_event&sys_id="+data.event;
-		} else {
-			data.href = "/cc?id=event&sys_id="+data.event;
-		}
-		data.event = live.getValue('sys_id');
+
+	function getEvent(user){
+		var live = new GlideRecord('x_snc_commodore_0_events');
+		live.addQuery('state','live');
+		live.query();
+		if(live.next()){
+			data.event = live.getValue('sys_id');
 			data.live = true;
-	} else {
-		console.log('no live event found');
-		data.live = false;
-		var next = new GlideRecord('x_snc_commodore_0_events');
-		next.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
-		next.orderBy('start');
-		next.query();
-		if(next.next()){
-			data.event = next.getValue('sys_id');
-			data.href = "/cc?id=event&sys_id="+data.event;
+			console.log('live event found');
+			var registered = new GlideRecord('x_snc_commodore_0_club_event_attendances');
+			registered.addQuery('event',live.sys_id);
+			registered.addQuery('user',user);
+			registered.query();
+			if(registered.next()){				
+				data.href = "/cc?id=live_event&sys_id="+data.event;
+			} else {
+				data.href = "/cc?id=event&sys_id="+data.event;
+			}			
+		} else {
+			console.log('no live event found');
+			data.live = false;
+			var next = new GlideRecord('x_snc_commodore_0_events');
+			next.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
+			next.orderBy('start');
+			next.query();
+			if(next.next()){
+				data.event = next.getValue('sys_id');
+				data.href = "/cc?id=event&sys_id="+data.event;
+			}
 		}
 	}
 
+	getEvent(data.user);
 	data.cellar_img = data.live ? 'cc-cellar-open-md.png' : 'cc-cellar-closed-md.png';
 
 })();]]></script>
@@ -101,14 +103,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>42</sys_mod_count>
+        <sys_mod_count>49</sys_mod_count>
         <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-22 01:03:59</sys_updated_on>
+        <sys_updated_on>2023-03-29 02:01:46</sys_updated_on>
         <template><![CDATA[<div class="cc-panel emphasis">
   <div ng-if="data.event" class="cc-cellar-card">
 	<div class="left-area">

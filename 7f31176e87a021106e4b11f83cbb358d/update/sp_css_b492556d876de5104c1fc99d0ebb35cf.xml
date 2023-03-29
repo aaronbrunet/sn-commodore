@@ -54,11 +54,15 @@
 }&#13;
 &#13;
 .cc-list-row  {&#13;
-  margin-top: 2rem;&#13;
+  margin: 2rem 0;&#13;
   display: grid; &#13;
   grid-template-columns: 1fr 1fr 1fr; &#13;
   /*grid-template-rows: 1fr 1fr; */&#13;
   gap: 1rem;&#13;
+}&#13;
+&#13;
+.cc-controls-row {&#13;
+	display: grid;&#13;
 }&#13;
 &#13;
 .event-card {&#13;
@@ -148,7 +152,16 @@
   }&#13;
 }&#13;
 &#13;
-&#13;
+/* Alignment */&#13;
+.cc-end {&#13;
+	justify-self: end;&#13;
+}&#13;
+.cc-start {&#13;
+	justify-self: start;&#13;
+}&#13;
+.cc-center {&#13;
+	justify-self: center;&#13;
+}&#13;
 &#13;
 /* Buttons &amp; Icons */&#13;
 &#13;
@@ -248,13 +261,13 @@ i {&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 23:31:41</sys_created_on>
         <sys_id>b492556d876de5104c1fc99d0ebb35cf</sys_id>
-        <sys_mod_count>45</sys_mod_count>
+        <sys_mod_count>47</sys_mod_count>
         <sys_name>cc-css</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_css_b492556d876de5104c1fc99d0ebb35cf</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-26 02:22:26</sys_updated_on>
+        <sys_updated_on>2023-03-29 01:36:40</sys_updated_on>
     </sp_css>
 </record_update>

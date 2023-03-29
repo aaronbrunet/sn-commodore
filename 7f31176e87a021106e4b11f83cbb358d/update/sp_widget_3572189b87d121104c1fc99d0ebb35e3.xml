@@ -46,7 +46,12 @@
 #edit-btn {&#13;
 	float: right;&#13;
     padding: 0 2rem;&#13;
-}</css>
+}&#13;
+&#13;
+.list-card {&#13;
+	height: 25rem;&#13;
+}&#13;
+</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -59,7 +64,7 @@
   
 }]]></link>
         <name>CC Event Card</name>
-        <option_schema>[{"displayValue":"Club Events","name":"event_id","section":"Data","label":"Event ID","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"display","section":"Presentation","default_value":"full","label":"Display","type":"choice","choices":[{"label":"full","value":"full"},{"label":"feature","value":"feature"},{"label":"list-card","value":"list-card"},{"label":"list-compact","value":"list-compact"},{"label":"modal","value":"modal"}]}]</option_schema>
+        <option_schema>[{"displayValue":"Club Events","name":"event_id","section":"Data","label":"Event ID","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"display","section":"Presentation","default_value":"full","label":"Display","type":"choice","choices":[{"label":"full","value":"full"},{"label":"feature","value":"feature"},{"label":"list-card","value":"list-card"},{"label":"list-compact","value":"list-compact"},{"label":"modal","value":"modal-card"}]}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
@@ -76,14 +81,16 @@
 
 	//console.log(input);
 	if(input && input.event_id != ''){
+		data.loadType = 'input';
 		// console.log('input received');
 		// console.log(input);
 		data.event = input.event_id;
-		data.cat_item = true;
+		data.cat_item = input.action == 'cat_item';
 		data.options.display = input.display;
 		buildCard(data.event);
 	}
 	else if(input && input.action == 'widget_schema'){
+		data.loadType = 'input + widget_schema';
 		// console.log('schema received');
 		if(options && options.event_id && options.event_id != ''){
 			// console.log('getting options event id: '+options.event_id);
@@ -92,6 +99,7 @@
 		}
 	} 
 	else if (!input && ($sp.getParameter('id')=='event' || $sp.getParameter('id')=='live_event') && $sp.getParameter('sys_id')!=''){
+		data.loadType = 'id';
 		//console.log('no input received');
 		data.event = $sp.getParameter('sys_id');
 		data.page_id = $sp.getParameter('id');
@@ -102,6 +110,7 @@
 
 	}
 	else if(options && options.event_id != ''){
+		data.loadType = 'options';
 		// console.log('options received');
 		// console.log(options);
 		data.event = options.event_id;
@@ -110,6 +119,7 @@
 		buildCard(data.event);
 	}
 	else {
+		data.loadType = 'error';
 		// console.log("Formatting error");
 		// console.log("Input:");
 		// console.log(input);
@@ -214,16 +224,15 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>202</sys_mod_count>
+        <sys_mod_count>217</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-29 01:25:08</sys_updated_on>
-        <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') ? 'event-live' : ''}}">
-  
+        <sys_updated_on>2023-03-29 02:10:50</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') && 'event-live'}} {{data.options.display}}">
   <div ng-if="!data.event || data.event ==''">
   	<h2 class="cc-title">No event found</h2>
   </div>
@@ -247,11 +256,11 @@ function buildCard(event_id){
       	<h1 class="gold">
       		{{data.short_description.display_value}}
       	</h1>        
-      	<div ng-if="data.options.display!='list-card'" class="event-description {{(data.options.display == 'full' || data.options.display == 'modal') && 'full'}}">
+      	<div ng-if="data.options.display!='list-card'" class="event-description {{(data.options.display == 'full' || data.options.display == 'modal-card') && 'full'}}">
       		<p>{{data.description.display_value}}</p>
       	</div>
       </div>
-      <div ng-if="data.options.display == 'full' || data.options.display == 'modal')">
+      <div ng-if="data.options.display == 'full' || data.options.display == 'modal'">
         <div ng-if="!data.cat_item"><i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}</div>
         <div ng-if="data.required"><i class="ri-alert-fill"></i>This event is required</div>  
         <div ng-if="data.registered && !data.cat_item"><i class="ri-check-line"></i>You've RSVP'd to this event.</div>
@@ -275,11 +284,11 @@ function buildCard(event_id){
       </div>
     </div>
     
-    <div ng-if="(data.options.display == 'full'|| data.options.display == 'feature') && !data.cat_item && !data.page_id.includes('event')" class="cc-box event-join">
+    <div ng-if="(data.options.display == 'full' || data.options.display == 'feature') && !data.cat_item && !data.page_id.includes('event')" class="cc-box event-join">
       <a href="{{data.event_href}}" class="cc-button-primary cc-button">{{data.live ? 'Join Live Event' : 'View Event Page'}} <i class="ri-arrow-right-s-line"></i></a>
     </div>
     
-    <div ng-if="data.options.display != 'list-compact' && data.options.display != 'list-card' && !data.cat_item && data.page_id != 'live_event'">
+    <div ng-if="data.options.display == 'full' && !data.cat_item && data.page_id != 'live_event'">
       <div class="cc-box" ng-if="!data.past">
         <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}" class="cc-button-primary cc-button">RSVP to this Event</a>
         <a ng-if="data.registered" href="{{data.signup_href}}" class="cc-button-warning cc-button">Modify RSVP</a>
