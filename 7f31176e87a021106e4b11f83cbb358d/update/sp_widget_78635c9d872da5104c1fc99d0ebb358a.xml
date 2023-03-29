@@ -135,18 +135,18 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>101</sys_mod_count>
+        <sys_mod_count>102</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-29 01:44:59</sys_updated_on>
+        <sys_updated_on>2023-03-29 16:47:40</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">{{data.options.title}}</h3>
   <div class="cc-list-row">
-    <div ng-repeat="e in data.widgets | limitTo : data.limit">
+    <div class="cc-list-items" ng-repeat="e in data.widgets | limitTo : data.limit">
       <div ng-click="c.clickCard(e,e.options)">
       	<sp-widget widget="e"></sp-widget>
       </div>
