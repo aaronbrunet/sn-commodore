@@ -59,6 +59,7 @@
   grid-template-columns: 1fr 1fr 1fr; &#13;
   /*grid-template-rows: 1fr 1fr; */&#13;
   gap: 1rem;&#13;
+  &#13;
 }&#13;
 &#13;
 .cc-controls-row {&#13;
@@ -250,14 +251,20 @@ i {&#13;
 /* Breakpoints */&#13;
 &#13;
 @media (max-width: 767px){&#13;
-	.cc-list-row  {&#13;
+	.cc-list-row {&#13;
 		display: grid; &#13;
         grid-template-rows: 1fr;&#13;
         grid-template-columns: repeat(3, 1fr);&#13;
         overflow-x: auto;&#13;
         padding: 2rem;&#13;
         scroll-snap-type: x mandatory;&#13;
+	    border-radius: 2rem;&#13;
+        box-shadow: inset 0 0 50px rgba(0,0,0,.05);&#13;
+&#13;
   }&#13;
+  .cc-list-row .list-card {&#13;
+      	margin-top: 0;&#13;
+      }&#13;
   .cc-list-items {&#13;
   	scroll-snap-align: center;&#13;
   }&#13;
@@ -271,13 +278,13 @@ i {&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 23:31:41</sys_created_on>
         <sys_id>b492556d876de5104c1fc99d0ebb35cf</sys_id>
-        <sys_mod_count>48</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>cc-css</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_css_b492556d876de5104c1fc99d0ebb35cf</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-29 16:48:00</sys_updated_on>
+        <sys_updated_on>2023-03-29 17:16:22</sys_updated_on>
     </sp_css>
 </record_update>
