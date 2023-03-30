@@ -12,11 +12,45 @@
 		spUtil.update($scope).then(function(e){				
 			spUtil.get("cc-event-card",{action:'cellar_status',event_id:data.event,display:'feature'}).then(function(response){
 				c.eventWidget = response;
-				$scope.data.loading = false;			
+				$scope.data.loading = false;
+				//$scope.data.cellar_img = $scope.data.cellar_img_lg;			
 			});
 		});
  	};
 	 $scope.populate();
+
+	 $scope.loadImg =  function (){
+		 //var imgLoading = document.querySelector("img[cc-data-src]");
+		 var imgLoading = document.getElementById("cellar-img-lg");
+		 imgLoading.complete ? checkLoaded() : imgLoading.addEventListener("load", checkLoaded,false);
+		 function checkLoaded(){
+			 //console.log()
+			 var img = document.getElementById("cellar-img-lg");
+			 			 console.log(img.complete);
+			 var sm_img = document.getElementById("cellar-img");
+			  var loaded = img.complete;
+			  if(loaded){
+			// 	 img.setAttribute("src", img.getAttribute("cc-data-src"));
+			// 	 img.removeAttribute("cc-data-src");
+			//  }
+					img.removeEventListener('load',checkLoaded);
+					img.classList.remove("hidden");
+					sm_img.classList.add("hidden");
+					console.log('swapped');
+			////img.setAttribute("src", img.getAttribute("cc-data-src"));
+			  } else {
+				img.onload = function(){
+					img.removeEventListener('load',checkLoaded);
+					img.classList.remove("hidden");
+					sm_img.classList.add("hidden");
+					console.log('swapped');
+				//img.removeAttribute("cc-data-src");
+
+				}
+			  }
+		 };
+	 }
+	 $scope.loadImg();
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>.cc-cellar-card {&#13;
@@ -60,6 +94,14 @@
 }&#13;
 .tall {&#13;
 	height: 30%;&#13;
+}&#13;
+&#13;
+.hidden {&#13;
+	display: none;&#13;
+}&#13;
+&#13;
+#cellar-img-lg {&#13;
+	&#13;
 }&#13;
 &#13;
 @keyframes skeleton-loading {&#13;
@@ -141,6 +183,9 @@
 		getEvent(data.user);
 	}
 	data.cellar_img = data.live ? 'cc-cellar-open-md.png' : 'cc-cellar-closed-md.png';
+	data.cellar_img_lg = data.live ? 'cc-cellar-open.png' : 'cc-cellar-closed.png';
+
+	
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -148,21 +193,23 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>61</sys_mod_count>
+        <sys_mod_count>81</sys_mod_count>
         <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-30 02:02:29</sys_updated_on>
+        <sys_updated_on>2023-03-30 03:25:00</sys_updated_on>
         <template><![CDATA[<div class="cc-panel emphasis">
   <h1 class="cc-cellar-title">The Cellar Is {{(data.event && data.live) ? 'Open!' : 'Closed'}}</h1>
   <div class="cc-cellar-card">
 	<div class="left-area">
   		
       	<div class="cellar-img">
-    		<img src="{{data.cellar_img}}" alt="Cellar Door">
+          	<img id="cellar-img" src="{{data.cellar_img}}" cc-data-src="{{data.cellar_img_lg}}" alt="Cellar Door">
+          <img id="cellar-img-lg" src="{{data.cellar_img_lg}}" cc-data-src="{{data.cellar_img_lg}}" alt="Cellar Door" class="hidden">
+			
     	</div>
     </div>    
     <div class="right-area">
