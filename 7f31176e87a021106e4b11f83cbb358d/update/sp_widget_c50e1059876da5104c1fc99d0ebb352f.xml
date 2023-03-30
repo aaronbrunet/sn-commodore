@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function(spUtil) {
+        <client_script><![CDATA[api.controller=function(spUtil, $scope) {
   /* widget controller */
   var c = this;
  var data = c.data;
-		spUtil.get("cc-event-card",{action:'cellar_status',event_id:data.event,display:'feature'}).then(function(response){
-			c.eventWidget = response;
+ $scope.populate = function(){
+	 
+		$scope.data.loading = true;
+		$scope.data.action = 'getEvent';
+		spUtil.update($scope).then(function(e){				
+			spUtil.get("cc-event-card",{action:'cellar_status',event_id:data.event,display:'feature'}).then(function(response){
+				c.eventWidget = response;
+				$scope.data.loading = false;			
+			});
 		});
+ 	};
+	 $scope.populate();
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>.cc-cellar-card {&#13;
@@ -30,6 +39,29 @@
 }&#13;
 .right-area {&#13;
 	padding: 0 4rem;&#13;
+}&#13;
+&#13;
+.feature {&#13;
+    height: 38rem;&#13;
+}&#13;
+&#13;
+.loading-body {&#13;
+  height: 15%;&#13;
+  display: block;&#13;
+  animation: skeleton-loading .5s linear infinite alternate;&#13;
+  margin: 2rem 0;&#13;
+}&#13;
+.tall {&#13;
+	height: 30%;&#13;
+}&#13;
+&#13;
+@keyframes skeleton-loading {&#13;
+  0% {&#13;
+    background-color: hsl(200, 20%, 80%);&#13;
+  }&#13;
+  100% {&#13;
+    background-color: hsl(200, 20%, 95%);&#13;
+  }&#13;
 }&#13;
 &#13;
 &#13;
@@ -94,7 +126,9 @@
 		}
 	}
 
-	getEvent(data.user);
+	if(input && input.action == 'getEvent'){
+		getEvent(data.user);
+	}
 	data.cellar_img = data.live ? 'cc-cellar-open-md.png' : 'cc-cellar-closed-md.png';
 
 })();]]></script>
@@ -103,27 +137,40 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 01:07:44</sys_created_on>
         <sys_id>c50e1059876da5104c1fc99d0ebb352f</sys_id>
-        <sys_mod_count>49</sys_mod_count>
+        <sys_mod_count>59</sys_mod_count>
         <sys_name>CC Cellar Status</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_c50e1059876da5104c1fc99d0ebb352f</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-29 02:01:46</sys_updated_on>
+        <sys_updated_on>2023-03-30 01:44:40</sys_updated_on>
         <template><![CDATA[<div class="cc-panel emphasis">
-  <div ng-if="data.event" class="cc-cellar-card">
+  <div class="cc-cellar-card">
 	<div class="left-area">
-  		<h1>The Cellar Is {{data.live ? 'Open!' : 'Closed'}}</h1>
+  		<h1>The Cellar Is {{(data.event && data.live) ? 'Open!' : 'Closed'}}</h1>
       	<div class="cellar-img">
     		<img src="{{data.cellar_img}}" alt="Cellar Door">
     	</div>
     </div>    
     <div class="right-area">
-      <h2>{{data.live ? 'Live':'Next'}} Event</h2>
-      <sp-widget widget="c.eventWidget"/>
+      <h2>{{(data.event && data.live) ? 'Live':'Next'}} Event</h2>
+      <div ng-switch="data.loading">
+        <div ng-switch-when="true">
+          <div class="cc-panel feature loading">
+            <div class="loading-body"></div>
+            <div class="loading-body tall"></div>
+            <div class="loading-body"></div>
+            <div class="loading-body"></div>
+          </div>
+        </div>
+      	<div ng-switch-when="false">
+			<sp-widget widget="c.eventWidget"/>
+        </div>
+      </div>
     </div>
   </div>
+<!--
   <div ng-if="!data.event"  class="cc-cellar-card">
     <div class="left-area">
   		<h1>The Cellar Is Closed</h1>
@@ -135,6 +182,7 @@
       <sp-widget widget="c.eventWidget"/>
     </div>
   </div>
+-->
 </div>]]></template>
     </sp_widget>
 </record_update>
