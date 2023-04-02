@@ -119,6 +119,8 @@
 	data.live = false;
 	data.options = options;
 
+	data.me = gs.getUserID();
+
 	//console.log(input);
 	if(input && input.event_id != ''){
 		data.loadType = 'input';
@@ -189,7 +191,8 @@ function buildCard(event_id){
 			// Pull essential fields and write to named fields in data obj
 			var fields = $sp.getFields(event, 'number,slots,beverage_count,short_description,description,theme,sys_created_on,location');
 			data.live = event.getValue('state') == 'live';
-
+			data.blind = event.getValue('blind');
+			data.required = event.getValue('required') == 1;
 			data.voting_open = event.getValue('voting_open') == 1;
 			data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
 			
@@ -200,7 +203,8 @@ function buildCard(event_id){
 				data.event_href = "/cc?id=live_event&sys_id="+event_id;
 			}
 			
-			data.required = event.getValue('required') == 1;
+			
+
 			for(i in fields){
 				var field = fields[i];
 				data[field.name] = field;
@@ -226,9 +230,11 @@ function buildCard(event_id){
 			data.beverage_curr_count = b_list.length;
 
 			data.registered = false;
-			if(a_list.indexOf(gs.getUserID())>-1){
+			if(a_list.indexOf(data.me)>-1){
 				data.registered = true;
 			}
+
+			data.rsvp_status = new CCUtils().getMyRSVPStatus(data.me,event_id);
 
 			//Vote info
 			data.my_vote = false;
@@ -239,7 +245,7 @@ function buildCard(event_id){
 			data.vote_count = getVotes.getRowCount();
 			while(getVotes.next()){
 					
-				if(getVotes.getValue('user') == gs.getUserID()){
+				if(getVotes.getValue('user') == data.me){
 					data.my_vote = true;
 				}
 				var vObj = {};
@@ -264,15 +270,16 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>230</sys_mod_count>
+        <sys_mod_count>233</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-02 01:46:29</sys_updated_on>
+        <sys_updated_on>2023-04-02 02:00:17</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') && 'event-live'}} {{data.options.display}}">
+  {{data.rsvp_status}}
   <div ng-if="!data.event || data.event ==''">
   	<h2 class="cc-title">No event found</h2>
   </div>
