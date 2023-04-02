@@ -71,6 +71,18 @@
   	margin: 0;&#13;
     display: grid;&#13;
     grid-template-columns: 1fr 1fr;&#13;
+    &#13;
+    .event-info {&#13;
+        overflow: hidden;&#13;
+    	white-space: nowrap;&#13;
+    	text-overflow: ellipsis;&#13;
+        &#13;
+        h1 {&#13;
+            overflow: hidden;&#13;
+    		white-space: nowrap;&#13;
+    		text-overflow: ellipsis;&#13;
+        }&#13;
+      }&#13;
   }&#13;
   &#13;
   .event-join {&#13;
@@ -252,14 +264,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>228</sys_mod_count>
+        <sys_mod_count>230</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-02 00:48:33</sys_updated_on>
+        <sys_updated_on>2023-04-02 01:46:29</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') && 'event-live'}} {{data.options.display}}">
   <div ng-if="!data.event || data.event ==''">
   	<h2 class="cc-title">No event found</h2>
