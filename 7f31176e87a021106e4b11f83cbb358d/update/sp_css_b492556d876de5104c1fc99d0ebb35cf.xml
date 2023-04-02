@@ -57,7 +57,6 @@
   margin: 2rem 0;&#13;
   display: grid; &#13;
   grid-template-columns: 1fr 1fr 1fr; &#13;
-  /*grid-template-rows: 1fr 1fr; */&#13;
   gap: 1rem;&#13;
   &#13;
 }&#13;
@@ -251,7 +250,7 @@ i {&#13;
 /* Breakpoints */&#13;
 &#13;
 @media (max-width: 767px){&#13;
-	.cc-list-row {&#13;
+	.cc-list-row.cards {&#13;
 		display: grid; &#13;
         grid-template-rows: 1fr;&#13;
         grid-template-columns: repeat(3, 1fr);&#13;
@@ -262,12 +261,53 @@ i {&#13;
         box-shadow: inset 0 0 50px rgba(0,0,0,.05);&#13;
 &#13;
   }&#13;
-  .cc-list-row .list-card {&#13;
+  .cc-list-row.cards .list-card {&#13;
       	margin-top: 0;&#13;
       }&#13;
   .cc-list-items {&#13;
   	scroll-snap-align: center;&#13;
   }&#13;
+  &#13;
+  .cc-list-row.list {&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+  &#13;
+  .list-compact .cc-box { &#13;
+    grid-template-columns: 1fr 1fr 1fr;&#13;
+    grid-template-rows: 1fr 1fr;&#13;
+    display: grid;&#13;
+    grid-column-gap: 0px;&#13;
+    grid-row-gap: 0px;&#13;
+    grid-template-areas:&#13;
+        'top top top'&#13;
+        'details details button';&#13;
+    &#13;
+    .cc-card-main-body {&#13;
+    	grid-area: top;&#13;
+        grid-template-columns: 1fr minmax(0,1fr) !important;&#13;
+      &#13;
+      .event-info {&#13;
+      	text-align: center;&#13;
+        overflow: hidden;&#13;
+    	white-space: nowrap;&#13;
+    	text-overflow: ellipsis;&#13;
+        &#13;
+        h1 {&#13;
+            overflow: hidden;&#13;
+    		white-space: nowrap;&#13;
+    		text-overflow: ellipsis;&#13;
+        }&#13;
+      }&#13;
+    }&#13;
+    .event-details {&#13;
+    	grid-area: details;&#13;
+    }&#13;
+    .event-join {&#13;
+    	grid-area: button;&#13;
+    }&#13;
+  &#13;
+  }&#13;
+  &#13;
   &#13;
   &#13;
   &#13;
@@ -278,13 +318,13 @@ i {&#13;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 23:31:41</sys_created_on>
         <sys_id>b492556d876de5104c1fc99d0ebb35cf</sys_id>
-        <sys_mod_count>55</sys_mod_count>
+        <sys_mod_count>64</sys_mod_count>
         <sys_name>cc-css</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_css_b492556d876de5104c1fc99d0ebb35cf</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-29 17:16:22</sys_updated_on>
+        <sys_updated_on>2023-04-02 01:39:09</sys_updated_on>
     </sp_css>
 </record_update>
