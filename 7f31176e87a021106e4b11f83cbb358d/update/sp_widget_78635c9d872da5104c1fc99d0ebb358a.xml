@@ -40,7 +40,7 @@
   
 }]]></link>
         <name>CC Event List</name>
-        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Events","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"},{"label":"all","value":"all"}]},{"name":"title","section":"Presentation","default_value":"Events","label":"Title","type":"string"},{"displayValue":"Club Events","name":"style","display_value_list":[],"section":"Presentation","default_value":"cards","label":"Style","type":"choice","choices":[{"label":"cards","value":"cards"},{"label":"list","value":"list"}],"value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}}]</option_schema>
+        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Events","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"},{"label":"all","value":"all"}]},{"name":"title","section":"Presentation","default_value":"Events","label":"Title","type":"string"},{"displayValue":"Club Events","name":"style","display_value_list":[],"section":"Presentation","default_value":"cards","label":"Style","type":"choice","choices":[{"label":"cards","value":"cards"},{"label":"list","value":"list"}],"value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"filter","section":"Data","default_value":"upcoming","label":"Filter","type":"choice","choices":[{"label":"upcoming","value":"upcoming"},{"label":"past","value":"past"}]}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
@@ -143,14 +143,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>113</sys_mod_count>
+        <sys_mod_count>115</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-02 00:49:50</sys_updated_on>
+        <sys_updated_on>2023-04-04 23:29:02</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">{{data.options.title}}</h3>
   <div class="cc-list-row {{data.options.style}}">
