@@ -43,15 +43,20 @@
   /* e.g., data.table = $sp.getValue('table'); */
 	
 	data.options = options;
+	console.log(data.options);
 	data.limit = data.options.limit;
 	data.bevs = [];
 	data.widgets = [];
 	data.event_page = false;
+
+	var constants = new x_snc_commodore_0.CCUtils().getConstants();
+	
 	if($sp.getParameter('id') == 'event'){
 		data.event_page = true;
 		data.modal_title = 'Cellar Treasure Details';
 	}
 	if($sp.getParameter('id') == 'live_event'){
+		data.event_page = true;
 		data.modal_title = 'Cast Your Vote!';
 	}
 	
@@ -60,9 +65,16 @@
 	var bevs = new GlideRecord('x_snc_commodore_0_beverage');	
 	if(data.options.event){
 		bevs.addQuery('event',data.options.event);
+		console.log('OPTIONS EVENT: '+data.options.event);
+		data.event = data.options.event;
 	} else if(!data.options.event && data.event_page && $sp.getParameter('sys_id')){
 		bevs.addQuery('event',$sp.getParameter('sys_id'));
+		data.event = $sp.getParameter('sys_id');
+		console.log('PARAM EVENT: '+data.event);
 	}
+	data.bev_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_BEVSIGNUP+"&event_id="+data.event;
+
+
 	bevs.orderBy('sys_created_on');
 	bevs.query();
 
@@ -84,23 +96,27 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 14:12:12</sys_created_on>
         <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
-        <sys_mod_count>30</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>CC Beverage List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-27 23:55:02</sys_updated_on>
-        <template><![CDATA[<div class="cc-panel" ng-if="data.bevs.length > 0">
+        <sys_updated_on>2023-04-04 01:20:59</sys_updated_on>
+        <template><![CDATA[<div class="cc-panel" >
     <h3 class="cc-title">Cellar Treasures {{data.event_page ? 'for this event' : ''}}</h3>
-    <div class="cc-list-row">
+    <div class="cc-list-row" ng-if="data.bevs.length > 0">
       <div ng-repeat="b in data.widgets | limitTo : data.limit">
         <div ng-click="c.clickCard(b,b.options)">
           <sp-widget widget="b" ></sp-widget>
         </div>
       </div>    
     </div>
+  	<div ng-if="!data.bevs || data.bevs.length == 0">
+      <h4>No Cellar Treasures</h4>
+      <a href="{{data.bev_href}}" class="cc-button-secondary cc-button" ng-if="data.event">Bring a Beverage</a>
+  	</div>
 </div>]]></template>
     </sp_widget>
 </record_update>
