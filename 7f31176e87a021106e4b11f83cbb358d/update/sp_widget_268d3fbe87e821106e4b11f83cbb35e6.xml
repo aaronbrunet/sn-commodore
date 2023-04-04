@@ -165,26 +165,16 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>179</sys_mod_count>
+        <sys_mod_count>182</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-19 17:53:39</sys_updated_on>
+        <sys_updated_on>2023-04-04 01:41:31</sys_updated_on>
         <template><![CDATA[<div>
-  <div>
-    <h2>Event Info</h2>
-    <div>
-      <a href="{{data.vote_href}}" ng-if="data.voting_open" class="cc-button-primary cc-button">{{data.vote_msg}}</a>
-    </div>
-    <div>
-      <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
-		<sn-time-ago timestamp="data.refreshed"/>
-    </div>
-  </div>  
-  <div ng-if="data.auth">
+  <div ng-if="data.auth" class="cc-panel">
     <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
       Go Live!
     </button>
@@ -199,20 +189,32 @@ data.votes = votes;
   		Drink names are {{data.drink_names_hidden ? 'hidden' : 'visible'}}
   	</button>
   </div>
-  <div>
+  <div class="cc-panel">
+    <div>
+        <div>
+          <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
+            <sn-time-ago timestamp="data.refreshed"/>
+        </div>
+  	</div>  
     <h3>Attendees</h3>
     <div ng-repeat="a in data.attendees">
     	<i class="ri-user{{a.status == 'founder' ? '-star' : ''}}-fill"></i>{{a.user.display_value}}
     </div>
-  </div>
+  
+  <!--
   <div>
     <h3>Beverages</h3>
     <div ng-repeat="b in data.beverages">
     	{{data.drink_names_hidden ? b.masked_name.display_value : b.name.display_value}}
     </div>
   </div>
+  -->
+  
   <div>
-    <h3>Beverage Votes</h3>
+    <div>
+          <a href="{{data.vote_href}}" ng-if="data.voting_open" class="cc-button-primary cc-button">{{data.vote_msg}}</a>
+        </div>
+    <h3>Votes</h3>
     <div ng-repeat="bv in data.bevVotes">
       <div>
     	   {{data.drink_names_hidden ? bv.masked_name.display_value : bv.name.display_value}}: {{bv.votes}} vote{{bv.votes==1?'':'s'}}
