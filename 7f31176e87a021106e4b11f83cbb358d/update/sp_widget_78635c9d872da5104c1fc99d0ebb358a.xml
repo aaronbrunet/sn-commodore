@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function(spModal,$window,$scope) {
+        <client_script><![CDATA[api.controller=function(spModal,$window,$scope,spUtil) {
   /* widget controller */
   var c = this;
   var data = c.data;
 
+	c.activeTab = 'upcoming';
+
+  c.filterList = function(action){
+	  	  c.activeTab = action;	 
+		  c.data.filter = action;
+		  c.server.update();
+  }
   c.clickCard = function(event,options){
 	  console.log([event,options]);
 	  if(data.allow_modal){
@@ -27,6 +34,10 @@
         <controller_as>c</controller_as>
         <css>.cc-list-row.list {&#13;
 	grid-template-columns: 1fr;&#13;
+}&#13;
+&#13;
+.control-panel {&#13;
+	margin: 2rem 0;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -54,87 +65,102 @@
 	data.events = [];
 	data.widgets = [];
 	
-	data.style = data.options.style == 'cards' ? 'list-card' : 'list-compact';
+	data.page = $sp.getParameter('id');
 
-	var events = new GlideRecord('x_snc_commodore_0_events');
-	events.addEncodedQuery('start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled');
-	events.orderBy('start');
-	events.query();	
-	
-	while(events.next()){
-		if(data.limit == 'all'){
-			data.limit = events.getRowCount();
-			console.log(data.limit);
-		}
-		var event = {};		
-			
-		event.sys_id = events.getValue('sys_id');
-		event.live = events.getValue('state') == 'live';
+	data.style = data.options.style == 'cards' ? 'list-card' : 'list-compact';	
+	var filter = '';
 
-		event.signup_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_EVENTSIGNUP+"&event_id="+event.sys_id;
-		event.bev_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_BEVSIGNUP+"&event_id="+event.sys_id;
-		
-		event.rsvp = data.attendances.includes(event.sys_id);
-		event.options = {event_id:event.sys_id,display:data.style};
-		
-		event.buttons = [];	
+	if(input && input.filter != ''){
+		filter = input.filter == 'past' ? 'start<javascript:gs.beginningOfToday()^state=completed' : 'start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled';
+		buildList(filter);
 
-		var rsvp_btn_label = 'RSVP to Event';
-		var rsvp_btn_class = 'btn-default';
-		if(event.rsvp){
-			rsvp_btn_label = 'Modify RSVP'; 
-			rsvp_btn_class = 'cc-button-warning';
-
-		}
-		
-		var rsvp_btn = {
-			label: rsvp_btn_label,
-			class: rsvp_btn_class,
-			url: event.signup_href
-		};	
-		//event.buttons.push(rsvp_btn);
-
-		var myBev = new x_snc_commodore_0.CCUtils().getMyBev(gs.getUserID(),event.sys_id);
-		var bev_btn_label = 'Bring a Beverage';
-		var bev_btn_url = event.bev_href;
-		var bev_btn_class = 'btn-default';
-		if(myBev.sys_id){
-			bev_btn_label = 'Modify Beverage';
-			bev_btn_url = constants.BEV_EDIT + myBev.sys_id;
-			bev_btn_class = 'cc-button-warning';
-		}
-		var bev_btn = {
-			label: bev_btn_label,
-			class: bev_btn_class,
-			url: bev_btn_url
-		};
-		//event.buttons.push(bev_btn);
-			
-		if(event.live){
-			event.buttons.push({
-				label: 'Join Live Event',
-				primary: true,
-				url: '/cc?id=live_event&sys_id='+event.sys_id
-			});
-		} else {
-			event.buttons.push({
-				label: 'View Event Details',
-				primary: true,
-				url:'/cc?id=event&sys_id='+event.sys_id
-			});
-		}
-		event.options.buttons = event.buttons;
-		//console.log(event.buttons);
-		data.widgets.push($sp.getWidget("cc-event-card",event.options));
-		data.events.push(event);
-	}
-	if($sp.getParameter('id') != 'event' && $sp.getParameter('id') != 'live_event'){
-		data.event_page = true;
-		data.modal_title = 'Cellar Club Event Details';
-		data.allow_modal = true;
 	} else {
-		data.allow_modal = false;
-		data.event_page = false;
+		filter = data.options.filter == 'past' ? 'start<javascript:gs.beginningOfToday()^state=completed' : 'start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled';
+		buildList(filter);
+	}
+
+
+	function buildList(filter){
+		console.log(filter);
+		var events = new GlideRecord('x_snc_commodore_0_events');
+		events.addEncodedQuery(filter);
+		events.orderBy('start');
+		events.query();	
+		
+		while(events.next()){
+			if(data.limit == 'all'){
+				data.limit = events.getRowCount();
+			}
+			var event = {};		
+				
+			event.sys_id = events.getValue('sys_id');
+			event.live = events.getValue('state') == 'live';
+
+			event.signup_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_EVENTSIGNUP+"&event_id="+event.sys_id;
+			event.bev_href = "/cc?id=sc_cat_item&sys_id="+constants.CAT_ITEM_BEVSIGNUP+"&event_id="+event.sys_id;
+			
+			event.rsvp = data.attendances.includes(event.sys_id);
+			event.options = {event_id:event.sys_id,display:data.style};
+			
+			event.buttons = [];	
+
+			var rsvp_btn_label = 'RSVP to Event';
+			var rsvp_btn_class = 'btn-default';
+			if(event.rsvp){
+				rsvp_btn_label = 'Modify RSVP'; 
+				rsvp_btn_class = 'cc-button-warning';
+
+			}
+			
+			var rsvp_btn = {
+				label: rsvp_btn_label,
+				class: rsvp_btn_class,
+				url: event.signup_href
+			};	
+			//event.buttons.push(rsvp_btn);
+
+			var myBev = new x_snc_commodore_0.CCUtils().getMyBev(gs.getUserID(),event.sys_id);
+			var bev_btn_label = 'Bring a Beverage';
+			var bev_btn_url = event.bev_href;
+			var bev_btn_class = 'btn-default';
+			if(myBev.sys_id){
+				bev_btn_label = 'Modify Beverage';
+				bev_btn_url = constants.BEV_EDIT + myBev.sys_id;
+				bev_btn_class = 'cc-button-warning';
+			}
+			var bev_btn = {
+				label: bev_btn_label,
+				class: bev_btn_class,
+				url: bev_btn_url
+			};
+			//event.buttons.push(bev_btn);
+				
+			if(event.live){
+				event.buttons.push({
+					label: 'Join Live Event',
+					primary: true,
+					url: '/cc?id=live_event&sys_id='+event.sys_id
+				});
+			} else {
+				event.buttons.push({
+					label: 'View Event Details',
+					primary: true,
+					url:'/cc?id=event&sys_id='+event.sys_id
+				});
+			}
+			event.options.buttons = event.buttons;
+			//console.log(event.buttons);
+			data.widgets.push($sp.getWidget("cc-event-card",event.options));
+			data.events.push(event);
+		}
+		if($sp.getParameter('id') != 'event' && $sp.getParameter('id') != 'live_event'){
+			data.event_page = true;
+			data.modal_title = 'Cellar Club Event Details';
+			data.allow_modal = true;
+		} else {
+			data.allow_modal = false;
+			data.event_page = false;
+		}
 	}
 	// console.log(data.widgets);
 })();]]></script>
@@ -143,16 +169,20 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>115</sys_mod_count>
+        <sys_mod_count>131</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-04 23:29:02</sys_updated_on>
+        <sys_updated_on>2023-04-05 00:09:39</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">{{data.options.title}}</h3>
+  <div ng-if="data.page == 'cc_events'" class="control-panel">
+    <button role="button" class="cc-button {{c.activeTab == 'upcoming' ? 'cc-button-primary' : ''}}" ng-click="c.filterList('upcoming')">Upcoming</button>
+    <button role="button" class="cc-button {{c.activeTab == 'past' ? 'cc-button-primary' : ''}}" ng-click="c.filterList('past')">Past</button>
+  </div>
   <div class="cc-list-row {{data.options.style}}">
     <div class="cc-list-items" ng-repeat="e in data.widgets | limitTo : data.limit">
       <div ng-if="data.options.style=='cards'" ng-click="c.clickCard(e,e.options)">
