@@ -288,14 +288,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>251</sys_mod_count>
+        <sys_mod_count>252</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-05 00:10:59</sys_updated_on>
+        <sys_updated_on>2023-04-05 00:13:07</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') && 'event-live'}} {{data.options.display}}">
   
   <div ng-if="!data.event || data.event ==''">
@@ -305,14 +305,12 @@ function buildCard(event_id){
   <div ng-if="data.event && data.event != ''" class="cc-box">
     
     <div class="cc-card-main-body">
-      <div class="" ng-if="!data.past">
-        <div id="edit-btn" ng-if="data.auth && data.page_id=='event'">
+        <div id="edit-btn" ng-if="data.auth && !data.past && data.page_id=='event'">
           <a href="/cc?id=form&table=x_snc_commodore_0_events&v=update_event&sys_id={{data.event}}" class="cc-button-link"><i class="ri-pencil-line"></i>Edit Event</a>
         </div>
-        <div id="rsvp-badge" ng-if="data.rsvp_status && data.options.display != 'list-compact'" class="cc-badge {{data.rsvp_status.value}}">
+        <div id="rsvp-badge" ng-if="data.rsvp_status && !data.past && data.options.display != 'list-compact'" class="cc-badge {{data.rsvp_status.value}}">
           {{data.rsvp_status.label}}
         </div>
-      </div>
       <div id="warning" class="banner banner-warning" ng-if="data.past && data.options.display == 'full'">
           <h4><i class="ri-error-warning-fill"></i>This event is in the past</h4>
       </div>
