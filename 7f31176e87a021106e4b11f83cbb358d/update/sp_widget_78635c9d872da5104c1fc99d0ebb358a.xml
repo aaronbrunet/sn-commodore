@@ -213,14 +213,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>165</sys_mod_count>
+        <sys_mod_count>166</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-05 02:02:33</sys_updated_on>
+        <sys_updated_on>2023-04-05 02:04:35</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">{{data.options.title}}</h3>
   <div ng-if="data.page == 'cc_events'" class="control-panel">
@@ -237,9 +237,9 @@
       </div>
     </div>    
   </div> 
-  <div class="cc-controls-row" >
+  <div class="cc-controls-row">
   	<a class="cc-button-link cc-end" role="button" href="/cc?id=cc_events" ng-if="data.page != 'cc_events'">View All<i class="ri-arrow-right-s-line"></i></a>
-    <div class="pagination"><button ng-click="c.page('prev')" ng-disabled="data.curr_page == 1">{{'<'}}</button>{{data.curr_page}} of {{data.pages}}<button ng-click="c.page('next')" ng-disabled="c.data.end >= data.records">{{'>'}}</button></div>
+    <div class="pagination" ng-if="data.page == 'cc_events'"><button ng-click="c.page('prev')" ng-disabled="data.curr_page == 1">{{'<'}}</button>{{data.curr_page}} of {{data.pages}}<button ng-click="c.page('next')" ng-disabled="c.data.end >= data.records">{{'>'}}</button></div>
   </div>
 </div>]]></template>
     </sp_widget>
