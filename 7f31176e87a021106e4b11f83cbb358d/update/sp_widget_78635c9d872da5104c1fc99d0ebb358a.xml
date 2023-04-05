@@ -8,13 +8,35 @@
 
 	c.activeTab = 'upcoming';
 
+	c.page = function(action){
+		if(action == 'next'){
+			c.data.prev = c.data.start + c.data.pagination;
+			c.data.next = c.data.end + c.data.pagination <= c.data.records ? c.data.end + c.data.pagination : c.data.records;
+			c.data.curr_page +=1;
+		}
+		if(action == 'prev'){
+			c.data.prev = c.data.start - c.data.pagination > -1 ? c.data.start - c.data.pagination : 0;
+			c.data.next = c.data.prev + c.data.pagination;
+			c.data.curr_page -=1;
+			
+		}
+		c.data.action = action;
+		c.server.update();
+		
+	}
+
   c.filterList = function(action){
 	  	  c.activeTab = action;	 
 		  c.data.filter = action;
+
+		  //reset page
+		  c.data.prev = 0;
+		  c.data.next = c.data.pagination;
+		  data.curr_page = 1;
+		  
 		  c.server.update();
   }
   c.clickCard = function(event,options){
-	  console.log([event,options]);
 	  if(data.allow_modal){
 		options.display = 'modal-card';
 		spModal.open({
@@ -23,7 +45,6 @@
 			widgetInput: options,
 			buttons: options.buttons
 		}).then(function(btn){
-			console.log('Modal closed');
 			console.log(btn);
 			$window.location.href = btn.url;//event.data.event_href;
 		})
@@ -38,6 +59,10 @@
 &#13;
 .control-panel {&#13;
 	margin: 2rem 0;&#13;
+}&#13;
+.pagination  {&#13;
+	display: flow;&#13;
+  flow-direction: row;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -51,7 +76,7 @@
   
 }]]></link>
         <name>CC Event List</name>
-        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Events","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"},{"label":"all","value":"all"}]},{"name":"title","section":"Presentation","default_value":"Events","label":"Title","type":"string"},{"displayValue":"Club Events","name":"style","display_value_list":[],"section":"Presentation","default_value":"cards","label":"Style","type":"choice","choices":[{"label":"cards","value":"cards"},{"label":"list","value":"list"}],"value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"filter","section":"Data","default_value":"upcoming","label":"Filter","type":"choice","choices":[{"label":"upcoming","value":"upcoming"},{"label":"past","value":"past"}]}]</option_schema>
+        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Events","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"},{"label":"all","value":"all"}]},{"name":"title","section":"Presentation","default_value":"Events","label":"Title","type":"string"},{"displayValue":"Club Events","name":"style","display_value_list":[],"section":"Presentation","default_value":"cards","label":"Style","type":"choice","choices":[{"label":"cards","value":"cards"},{"label":"list","value":"list"}],"value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"filter","section":"Data","default_value":"upcoming","label":"Filter","type":"choice","choices":[{"label":"upcoming","value":"upcoming"},{"label":"past","value":"past"}]},{"name":"pagination","section":"Data","default_value":"5","label":"Records per page","type":"integer"}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
@@ -70,22 +95,41 @@
 	data.style = data.options.style == 'cards' ? 'list-card' : 'list-compact';	
 	var filter = '';
 
-	if(input && input.filter != ''){
-		filter = input.filter == 'past' ? 'start<javascript:gs.beginningOfToday()^state=completed' : 'start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled';
-		buildList(filter);
+	//data.current = 0;
+	data.curr_page = 1;
+	data.records = 0;
+	data.pagination = data.options.pagination;
+
+	data.start = 0;
+	data.end = data.pagination;
+
+
+	if(input){
+		//if(input.action && input.action != ''){
+			data.start = input.prev || 0;
+			data.end = input.next || data.pagination;
+			data.curr_page = input.curr_page || 1;
+		//} 
+		if(input.filter != ''){
+			filter = input.filter == 'past' ? 'start<javascript:gs.beginningOfToday()^state=completed' : 'start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled';
+			buildList(filter,data.start,data.end);
+		}
 
 	} else {
 		filter = data.options.filter == 'past' ? 'start<javascript:gs.beginningOfToday()^state=completed' : 'start>=javascript:gs.beginningOfToday()^stateNOT INcompleted,cancelled';
-		buildList(filter);
+		buildList(filter,data.start,data.end);
 	}
 
 
-	function buildList(filter){
+	function buildList(filter,start,end){
 		console.log(filter);
 		var events = new GlideRecord('x_snc_commodore_0_events');
 		events.addEncodedQuery(filter);
+		events.chooseWindow(start,end,false);
 		events.orderBy('start');
 		events.query();	
+		data.records = events.getRowCount();
+		data.pages = Math.ceil(data.records / data.pagination);
 		
 		while(events.next()){
 			if(data.limit == 'all'){
@@ -169,14 +213,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>131</sys_mod_count>
+        <sys_mod_count>165</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-05 00:09:39</sys_updated_on>
+        <sys_updated_on>2023-04-05 02:02:33</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">{{data.options.title}}</h3>
   <div ng-if="data.page == 'cc_events'" class="control-panel">
@@ -193,8 +237,9 @@
       </div>
     </div>    
   </div> 
-  <div class="cc-controls-row">
-  	<a class="cc-button-link cc-end" role="button" href="/cc?id=cc_events">View All<i class="ri-arrow-right-s-line"></i></a>
+  <div class="cc-controls-row" >
+  	<a class="cc-button-link cc-end" role="button" href="/cc?id=cc_events" ng-if="data.page != 'cc_events'">View All<i class="ri-arrow-right-s-line"></i></a>
+    <div class="pagination"><button ng-click="c.page('prev')" ng-disabled="data.curr_page == 1">{{'<'}}</button>{{data.curr_page}} of {{data.pages}}<button ng-click="c.page('next')" ng-disabled="c.data.end >= data.records">{{'>'}}</button></div>
   </div>
 </div>]]></template>
     </sp_widget>
