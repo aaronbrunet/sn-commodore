@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column">
     <sp_column action="INSERT_OR_UPDATE">
-        <class_name>child-b-margin right-column</class_name>
+        <class_name>child-b-margin right-column none</class_name>
         <order>2</order>
         <size>4</size>
         <size_lg>4</size_lg>
@@ -11,13 +11,13 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:10:13</sys_created_on>
         <sys_id>f91e37fe87e821106e4b11f83cbb35a3</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>2</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_column_f91e37fe87e821106e4b11f83cbb35a3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-01-26 16:10:13</sys_updated_on>
+        <sys_updated_on>2023-04-05 00:47:14</sys_updated_on>
     </sp_column>
 </record_update>
