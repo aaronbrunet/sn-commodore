@@ -288,14 +288,14 @@ function buildCard(event_id){
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-05 19:37:02</sys_created_on>
         <sys_id>3572189b87d121104c1fc99d0ebb35e3</sys_id>
-        <sys_mod_count>252</sys_mod_count>
+        <sys_mod_count>254</sys_mod_count>
         <sys_name>CC Event Card</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3572189b87d121104c1fc99d0ebb35e3</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-05 00:13:07</sys_updated_on>
+        <sys_updated_on>2023-04-05 00:21:41</sys_updated_on>
         <template><![CDATA[<div class="cc-panel {{(data.live && data.page_id != 'live_event') && 'event-live'}} {{data.options.display}}">
   
   <div ng-if="!data.event || data.event ==''">
@@ -357,11 +357,13 @@ function buildCard(event_id){
     </div>
     
     <div ng-if="data.options.display == 'full' && !data.cat_item && data.page_id != 'live_event'">
-      <div class="cc-box" ng-if="!data.past">
-        <a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}" class="cc-button-primary cc-button">RSVP to this Event</a>
-        <a ng-if="data.registered" href="{{data.signup_href}}" class="cc-button-warning cc-button">Modify RSVP</a>
-        <a ng-if="data.registered" ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}" class="cc-button-secondary cc-button">Bring a Beverage</a>
-      </div>
+      <!--
+		<div class="cc-box" ng-if="!data.past">
+        	<a ng-if="!data.registered" ng-disabled="data.attendees_curr_count >= data.slots.value" href="{{data.signup_href}}" class="cc-button-primary cc-button">RSVP to this Event</a>
+        	<a ng-if="data.registered" href="{{data.signup_href}}" class="cc-button-warning cc-button">Modify RSVP</a>
+        	<a ng-if="data.registered" ng-disabled="data.beverage_curr_count >= data.beverage_count.value" href="{{data.bev_href}}" class="cc-button-secondary cc-button">Bring a Beverage</a>
+      	</div>
+		-->
       <div class="cc-box" ng-if="data.options.display == 'full'">
         <div ng-switch="data.my_vote">
           <div ng-switch-when="true"> 
