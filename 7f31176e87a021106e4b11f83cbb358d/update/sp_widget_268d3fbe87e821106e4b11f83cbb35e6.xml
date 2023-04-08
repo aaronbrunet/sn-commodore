@@ -120,7 +120,10 @@ while(getAttendees.next()){
 	attendees.push(aObj);
 }
 
-var b_list = new CCUtils().getBevRecords(data.event_id).toString();
+console.log('event id: '+data.event_id);
+var b_list = new CCUtils().getBevRecords(data.event_id);
+console.log(b_list);
+console.log('b_list: '+b_list.toString());
 var beverages = [];
 var getBev = new GlideRecord('x_snc_commodore_0_beverage');
 getBev.addEncodedQuery('sys_idIN'+b_list);
@@ -131,6 +134,7 @@ while(getBev.next()){
 	bObj.sys_id = getBev.getValue('sys_id');
 	bObj.votes = 0;
 	beverages.push(bObj);
+	console.log('Found '+JSON.stringify(bObj));
 }
 
 var votes = [];
@@ -156,8 +160,12 @@ while(getVotes.next()){
 data.attendees = attendees;
 data.beverages = beverages;
 data.bevVotes = [...beverages].sort((a,b) => b.votes - a.votes);
+
 data.votes = votes;
 
+console.log(data.beverages);
+console.log(data.bevVotes);
+console.log(data.votes);
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -165,14 +173,14 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>182</sys_mod_count>
+        <sys_mod_count>186</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-04 01:41:31</sys_updated_on>
+        <sys_updated_on>2023-04-08 20:56:34</sys_updated_on>
         <template><![CDATA[<div>
   <div ng-if="data.auth" class="cc-panel">
     <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
@@ -196,18 +204,11 @@ data.votes = votes;
             <sn-time-ago timestamp="data.refreshed"/>
         </div>
   	</div>  
+    <!--
     <h3>Attendees</h3>
     <div ng-repeat="a in data.attendees">
     	<i class="ri-user{{a.status == 'founder' ? '-star' : ''}}-fill"></i>{{a.user.display_value}}
     </div>
-  
-  <!--
-  <div>
-    <h3>Beverages</h3>
-    <div ng-repeat="b in data.beverages">
-    	{{data.drink_names_hidden ? b.masked_name.display_value : b.name.display_value}}
-    </div>
-  </div>
   -->
   
   <div>

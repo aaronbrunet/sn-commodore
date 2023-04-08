@@ -396,7 +396,7 @@ while (gr.next()) {
 			bev_id: bev_ref.sys_id
 		};
 		console.log('t bev_id: '+t.beverage.bev_id);
-		var bev_curr_count = new CCUtils().getBevRecords(t.event.event_id).length;
+		var bev_curr_count = new CCUtils().getBevRecords(t.event.event_id,true).length;
 		t.event.bev_curr_count = bev_curr_count;
 		t.all_clear = t.event.bev_curr_count < t.event.beverage_count;
 		t.banner_msg = 'This event has available beverage capacity and can be safely approved.';
@@ -502,14 +502,14 @@ function getRecordBeingApproved(gr) {
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-27 14:55:07</sys_created_on>
         <sys_id>834c60168735e5504c1fc99d0ebb35ad</sys_id>
-        <sys_mod_count>65</sys_mod_count>
+        <sys_mod_count>66</sys_mod_count>
         <sys_name>CC Approvals</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_834c60168735e5504c1fc99d0ebb35ad</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-08 20:01:47</sys_updated_on>
+        <sys_updated_on>2023-04-08 21:07:29</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{::options.color}} b" ng-if="data.showApprovals">
   <div class="panel-heading">
     <h3 class="h4 panel-title">
