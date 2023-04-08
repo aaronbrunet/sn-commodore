@@ -9,6 +9,7 @@
 	c.activeTab = 'upcoming';
 
 	c.page = function(action){
+		c.loading = true;
 		if(action == 'next'){
 			c.data.prev = c.data.start + c.data.pagination;
 			c.data.next = c.data.end + c.data.pagination <= c.data.records ? c.data.end + c.data.pagination : c.data.records;
@@ -21,7 +22,9 @@
 			
 		}
 		c.data.action = action;
-		c.server.update();
+		c.server.update().then(function(){
+			c.loading = false;
+		});
 		
 	}
 
@@ -55,15 +58,29 @@
         <controller_as>c</controller_as>
         <css>.cc-list-row.list {&#13;
 	grid-template-columns: 1fr;&#13;
+  	min-height: 50rem;&#13;
 }&#13;
 &#13;
 .control-panel {&#13;
 	margin: 2rem 0;&#13;
 }&#13;
 .pagination  {&#13;
-	display: flow;&#13;
-  flow-direction: row;&#13;
-}</css>
+	display: flex;&#13;
+    flex-direction: row;&#13;
+    justify-content: flex-end;&#13;
+    align-items: center;  &#13;
+  &#13;
+  span {&#13;
+  	background-color: $cc-grey-light;&#13;
+    padding: .5rem .5rem;&#13;
+  }&#13;
+}&#13;
+&#13;
+.loading {&#13;
+    align-self: center;&#13;
+    justify-self: center;&#13;
+}&#13;
+</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -213,14 +230,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-12 00:23:42</sys_created_on>
         <sys_id>78635c9d872da5104c1fc99d0ebb358a</sys_id>
-        <sys_mod_count>166</sys_mod_count>
+        <sys_mod_count>172</sys_mod_count>
         <sys_name>CC Event List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_78635c9d872da5104c1fc99d0ebb358a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-05 02:04:35</sys_updated_on>
+        <sys_updated_on>2023-04-08 14:57:47</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
   <h3 class="cc-title">{{data.options.title}}</h3>
   <div ng-if="data.page == 'cc_events'" class="control-panel">
@@ -228,7 +245,8 @@
     <button role="button" class="cc-button {{c.activeTab == 'past' ? 'cc-button-primary' : ''}}" ng-click="c.filterList('past')">Past</button>
   </div>
   <div class="cc-list-row {{data.options.style}}">
-    <div class="cc-list-items" ng-repeat="e in data.widgets | limitTo : data.limit">
+    <div ng-if="c.loading" class="loading"><h3>Loading ...</h3></div>
+    <div ng-if="!c.loading" class="cc-list-items" ng-repeat="e in data.widgets | limitTo : data.limit">
       <div ng-if="data.options.style=='cards'" ng-click="c.clickCard(e,e.options)">
       	<sp-widget widget="e"></sp-widget>
       </div>
@@ -239,7 +257,11 @@
   </div> 
   <div class="cc-controls-row">
   	<a class="cc-button-link cc-end" role="button" href="/cc?id=cc_events" ng-if="data.page != 'cc_events'">View All<i class="ri-arrow-right-s-line"></i></a>
-    <div class="pagination" ng-if="data.page == 'cc_events'"><button ng-click="c.page('prev')" ng-disabled="data.curr_page == 1">{{'<'}}</button>{{data.curr_page}} of {{data.pages}}<button ng-click="c.page('next')" ng-disabled="c.data.end >= data.records">{{'>'}}</button></div>
+    <div class="pagination" ng-if="data.page == 'cc_events'">
+      <button ng-click="c.page('prev')" ng-disabled="data.curr_page == 1" class="cc-button-secondary cc-button">{{'<'}}</button>
+        <span class="">{{data.curr_page}}/{{data.pages}}</span>
+      <button ng-click="c.page('next')" ng-disabled="c.data.end >= data.records" class="cc-button-secondary cc-button">{{'>'}}</button>
+     </div>
   </div>
 </div>]]></template>
     </sp_widget>
