@@ -3,7 +3,7 @@
         <class_name/>
         <order>1</order>
         <sp_column/>
-        <sp_container display_value="CC Login - Container 1">7fd3541e87b1e5504c1fc99d0ebb352f</sp_container>
+        <sp_container display_value="Login - Container 1">7fd3541e87b1e5504c1fc99d0ebb352f</sp_container>
         <sys_class_name>sp_row</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-27 13:08:24</sys_created_on>

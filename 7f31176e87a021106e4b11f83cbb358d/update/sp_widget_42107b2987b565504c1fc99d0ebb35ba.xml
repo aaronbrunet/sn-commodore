@@ -17,6 +17,18 @@
 			$rootScope.$emit('exception_record',data.exception_record);
 		}
 	});
+	if(c.data.type == 'beverage'){
+		spUtil.get("cc-beverage-card",{beverage:data.beverage.bev_id,display:'full'}).then(function(response){
+			c.bevWidget = response;
+			$rootScope.$emit('approval_clear',data.all_clear);
+			console.log('broadcasting approval_clear state: '+data.all_clear);
+
+			if(c.data.exception_record){
+				console.log('Exception record found: '+JSON.stringify(data.exception_record));
+				$rootScope.$emit('exception_record',data.exception_record);
+			}
+		});
+	}
 	//console.log('broadcasting ID '+value);
 		
 
@@ -84,12 +96,14 @@
 	
 	t.table = task.getLabel();
 	t.sys_id = task.getUniqueValue();
+	console.log(t.cat_item.value)
 	if(t.cat_item.value == cat_rsvp){
 		t.type = 'event';
 	}
 	if(t.cat_item.value == cat_bev){
 		t.type = 'beverage';
 	}
+	console.log(t.type);
 	data.details = getVarsFromRITM(t.sys_id);
 	data.type = t.type;
 
@@ -123,6 +137,39 @@
 		}
 		//var ref_table 
 		//data.ref = getRefData(data.details.)
+	} else if(data.type == 'beverage'){
+		var event_choice = data.details.find(o => o.name == 'club_event');
+		//console.log(event_choice);
+		var ref = getRefData(event_choice.table,event_choice.value);		
+		data.event = {
+			event_id: ref.sys_id.toString(),
+			beverage_count: ref.beverage_count.toString(),
+			name: ref.short_description.toString(),
+			datetime: ref.start.toString()
+		};
+		console.log([t.opened_by,data.event.event_id])
+		var bev_ref = new x_snc_commodore_0.CCUtils().getMyBev(t.opened_by.value,data.event.event_id);
+		console.log(bev_ref.sys_id);
+		//var beverage_choice = t.vars.find
+		// data.beverage = {
+		// 	bev_id: ref.sys_id.toString()
+		// };
+		data.beverage = {
+			bev_id: bev_ref.sys_id
+		};
+		console.log(data.beverage);
+		var bev_curr_count = new CCUtils().getBevRecords(data.event.event_id).length;
+		data.event.bev_curr_count = bev_curr_count;
+		data.all_clear = data.event.bev_curr_count < data.event.beverage_count;
+		data.banner_msg = 'This event has available beverage capacity and can be safely approved.';
+		if(!data.all_clear){
+			data.banner_msg = 'This event has reached beverage capacity. Approval will increase the max capacity.';
+			data.exception_record = {
+				table: event_choice.table,
+				record: data.event,
+				msg: data.banner_msg
+			};
+		}
 	}
 
 	//console.log(data.details);
@@ -226,14 +273,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 21:15:07</sys_created_on>
         <sys_id>42107b2987b565504c1fc99d0ebb35ba</sys_id>
-        <sys_mod_count>93</sys_mod_count>
+        <sys_mod_count>103</sys_mod_count>
         <sys_name>CC Approval Record</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_42107b2987b565504c1fc99d0ebb35ba</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-03-29 01:21:10</sys_updated_on>
+        <sys_updated_on>2023-04-08 19:41:37</sys_updated_on>
         <template><![CDATA[<div ng-if="!data.isValid">
   ${Record not found}
 </div>
@@ -244,7 +291,7 @@
   </div>
 
   <div class="panel-body">
-    <div ng-if="task.cat_item  && task.opened_by">New {{task.cat_item.display_value}} by {{::task.opened_by.display_value}}</div>
+    <div ng-if="task.cat_item  && task.opened_by">New Request: {{task.cat_item.display_value}} by {{::task.opened_by.display_value}}</div>
     <!--<div ng-if="task.short_description">{{task.short_description.display_value}}</div>-->
     <!--<div ng-if="task.opened_by"><label>${Opened by}</label> {{::task.opened_by.display_value}}</div>-->
     <div ng-if="task.requested_by"><label>${Requestor}</label> {{::task.requested_by.display_value}}</div>
@@ -256,7 +303,11 @@
           <div>
             <sp-widget widget="c.eventWidget"></sp-widget>
           </div>
-          <h4 ng-if="!data.approval_state"><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.attendees_curr_count}} attendees out of {{data.event.slots}} allowed</h4>
+          <div ng-if="data.type == 'beverage'">
+            <sp-widget widget="c.bevWidget"></sp-widget>
+          </div>
+          <h4 ng-if="!data.approval_state && data.type != 'beverage'"><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.attendees_curr_count}} attendees out of {{data.event.slots}} allowed</h4>
+          <h4 ng-if="!data.approval_state && data.type == 'beverage'"><i class="ri-{{data.all_clear ? 'check' : 'close'}}-line"></i>{{data.event.bev_curr_count}} beverages out of {{data.event.beverage_count}} allowed</h4>
         </div>
 
         <div ng-if="data.items.length > 0">
