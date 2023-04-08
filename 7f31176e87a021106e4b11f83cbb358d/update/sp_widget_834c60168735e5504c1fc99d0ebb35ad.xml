@@ -39,6 +39,20 @@
 		});		
 	};
 
+	c.openBevModal = function(bev_id){
+		//var event_options = {action:'cat_item',event_id:event_id,display:'list'};
+		var bev_options = {beverage:bev_id,display:'full'};
+		console.log('bev_id: ' +bev_id);
+		spModal.open({
+			title: 'Cellar Treasure Details',
+			widget: 'cc-beverage-card',
+			widgetInput: bev_options,
+			buttons: [{label: 'Close',primary:true}]
+		}).then(function(){
+			console.log('Modal closed');
+		});		
+	};
+
 	c.exceptionAction = function(approval){
 		if(approval.task.exception_record){
 			var msg = approval.task.exception_record.msg + '<br/>Are you <b>sure</b> you want to do this?';
@@ -331,13 +345,14 @@ while (gr.next()) {
   t.short_description = task.short_description.toString();
   t.sys_id = task.getUniqueValue();
   t.cat_item = task.cat_item.name.getDisplayValue();
+  t.opened_by = task.opened_by;
   if(task.cat_item.toString() == cat_rsvp){
 	t.type = 'event';
   }
   if(task.cat_item.toString() == cat_bev){
 	t.type = 'beverage';
   }
-  console.log([t.type,task.cat_item.toString()]);
+  //console.log([t.type,task.cat_item.toString()]);
   t.vars = getVarsFromRITM(t.sys_id);
   
   if(t.type == 'event'){
@@ -374,10 +389,13 @@ while (gr.next()) {
 			name: ref.short_description.toString(),
 			datetime: ref.start.toString()
 		};
-		//var beverage_choice = t.vars.find
+		console.log('opened by: '+t.opened_by);
+		console.log('t event: '+t.event.event_id);
+		var bev_ref = new CCUtils().getMyBev(t.opened_by,t.event.event_id);
 		t.beverage = {
-			bev_id: ref.sys_id.toString()
-		}
+			bev_id: bev_ref.sys_id
+		};
+		console.log('t bev_id: '+t.beverage.bev_id);
 		var bev_curr_count = new CCUtils().getBevRecords(t.event.event_id).length;
 		t.event.bev_curr_count = bev_curr_count;
 		t.all_clear = t.event.bev_curr_count < t.event.beverage_count;
@@ -478,23 +496,20 @@ function getRecordBeingApproved(gr) {
     return gr.sysapproval.getRefRecord();
 
   return gr.document_id.getRefRecord();
-}
-	
-	
-]]></script>
+}]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-27 14:55:07</sys_created_on>
         <sys_id>834c60168735e5504c1fc99d0ebb35ad</sys_id>
-        <sys_mod_count>56</sys_mod_count>
+        <sys_mod_count>65</sys_mod_count>
         <sys_name>CC Approvals</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_834c60168735e5504c1fc99d0ebb35ad</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-08 19:14:18</sys_updated_on>
+        <sys_updated_on>2023-04-08 20:01:47</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{::options.color}} b" ng-if="data.showApprovals">
   <div class="panel-heading">
     <h3 class="h4 panel-title">
@@ -537,8 +552,10 @@ function getRecordBeingApproved(gr) {
               <label ng-if="approval.task.quantity && approval.task.quantity > 1"> ${each}</label>
             </div>
             <div ng-if="approval.task.event"><label>${Event}</label> {{approval.task.event.name}}</div>
-            <button ng-if="approval.task.event.event_id" role="button" class="btn-default btn" ng-click="c.openEventModal(approval.task.event.event_id)">Event Details</button>
-            <div ng-if="approval.task.type == 'beverage'"></div>
+            <div ng-if="approval.task.type == 'beverage'">New beverage signup</div>
+            <button ng-if="approval.task.event.event_id && approval.task.type =='event'" role="button" class="btn-default btn" ng-click="c.openEventModal(approval.task.event.event_id)">Event Details</button>
+            <button ng-if="approval.task.event.event_id && approval.task.type =='beverage'" role="button" class="btn-default btn" ng-click="c.openBevModal(approval.task.beverage.bev_id)">Beverage Details</button>
+            
             
 
           </div>
