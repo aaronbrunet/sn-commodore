@@ -70,22 +70,24 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-27 23:02:23</sys_created_on>
         <sys_id>b09bd65287b9e5504c1fc99d0ebb354a</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>CC RSVP</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_b09bd65287b9e5504c1fc99d0ebb354a</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-05 00:21:44</sys_updated_on>
+        <sys_updated_on>2023-04-08 16:49:30</sys_updated_on>
         <template><![CDATA[<div class="cc-panel">
-  <div ng-if="data.rsvp">
-  	<h4>Your RSVP submitted {{data.rsvp.date}} at {{data.rsvp.time}} is {{data.rsvp.state.display_value}}.</h4>
+  <h3 class="cc-title">RSVP Status</h3>
+  <div ng-if="data.rsvp" class="inner">
+  	<p>Your RSVP submitted {{data.rsvp.date}} is {{data.rsvp.state.display_value}}.</p>
     <a href="{{data.signup_href}}" class="cc-button-warning cc-button">Modify RSVP</a>
 
   </div>
-  <div ng-if="!data.rsvp">
-  	<a href="{{data.signup_href}}" class="cc-button-primary cc-button">RSVP to this Event</a>
+  <div ng-if="!data.rsvp" class="inner">
+    <p>No RSVP found for this event.</p>
+  	<a href="{{data.signup_href}}" class="cc-button-primary cc-button">RSVP Now</a>
   </div>
 </div>]]></template>
     </sp_widget>

@@ -3,182 +3,197 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>name</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>d0cb6602870665104c1fc99d0ebb35f7</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>9e9feac2870665104c1fc99d0ebb351a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>abv</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>masked_name</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>98cb6602870665104c1fc99d0ebb35f7</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>129feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>brand</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>abv</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>1ccb6602870665104c1fc99d0ebb35f7</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>929feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>country</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>brand</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>3</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>9ccb6602870665104c1fc99d0ebb35f7</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>169feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>description</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>country</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>4</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>10cb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>969feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>region</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>description</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>5</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>90cb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>1a9feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>style</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>region</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>6</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
-            <sys_id>14cb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>9a9feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>taste</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>style</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>7</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:13</sys_created_on>
-            <sys_id>94cb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>1e9feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:13</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>type</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>taste</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>8</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:13</sys_created_on>
-            <sys_id>18cb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>9e9feac2870665104c1fc99d0ebb351b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:13</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>type_other</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>type</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>9</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:13</sys_created_on>
-            <sys_id>98cb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>129feac2870665104c1fc99d0ebb351c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:13</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>event</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>type_other</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>10</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:13</sys_created_on>
-            <sys_id>1ccb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>929feac2870665104c1fc99d0ebb351c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:13</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>introduced_by</element>
-            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">18cb6602870665104c1fc99d0ebb35f5</list_id>
+            <element>event</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>11</position>
             <sum>false</sum>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:13</sys_created_on>
-            <sys_id>9ccb6602870665104c1fc99d0ebb35f8</sys_id>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>169feac2870665104c1fc99d0ebb351c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:13</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>introduced_by</element>
+            <list_id display_value="x_snc_commodore_0_beverage" element="NULL" name="x_snc_commodore_0_beverage" parent="NULL" relationship="NULL" sys_domain="global" view="3ed59c39873965504c1fc99d0ebb3578">d29feac2870665104c1fc99d0ebb351a</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>12</position>
+            <sum>false</sum>
+            <sys_created_by>aaron.brunet</sys_created_by>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
+            <sys_id>969feac2870665104c1fc99d0ebb351c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>aaron.brunet</sys_updated_by>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -192,10 +207,10 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>aaron.brunet</sys_created_by>
-            <sys_created_on>2023-04-08 15:49:12</sys_created_on>
+            <sys_created_on>2023-04-08 16:06:01</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>18cb6602870665104c1fc99d0ebb35f5</sys_id>
+            <sys_id>d29feac2870665104c1fc99d0ebb351a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_snc_commodore_0_beverage</sys_name>
             <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
@@ -203,7 +218,7 @@
             <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
             <sys_update_name>sys_ui_list_x_snc_commodore_0_beverage_modify_beverage</sys_update_name>
             <sys_updated_by>aaron.brunet</sys_updated_by>
-            <sys_updated_on>2023-04-08 15:49:12</sys_updated_on>
+            <sys_updated_on>2023-04-08 16:06:01</sys_updated_on>
             <sys_user/>
             <view display_value="Modify_beverage" name="modify_beverage">3ed59c39873965504c1fc99d0ebb3578</view>
             <view_name/>
