@@ -20,7 +20,14 @@
   };
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.cc-beverage-list {&#13;
+	white-space: nowrap;&#13;
+}&#13;
+&#13;
+.cc-list-row.cards {&#13;
+	overflow-x: auto;&#13;
+    padding: 2rem;&#13;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -33,7 +40,7 @@
   
 }]]></link>
         <name>CC Beverage List</name>
-        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Beverages","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"}]},{"displayValue":"Club Events","name":"event","section":"Data","label":"Event","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}}]</option_schema>
+        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Beverages","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"}]},{"displayValue":"Club Events","name":"event","section":"Data","label":"Event","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"title","section":"Presentation","default_value":"Cellar Treasures","label":"Title","type":"string"}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
@@ -55,6 +62,7 @@
 	}
 	if($sp.getParameter('id') == 'live_event'){
 		data.event_page = true;
+		data.live_page = true;
 		data.modal_title = 'Cast Your Vote!';
 	}
 
@@ -100,26 +108,26 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 14:12:12</sys_created_on>
         <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
-        <sys_mod_count>44</sys_mod_count>
+        <sys_mod_count>51</sys_mod_count>
         <sys_name>CC Beverage List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-08 16:51:37</sys_updated_on>
+        <sys_updated_on>2023-04-09 00:39:46</sys_updated_on>
         <template><![CDATA[<div class="cc-panel" >
-    <h3 class="cc-title">Cellar Treasures</h3>
+    <h3 class="cc-title">{{data.options.title}}</h3>
     <div class="cc-list-row cards" ng-if="data.bevs.length > 0">
       <div ng-repeat="w in data.widgets | limitTo : data.limit">
-        <div ng-click="c.clickCard(w,w.options)">
+        <div ng-click="c.clickCard(w,w.options)" class="cc-beverage-list">
           <sp-widget widget="w" ></sp-widget>
         </div>
       </div>    
     </div>
   	<div ng-if="data.event_page" class="inner">
       <p ng-if="!data.bevs || data.bevs.length == 0">No Cellar Treasures</p>
-      <a href="{{data.bev_href}}" class="cc-button-secondary cc-button" ng-if="data.bevs.length < data.bev_capacity">Bring a Beverage</a>
+      <a href="{{data.bev_href}}" class="cc-button-secondary cc-button" ng-if="data.bevs.length < data.bev_capacity && !data.live_page">Bring a Beverage</a>
   	</div>
 </div>]]></template>
     </sp_widget>

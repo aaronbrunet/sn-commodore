@@ -16,17 +16,30 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-04-04 01:17:05</sys_created_on>
         <sys_id>cecdbee8870621106e4b11f83cbb35bc</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Cast Your Vote!</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_instance_cecdbee8870621106e4b11f83cbb35bc</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-04 01:17:05</sys_updated_on>
-        <title/>
+        <sys_updated_on>2023-04-09 00:38:55</sys_updated_on>
+        <title>Cast Your Vote!</title>
         <url/>
-        <widget_parameters/>
+        <widget_parameters><![CDATA[{
+	"limit": {
+		"value": "3",
+		"displayValue": "3"
+	},
+	"event": {
+		"value": "",
+		"displayValue": ""
+	},
+	"title": {
+		"value": "Cast Your Vote!",
+		"displayValue": "Cast Your Vote!"
+	}
+}]]></widget_parameters>
     </sp_instance>
     <sys_translated_text action="delete_multiple" query="documentkey=cecdbee8870621106e4b11f83cbb35bc"/>
 </record_update>

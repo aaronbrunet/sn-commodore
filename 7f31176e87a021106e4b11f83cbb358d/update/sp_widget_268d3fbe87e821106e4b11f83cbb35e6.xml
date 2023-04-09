@@ -6,10 +6,10 @@
 	var c = this;
 	var data = $scope.data;
 	var ea_str = "event_attendances.event="+data.event_id;
-	console.log(ea_str);
+	//console.log(ea_str);
 	spUtil.recordWatch($scope, "x_snc_commodore_0_votes", ea_str, function(name) {
 		//console.log(name.data.operation); 
-		console.log(name); 
+		//console.log(name); 
 		spUtil.update($scope);
 		$scope.server.update();
     });
@@ -19,7 +19,10 @@
 	};
 
 	$scope.votesToWidth = function(curr,total){
-		return (curr / total ) * 100;
+		var style_str = 'background:linear-gradient(90deg, rgba(226,177,82,1) '+((curr / total ) * 100)+'%, rgba(255,255,255,1));';
+		//console.log(style_str);
+		//return (curr / total ) * 100;
+		return style_str;
 	};
 
 	$scope.toggleAction = function (action) {
@@ -33,6 +36,59 @@
         <controller_as>c</controller_as>
         <css>i {&#13;
     vertical-align: bottom;&#13;
+}&#13;
+&#13;
+.cc-vote-panel {&#13;
+	height: 40rem;&#13;
+  	overflow-y: auto;&#13;
+  	background: $cc-grey-light;&#13;
+  border-radius: 2rem;&#13;
+  	display: flex;&#13;
+    flex-direction: column;&#13;
+    padding: 2rem;&#13;
+}&#13;
+&#13;
+.cc-vote-item {&#13;
+	background: white;&#13;
+    &#13;
+  	outline: 2px solid $cc-gold;&#13;
+  	border-radius: 2rem;&#13;
+    display: flex;&#13;
+    flex-direction: row;&#13;
+    margin: 2rem;&#13;
+    padding: 2rem;&#13;
+  	justify-content: space-between;&#13;
+  	align-items: center;&#13;
+}&#13;
+&#13;
+.cc-vote-item-left {&#13;
+	flex-direction: column;&#13;
+    display: flex;&#13;
+    flex-grow: 1;&#13;
+}&#13;
+&#13;
+.cc-vote-item-right {&#13;
+  	h3 {background: $cc-gold;&#13;
+    height: 3rem;&#13;
+    width: 3rem;&#13;
+    border-radius: 100%;&#13;
+    align-items: center;&#13;
+    display: flex;&#13;
+    justify-content: center;&#13;
+  &#13;
+    color:white;&#13;
+    margin: 0;&#13;
+  }&#13;
+}&#13;
+&#13;
+.title-row {&#13;
+  h3 {&#13;
+  	margin: 2rem 0;&#13;
+  }&#13;
+	display: flex; &#13;
+  flex-direction: row;&#13;
+  justify-content: space-between;&#13;
+  align-items: center;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -120,10 +176,10 @@ while(getAttendees.next()){
 	attendees.push(aObj);
 }
 
-console.log('event id: '+data.event_id);
-var b_list = new CCUtils().getBevRecords(data.event_id);
-console.log(b_list);
-console.log('b_list: '+b_list.toString());
+//console.log('event id: '+data.event_id);
+var b_list = new CCUtils().getBevRecords(data.event_id,true);
+//console.log(b_list);
+//console.log('b_list: '+b_list.toString());
 var beverages = [];
 var getBev = new GlideRecord('x_snc_commodore_0_beverage');
 getBev.addEncodedQuery('sys_idIN'+b_list);
@@ -134,7 +190,7 @@ while(getBev.next()){
 	bObj.sys_id = getBev.getValue('sys_id');
 	bObj.votes = 0;
 	beverages.push(bObj);
-	console.log('Found '+JSON.stringify(bObj));
+	//console.log('Found '+JSON.stringify(bObj));
 }
 
 var votes = [];
@@ -142,6 +198,7 @@ var getVotes = new GlideRecord('x_snc_commodore_0_votes');
 getVotes.addQuery('event_attendances.event',event.sys_id);
 getVotes.query();
 data.vote_count = getVotes.getRowCount();
+var top_score = 0;
 while(getVotes.next()){
 	var vObj = {};
 	$sp.getRecordElements(vObj, getVotes, 'vote,user,beverage');
@@ -154,18 +211,21 @@ while(getVotes.next()){
 	var targetBeverage = beverages.findIndex(b => b.sys_id == vObj.beverage.value);
 	if(targetBeverage != -1){
 		beverages[targetBeverage].votes += 1;
+		if(beverages[targetBeverage].votes > top_score){
+			top_score = beverages[targetBeverage].votes;
+		}
 	}
 }
 
 data.attendees = attendees;
 data.beverages = beverages;
-data.bevVotes = [...beverages].sort((a,b) => b.votes - a.votes);
-
+data.bev_votes = [...beverages].sort((a,b) => b.votes - a.votes);
+data.top_score = top_score;
 data.votes = votes;
 
-console.log(data.beverages);
-console.log(data.bevVotes);
-console.log(data.votes);
+//console.log(data.beverages);
+//console.log(data.bevVotes);
+//console.log(data.votes);
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -173,14 +233,14 @@ console.log(data.votes);
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>186</sys_mod_count>
+        <sys_mod_count>224</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-08 20:56:34</sys_updated_on>
+        <sys_updated_on>2023-04-09 00:59:16</sys_updated_on>
         <template><![CDATA[<div>
   <div ng-if="data.auth" class="cc-panel">
     <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
@@ -189,21 +249,17 @@ console.log(data.votes);
     <button ng-click="toggleAction('endLive')" ng-if="data.live" class="cc-button-primary cc-button">
       End Live Event
     </button>
+    <!--
     <button ng-click="toggleAction('toggleVoting')" class="cc-button-primary cc-button">
       <i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}
     </button>
+	-->
   	<button ng-click="toggleAction('toggleDrinkVisibility')" class="cc-button-primary cc-button">
     	<i class="ri-eye{{data.drink_names_hidden ? '-close' : ''}}-fill"></i>
   		Drink names are {{data.drink_names_hidden ? 'hidden' : 'visible'}}
   	</button>
   </div>
   <div class="cc-panel">
-    <div>
-        <div>
-          <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
-            <sn-time-ago timestamp="data.refreshed"/>
-        </div>
-  	</div>  
     <!--
     <h3>Attendees</h3>
     <div ng-repeat="a in data.attendees">
@@ -211,26 +267,40 @@ console.log(data.votes);
     </div>
   -->
   
-  <div>
-    <div>
-          <a href="{{data.vote_href}}" ng-if="data.voting_open" class="cc-button-primary cc-button">{{data.vote_msg}}</a>
-        </div>
-    <h3>Votes</h3>
-    <div ng-repeat="bv in data.bevVotes">
+  <div>    
+    <div class="title-row">
+      <h3>Scoreboard</h3>
       <div>
-    	   {{data.drink_names_hidden ? bv.masked_name.display_value : bv.name.display_value}}: {{bv.votes}} vote{{bv.votes==1?'':'s'}}
+          <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
+          <sn-time-ago timestamp="data.refreshed"/>
       </div>
-      <div style="display:block;background-color:red;width:{{votesToWidth(bv.votes,data.votes.length)}}%;height:10px;"></div>
     </div>
-  </div>
+    <div class="cc-vote-panel">
+      <div ng-repeat="bv in data.bev_votes track by $index">
+        <div class="cc-vote-item">
+          <div class="cc-vote-item-left">   
+              <div class='cc-vote-info'><h4>{{data.drink_names_hidden ? bv.masked_name.display_value : bv.name.display_value}} - {{bv.votes}} vote{{bv.votes==1?'':'s'}}</h4></div>
+              <!--<div style="display:block;background-color:red;width:{{votesToWidth(bv.votes,data.votes.length)}}%;height:10px;"></div>-->        
+          </div>
+          <div class="cc-vote-item-right"><h3 ng-if="bv.votes == data.top_score"><i class="ri-medal-fill"></i></h3></div>
+        </div>
+      </div>
+      
+    </div>
+    <h4>{{data.vote_count}}/{{data.attendees.length}} votes cast</h4>
+    <!--
   <div>
     <h3>Voting list</h3>
+    <div>
+    	<a href="{{data.vote_href}}" ng-if="data.voting_open" class="cc-button-primary cc-button">{{data.vote_msg}}</a>
+    </div>
     Votes: {{data.vote_count}}
 	<div ng-repeat="v in data.votes">
     	{{v.user.display_value}} voted for {{data.drink_names_hidden ? v.beverage.masked_name : v.beverage.display_value}}
       
     </div>
   </div>
+	-->
 </div>]]></template>
     </sp_widget>
 </record_update>
