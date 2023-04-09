@@ -7,12 +7,37 @@
 	var data = $scope.data;
 	var ea_str = "event_attendances.event="+data.event_id;
 	//console.log(ea_str);
+	var oldBevs = Array.from(data.bev_votes);
 	spUtil.recordWatch($scope, "x_snc_commodore_0_votes", ea_str, function(name) {
 		//console.log(name.data.operation); 
 		//console.log(name); 
-		spUtil.update($scope);
-		$scope.server.update();
+		
+		spUtil.update($scope).then(function(){
+			for(b in $scope.data.bev_votes){
+				//var oldBev = oldBevs.find(ob => ob.sys_id == $scope.data.bev_votes[b].sys_id);
+				var oldBev = oldBevs.findIndex(ob => ob.sys_id == $scope.data.bev_votes[b].sys_id);
+				
+				//var newBev = $scope.data.bev_votes[b]
+				//if(oldBev.votes < newBev.votes){
+				if(oldBev > b){
+					$scope.data.bev_votes[b].movement = 'upwards';
+				}
+				//if(oldBev.votes > newBev.votes){
+					if(oldBev < b){
+					$scope.data.bev_votes[b].movement = 'downwards';
+				}
+				console.log([$scope.data.bev_votes[b].name.display_value,oldBev,'->',b,$scope.data.bev_votes[b].movement]);
+				
+			};
+		$scope.server.update().then(function(){
+			oldBevs = $scope.data.bev_votes;
+		});
+		});
     });
+
+	// $scope.matchingID = function(obj) {
+	// 	return obj.sys_id === target.sys_id;
+	// 	}
 
 	$scope.refresh = function(){
 		spUtil.update($scope);
@@ -55,10 +80,22 @@
   	border-radius: 2rem;&#13;
     display: flex;&#13;
     flex-direction: row;&#13;
-    margin: 2rem;&#13;
+    margin: 1rem;&#13;
     padding: 2rem;&#13;
   	justify-content: space-between;&#13;
   	align-items: center;&#13;
+  &#13;
+  	/*transition: all .2s ease-in-out;*/&#13;
+}&#13;
+&#13;
+.upwards {&#13;
+	/*transform: translateY(10rem);*/&#13;
+  animation: moveVoteUp .3s ease-in-out;&#13;
+  &#13;
+}&#13;
+&#13;
+.downwards {&#13;
+  animation: moveVoteDown .3s ease-in-out;&#13;
 }&#13;
 &#13;
 .cc-vote-item-left {&#13;
@@ -89,6 +126,21 @@
   flex-direction: row;&#13;
   justify-content: space-between;&#13;
   align-items: center;&#13;
+}&#13;
+&#13;
+@keyframes moveVoteUp&#13;
+{&#13;
+  from {transform: translateY(0); opacity: 1;}&#13;
+  to { transform: translateY(10rem); opacity: .5;}&#13;
+}&#13;
+@keyframes moveVoteDown&#13;
+{&#13;
+  from {transform: translateY(0); opacity: 1;}&#13;
+  to { transform: translateY(-10rem); opacity: .5;}&#13;
+}&#13;
+@keyframes fadeIn {&#13;
+  from {opacity:0;}&#13;
+  to {opacity:1;}&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -233,14 +285,14 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>224</sys_mod_count>
+        <sys_mod_count>243</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-09 00:59:16</sys_updated_on>
+        <sys_updated_on>2023-04-09 17:15:28</sys_updated_on>
         <template><![CDATA[<div>
   <div ng-if="data.auth" class="cc-panel">
     <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
@@ -277,7 +329,7 @@ data.votes = votes;
     </div>
     <div class="cc-vote-panel">
       <div ng-repeat="bv in data.bev_votes track by $index">
-        <div class="cc-vote-item">
+        <div class="cc-vote-item {{bv.movement}}">
           <div class="cc-vote-item-left">   
               <div class='cc-vote-info'><h4>{{data.drink_names_hidden ? bv.masked_name.display_value : bv.name.display_value}} - {{bv.votes}} vote{{bv.votes==1?'':'s'}}</h4></div>
               <!--<div style="display:block;background-color:red;width:{{votesToWidth(bv.votes,data.votes.length)}}%;height:10px;"></div>-->        
