@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>3</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">089a9095876da5104c1fc99d0ebb3541</sp_column>
+        <sp_widget display_value="CC Beverage List">3e4fca21877165504c1fc99d0ebb3512</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-04-04 01:17:05</sys_created_on>
+        <sys_id>cecdbee8870621106e4b11f83cbb35bc</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Cast Your Vote!</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_update_name>sp_instance_cecdbee8870621106e4b11f83cbb35bc</sys_update_name>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-04-10 00:36:23</sys_updated_on>
+        <title>Cast Your Vote!</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"limit": {
+		"value": "3",
+		"displayValue": "3"
+	},
+	"event": {
+		"value": "",
+		"displayValue": ""
+	},
+	"title": {
+		"value": "Cast Your Vote!",
+		"displayValue": "Cast Your Vote!"
+	},
+	"click_action": {
+		"value": "vote",
+		"displayValue": "vote"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=cecdbee8870621106e4b11f83cbb35bc"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</application>
+        <file_path/>
+        <instance_id>6bc7963ddb04515c07072f17d496198d</instance_id>
+        <instance_name>empabrunet02</instance_name>
+        <name>sp_instance_cecdbee8870621106e4b11f83cbb35bc</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_instance"&gt;&lt;sp_instance action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;class_name/&gt;&lt;color&gt;default&lt;/color&gt;&lt;css/&gt;&lt;glyph/&gt;&lt;id/&gt;&lt;order&gt;3&lt;/order&gt;&lt;roles/&gt;&lt;short_description/&gt;&lt;size&gt;md&lt;/size&gt;&lt;sp_column display_value="1"&gt;089a9095876da5104c1fc99d0ebb3541&lt;/sp_column&gt;&lt;sp_widget display_value="CC Beverage List"&gt;3e4fca21877165504c1fc99d0ebb3512&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_instance&lt;/sys_class_name&gt;&lt;sys_created_by&gt;aaron.brunet&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-04-04 01:17:05&lt;/sys_created_on&gt;&lt;sys_id&gt;cecdbee8870621106e4b11f83cbb35bc&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Cast Your Vote!&lt;/sys_name&gt;&lt;sys_package display_value="Commodore's Club" source="x_snc_commodore_0"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Commodore's Club"&gt;7f31176e87a021106e4b11f83cbb358d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_instance_cecdbee8870621106e4b11f83cbb35bc&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;aaron.brunet&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-04-10 00:36:23&lt;/sys_updated_on&gt;&lt;title&gt;Cast Your Vote!&lt;/title&gt;&lt;url/&gt;&lt;widget_parameters&gt;&lt;![CDATA[{
+	"limit": {
+		"value": "3",
+		"displayValue": "3"
+	},
+	"event": {
+		"value": "",
+		"displayValue": ""
+	},
+	"title": {
+		"value": "Cast Your Vote!",
+		"displayValue": "Cast Your Vote!"
+	},
+	"click_action": {
+		"value": "vote",
+		"displayValue": "vote"
+	}
+}]]&gt;&lt;/widget_parameters&gt;&lt;/sp_instance&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=cecdbee8870621106e4b11f83cbb35bc"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1109799595</payload_hash>
+        <record_name>Cast Your Vote!</record_name>
+        <reverted_from/>
+        <source>d23b647a87a021106e4b11f83cbb3517</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-04-10 00:36:23</sys_created_on>
+        <sys_id>9c0e21ee878aa5104c1fc99d0ebb35dd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1876897acb50000001</sys_recorded_at>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-04-10 00:36:23</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>940e21eea28aa510d8526d8ac978bcdd</update_guid>
+        <update_guid_history>940e21eea28aa510d8526d8ac978bcdd:1109799595,63f4e056498a651033aecd35a88600a0:1530140628,9acdbee8d10621105893fd7eac64acbe:-781643055</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Cast Your Vote!">07ba75aa87caa5104c1fc99d0ebb354e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aaron.brunet</sys_created_by>
+        <sys_created_on>2023-04-10 01:32:01</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>a9f7966540584ddc9f88c1bc1083a8a4</sys_id>
+        <sys_metadata>cecdbee8870621106e4b11f83cbb35bc</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Cast Your Vote!</sys_name>
+        <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
+        <sys_scope_delete display_value="">69d84e13d1bd4048965dcb6b803ec204</sys_scope_delete>
+        <sys_update_name>sp_instance_cecdbee8870621106e4b11f83cbb35bc</sys_update_name>
+        <sys_update_version display_value="sp_instance_cecdbee8870621106e4b11f83cbb35bc">9c0e21ee878aa5104c1fc99d0ebb35dd</sys_update_version>
+        <sys_updated_by>aaron.brunet</sys_updated_by>
+        <sys_updated_on>2023-04-10 01:32:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -8,14 +8,37 @@
 
   c.clickCard = function(bev,options){
 		options.display = 'full';
+		//console.log(bev);
+		//console.log(options);
+		var buttons = [{
+					primary: true,
+					label: 'Ok'
+			}];
+		var vote = false;
+		if(options.click_action == 'vote'){	
+			//console.log(options.beverage);
+			vote = true;
+			buttons = [
+				{	cancel: true,
+					label: 'Cancel'
+				},{
+					primary: true,
+					label: 'Cast My Vote!'
+			}];
+		}
+
 		spModal.open({
 			title: data.modal_title || 'More Information',
 			widget: 'cc-beverage-card',
 			widgetInput: options,
-			buttons: []
+			buttons: buttons
 		}).then(function(){
+			//console.log("Vote will be generated for "+options.attendanceRecord);
+			if(vote){
+				$rootScope.$emit('clicked_beverage',options.beverage);
+			}
 			console.log('Modal closed');
-		})
+		});
 
   };
 };]]></client_script>
@@ -34,20 +57,24 @@
         <docs/>
         <field_list/>
         <has_preview>false</has_preview>
-        <id/>
+        <id>cc-beverage-list</id>
         <internal>false</internal>
         <link><![CDATA[function link(scope, element, attrs, controller) {
   
 }]]></link>
         <name>CC Beverage List</name>
-        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Beverages","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"}]},{"displayValue":"Club Events","name":"event","section":"Data","label":"Event","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"title","section":"Presentation","default_value":"Cellar Treasures","label":"Title","type":"string"}]</option_schema>
+        <option_schema>[{"name":"limit","section":"Presentation","default_value":"3","label":"Number of Beverages","type":"choice","choices":[{"label":"1","value":"1"},{"label":"3","value":"3"},{"label":"6","value":"6"},{"label":"9","value":"9"}]},{"displayValue":"Club Events","name":"event","section":"Data","label":"Event","type":"reference","value":"x_snc_commodore_0_events","ed":{"reference":"x_snc_commodore_0_events"}},{"name":"title","section":"Presentation","default_value":"Cellar Treasures","label":"Title","type":"string"},{"name":"click_action","section":"Data","default_value":"display","label":"Click Action","type":"choice","choices":[{"label":"display","value":"display"},{"label":"vote","value":"vote"}]}]</option_schema>
         <public>false</public>
         <roles>x_snc_commodore_0.cc_user</roles>
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
-	
-	data.options = options;
+	var user = gs.getUserID();
+	if(!input){
+		data.options = options;
+	} else{
+		data.options = input;
+	}
 	console.log(data.options);
 	data.limit = data.options.limit;
 	data.bevs = [];
@@ -83,15 +110,25 @@
 		data.bev_capacity = bc;
 	}
 
+	if(data.options.click_action == 'vote'){
+		var attendanceRecord = new x_snc_commodore_0.CCUtils().getMyRSVPRecord(user,data.event).sys_id.toString();
+		var voteRecord = new x_snc_commodore_0.CCUtils().getMyVote(user,attendanceRecord);
+		console.log(voteRecord);
+	}
+
 	bevs.orderBy('sys_created_on');
 	bevs.query();
 
-	while(bevs.next()){
-		
+	while(bevs.next()){		
 		var bev = {};
 		bev.sys_id = bevs.getValue('sys_id');
 		bev.event = bevs.getValue('event');
-		bev.options = {beverage:bev.sys_id,event_id:bev.event,display:'list'};
+		bev.options = {beverage:bev.sys_id,event_id:bev.event,display:'list',click_action:data.options.click_action};
+		if(options.click_action == 'vote'){
+			bev.options.user = user;
+			bev.options.attendanceRecord = attendanceRecord;
+
+		}
 		//console.log(['bev',bev]);
 		data.widgets.push($sp.getWidget("cc-beverage-card",bev.options));
 		data.bevs.push(bev);
@@ -108,14 +145,14 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 14:12:12</sys_created_on>
         <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
-        <sys_mod_count>51</sys_mod_count>
+        <sys_mod_count>73</sys_mod_count>
         <sys_name>CC Beverage List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-09 00:39:46</sys_updated_on>
+        <sys_updated_on>2023-04-10 01:34:15</sys_updated_on>
         <template><![CDATA[<div class="cc-panel" >
     <h3 class="cc-title">{{data.options.title}}</h3>
     <div class="cc-list-row cards" ng-if="data.bevs.length > 0">

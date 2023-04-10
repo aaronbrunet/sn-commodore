@@ -6,6 +6,12 @@
 	var c = this;
 	var data = $scope.data;
 	var ea_str = "event_attendances.event="+data.event_id;
+	c.stopRotating = function(){
+		$timeout(function(){
+			c.data.rotating = false;
+		},500);
+	};
+	c.stopRotating();
 	//console.log(ea_str);
 	var oldBevs = Array.from(data.bev_votes);
 	spUtil.recordWatch($scope, "x_snc_commodore_0_votes", ea_str, function(name) {
@@ -13,6 +19,7 @@
 		//console.log(name); 
 		
 		spUtil.update($scope).then(function(){
+			//c.refreshed = c.updateTime();
 			for(b in $scope.data.bev_votes){
 				//var oldBev = oldBevs.find(ob => ob.sys_id == $scope.data.bev_votes[b].sys_id);
 				var oldBev = oldBevs.findIndex(ob => ob.sys_id == $scope.data.bev_votes[b].sys_id);
@@ -26,12 +33,13 @@
 					if(oldBev < b){
 					$scope.data.bev_votes[b].movement = 'downwards';
 				}
-				console.log([$scope.data.bev_votes[b].name.display_value,oldBev,'->',b,$scope.data.bev_votes[b].movement]);
+				//console.log([$scope.data.bev_votes[b].name.display_value,oldBev,'->',b,$scope.data.bev_votes[b].movement]);
 				
 			};
 		$scope.server.update().then(function(){
 			oldBevs = $scope.data.bev_votes;
-		});
+			c.stopRotating();
+			});
 		});
     });
 
@@ -62,6 +70,9 @@
         <css>i {&#13;
     vertical-align: bottom;&#13;
 }&#13;
+.icon-span {&#13;
+	display: inline-block;&#13;
+}&#13;
 &#13;
 .cc-vote-panel {&#13;
 	height: 40rem;&#13;
@@ -85,17 +96,17 @@
   	justify-content: space-between;&#13;
   	align-items: center;&#13;
   &#13;
-  	/*transition: all .2s ease-in-out;*/&#13;
+  	/*transition: all .5s ease-in-out;*/&#13;
 }&#13;
 &#13;
 .upwards {&#13;
 	/*transform: translateY(10rem);*/&#13;
-  animation: moveVoteUp .3s ease-in-out;&#13;
+  animation: moveVoteUp .2s ease-in-out;&#13;
   &#13;
 }&#13;
 &#13;
 .downwards {&#13;
-  animation: moveVoteDown .3s ease-in-out;&#13;
+  animation: moveVoteDown .2s ease-in-out;&#13;
 }&#13;
 &#13;
 .cc-vote-item-left {&#13;
@@ -141,6 +152,15 @@
 @keyframes fadeIn {&#13;
   from {opacity:0;}&#13;
   to {opacity:1;}&#13;
+}&#13;
+@keyframes rotate {&#13;
+  0% {transform: rotate(0deg);}&#13;
+  50% {transform: rotate(180deg);}&#13;
+  100% {transform: rotate(360deg);}&#13;
+}&#13;
+&#13;
+.rotating {&#13;
+	animation: rotate .5s cubic-bezier(0.01, 0.03, 1, 1) infinite;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -163,9 +183,12 @@
 function getTime(){
 	console.log('Calculating new timestamp');
 	var gd = new GlideDate();
-	var gdt = gd.getNumericValue() - gd.getTZOffset();
+	var gdt = gd.getNumericValue() - gd.getTZOffset();	
 	return new Date(gdt);
 }
+data.rotating = true;
+//data.refreshed = new Date((new GlideDate().getNumericValue() - new GlideDate().getTZOffset()));//getTime();
+data.refreshed = getTime();
 
 if ($sp.getParameter('id')=='live_event' && $sp.getParameter('sys_id')!=''){		
 		data.event_id = $sp.getParameter('sys_id');		
@@ -177,7 +200,7 @@ data.auth = gs.hasRole('x_snc_commodore_0.cc_founder');
 data.voting_open = event.getValue('voting_open') == 1;
 data.drink_names_hidden = event.getValue('drink_names_hidden') == 1;
 
-data.refreshed = getTime();
+
 data.vote_href = '/cc?id=sc_cat_item&sys_id='+constants.CAT_ITEM_VOTE+'&event_id='+data.event_id;
 data.vote_msg = 'VOTE!';
 data.state = event.getValue('state');
@@ -235,6 +258,7 @@ var b_list = new CCUtils().getBevRecords(data.event_id,true);
 var beverages = [];
 var getBev = new GlideRecord('x_snc_commodore_0_beverage');
 getBev.addEncodedQuery('sys_idIN'+b_list);
+getBev.orderBy('sys_created_on');
 getBev.query();
 while(getBev.next()){
 	var bObj = {};
@@ -255,6 +279,7 @@ while(getVotes.next()){
 	var vObj = {};
 	$sp.getRecordElements(vObj, getVotes, 'vote,user,beverage');
 	vObj.beverage.masked_name = getVotes.beverage.masked_name.getDisplayValue(); 
+	vObj.beverage.updated = getVotes.beverage.sys_updated_on.toString();
 	vObj.sys_id = getVotes.getValue('sys_id');
 	if(getVotes.getValue('user')==gs.getUserID()){
 		data.vote_msg = 'Modify Vote';
@@ -263,6 +288,7 @@ while(getVotes.next()){
 	var targetBeverage = beverages.findIndex(b => b.sys_id == vObj.beverage.value);
 	if(targetBeverage != -1){
 		beverages[targetBeverage].votes += 1;
+		beverages[targetBeverage].updated = vObj.beverage.updated;
 		if(beverages[targetBeverage].votes > top_score){
 			top_score = beverages[targetBeverage].votes;
 		}
@@ -271,28 +297,34 @@ while(getVotes.next()){
 
 data.attendees = attendees;
 data.beverages = beverages;
-data.bev_votes = [...beverages].sort((a,b) => b.votes - a.votes);
+data.bev_votes = [...beverages].sort(function(a,b){ 
+	if(a.votes === b.votes){
+		return 0;
+	} else {
+	return b.votes - a.votes;
+	}
+});
+
 data.top_score = top_score;
 data.votes = votes;
 
 //console.log(data.beverages);
-//console.log(data.bevVotes);
+//console.log(data.bev_votes);
 //console.log(data.votes);
-
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>243</sys_mod_count>
+        <sys_mod_count>278</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-09 17:15:28</sys_updated_on>
+        <sys_updated_on>2023-04-10 00:33:22</sys_updated_on>
         <template><![CDATA[<div>
   <div ng-if="data.auth" class="cc-panel">
     <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
@@ -323,13 +355,15 @@ data.votes = votes;
     <div class="title-row">
       <h3>Scoreboard</h3>
       <div>
-          <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
-          <sn-time-ago timestamp="data.refreshed"/>
+          <span class="icon-span" ng-class="{'rotating':data.rotating}" >
+            <i class="ri-refresh-line" aria-hidden="true" title="${Last refreshed}"></i>
+          </span>
+          <sn-time-ago timestamp="::data.refreshed"/>
       </div>
     </div>
     <div class="cc-vote-panel">
-      <div ng-repeat="bv in data.bev_votes track by $index">
-        <div class="cc-vote-item {{bv.movement}}">
+      <div ng-repeat="bv in data.bev_votes track by bv.sys_id" ng-animate="'animate'" class="cc-vote-item-parent" ng-class="bv.movement">
+        <div class="cc-vote-item">
           <div class="cc-vote-item-left">   
               <div class='cc-vote-info'><h4>{{data.drink_names_hidden ? bv.masked_name.display_value : bv.name.display_value}} - {{bv.votes}} vote{{bv.votes==1?'':'s'}}</h4></div>
               <!--<div style="display:block;background-color:red;width:{{votesToWidth(bv.votes,data.votes.length)}}%;height:10px;"></div>-->        
