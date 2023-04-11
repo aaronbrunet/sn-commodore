@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function($scope,$timeout,$interval,spUtil) {
+        <client_script><![CDATA[api.controller=function($scope,$timeout,$interval,spUtil,spModal) {
   /* widget controller */
 	var c = this;
 	var data = $scope.data;
 	var ea_str = "event_attendances.event="+data.event_id;
+
 	c.stopRotating = function(){
 		$timeout(function(){
 			c.data.rotating = false;
 		},500);
 	};
 	c.stopRotating();
-	//console.log(ea_str);
+
 	var oldBevs = Array.from(data.bev_votes);
 	spUtil.recordWatch($scope, "x_snc_commodore_0_votes", ea_str, function(name) {
 		//console.log(name.data.operation); 
 		//console.log(name); 
 		
 		spUtil.update($scope).then(function(){
-			//c.refreshed = c.updateTime();
 			for(b in $scope.data.bev_votes){
-				//var oldBev = oldBevs.find(ob => ob.sys_id == $scope.data.bev_votes[b].sys_id);
 				var oldBev = oldBevs.findIndex(ob => ob.sys_id == $scope.data.bev_votes[b].sys_id);
-				
-				//var newBev = $scope.data.bev_votes[b]
-				//if(oldBev.votes < newBev.votes){
 				if(oldBev > b){
 					$scope.data.bev_votes[b].movement = 'upwards';
 				}
-				//if(oldBev.votes > newBev.votes){
-					if(oldBev < b){
+				if(oldBev < b){
 					$scope.data.bev_votes[b].movement = 'downwards';
 				}
 				//console.log([$scope.data.bev_votes[b].name.display_value,oldBev,'->',b,$scope.data.bev_votes[b].movement]);
@@ -42,10 +37,6 @@
 			});
 		});
     });
-
-	// $scope.matchingID = function(obj) {
-	// 	return obj.sys_id === target.sys_id;
-	// 	}
 
 	$scope.refresh = function(){
 		spUtil.update($scope);
@@ -60,10 +51,29 @@
 
 	$scope.toggleAction = function (action) {
 		$scope.data.action = action;
-		spUtil.update($scope).then(function() {
-			$scope.data.action = undefined;
-			$scope.server.update();
+		var title = action == 'goLive' ? 'Start Live Event?' : 'End Live Event?';
+		var body = action == 'goLive' ? 
+			'Starting the live event will open voting and get the party started.' : 
+			'Ending the live event will close voting and announce the winner. If this is a blind event, this will also reveal all Cellar Treasure names!';
+		var buttons = [{
+			label: 'Never mind',
+			cancel: true
+		},{
+			label: 'Confirm',
+			primary: true
+		}]
+		spModal.open({
+			title: title,
+			message: body,
+			buttons: buttons
+		}).then(function(){
+				spUtil.update($scope).then(function() {
+				$scope.data.action = undefined;
+				$scope.server.update();
+			});
 		});
+
+		
 	};
 };]]></client_script>
         <controller_as>c</controller_as>
@@ -71,6 +81,10 @@
     vertical-align: bottom;&#13;
 }&#13;
 .icon-span {&#13;
+	display: inline-block;&#13;
+}&#13;
+&#13;
+.inline-children * {&#13;
 	display: inline-block;&#13;
 }&#13;
 &#13;
@@ -317,31 +331,33 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>278</sys_mod_count>
+        <sys_mod_count>291</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-10 00:33:22</sys_updated_on>
+        <sys_updated_on>2023-04-10 15:22:11</sys_updated_on>
         <template><![CDATA[<div>
-  <div ng-if="data.auth" class="cc-panel">
-    <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
-      Go Live!
-    </button>
-    <button ng-click="toggleAction('endLive')" ng-if="data.live" class="cc-button-primary cc-button">
-      End Live Event
-    </button>
-    <!--
-    <button ng-click="toggleAction('toggleVoting')" class="cc-button-primary cc-button">
-      <i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}
-    </button>
-	-->
-  	<button ng-click="toggleAction('toggleDrinkVisibility')" class="cc-button-primary cc-button">
-    	<i class="ri-eye{{data.drink_names_hidden ? '-close' : ''}}-fill"></i>
-  		Drink names are {{data.drink_names_hidden ? 'hidden' : 'visible'}}
-  	</button>
+  <div ng-if="data.auth" class="cc-panel cc-auth-panel">
+    <h3><i class="ri-lock-fill"></i> Founders Only</h3>
+  	<div class="inline-children">
+      <button ng-click="toggleAction('goLive')" ng-if="!data.live" class="cc-button-primary cc-button">
+        Go Live!
+      </button>
+      <button ng-click="toggleAction('endLive')" ng-if="data.live" class="cc-button-primary cc-button">
+        End Live Event
+      </button>
+      <!--
+      <button ng-click="toggleAction('toggleVoting')" class="cc-button-primary cc-button">
+        <i class="ri-{{data.voting_open ? 'check' : 'close'}}-line"></i>Voting is {{data.voting_open ? 'open' : 'closed'}}
+      </button>
+      -->
+      <!--<button ng-click="toggleAction('toggleDrinkVisibility')" class="cc-button-primary cc-button">-->
+      <h4><i class="ri-eye{{data.drink_names_hidden ? '-close' : ''}}-fill"></i> Drink names are {{data.drink_names_hidden ? 'hidden' : 'visible'}}</h4>
+      <!--</button>-->
+  	</div>
   </div>
   <div class="cc-panel">
     <!--
@@ -362,6 +378,9 @@ data.votes = votes;
       </div>
     </div>
     <div class="cc-vote-panel">
+      <div ng-if="data.bev_votes.length == 0">
+        <h3>No one's voted yet. Cast a vote below to get the party started!</h3>
+      </div>
       <div ng-repeat="bv in data.bev_votes track by bv.sys_id" ng-animate="'animate'" class="cc-vote-item-parent" ng-class="bv.movement">
         <div class="cc-vote-item">
           <div class="cc-vote-item-left">   

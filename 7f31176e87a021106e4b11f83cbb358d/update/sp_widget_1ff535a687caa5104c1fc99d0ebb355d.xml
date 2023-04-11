@@ -6,7 +6,15 @@
   var c = this;
   
   //c.createWidget = function(value){
-	  spUtil.get("cc-beverage-list",{limit:3,event:c.data.event,title:'Cast Your Vote!',click_action:'vote'}).then(function(response){
+	  spUtil.get("cc-beverage-list",{
+		  limit:3,
+		  event:c.data.event,
+		  title:'Cast Your Vote!',
+		  subtitle:'Select any Cellar Treasure to cast or change your vote.',
+		  click_action:'vote',
+		  voted: c.data.vote.sys_id,
+		  buttons: c.data.buttons
+		  }).then(function(response){
 			c.bevListWidget = response;
 		});
 		//console.log('broadcasting ID '+value);
@@ -48,31 +56,50 @@
   var user = gs.getUserID();
   data.event = '';
   
-  if($sp.getParameter('id') == 'live_event' || $sp.getParameter('id') == 'event'){
-	data.event = $sp.getParameter('sys_id');
-  }
+	if($sp.getParameter('id') == 'live_event' || $sp.getParameter('id') == 'event'){
+		data.event = $sp.getParameter('sys_id');
+  	}
+
+	data.buttons = [
+				{	cancel: true,
+					label: 'Cancel'
+				},{
+					primary: true,
+					label: 'Cast My Vote!'
+			}];
+
+	var attendanceRecord = new x_snc_commodore_0.CCUtils().getMyRSVPRecord(user,data.event).sys_id.toString();
+	var voteRecord = new x_snc_commodore_0.CCUtils().getMyVote(user,attendanceRecord);
+	var voteID = voteRecord.getValue('sys_id');
+	if(!voteID){ voteID = voteRecord.sys_id.toString();}
+	if(voteID && voteID !=''){
+		data.vote = {
+			name: voteRecord.beverage.name.toString(),
+			sys_id: voteID
+		};
+		if(voteRecord.event_attendances.event.drink_names_hidden){
+			data.vote.name = voteRecord.beverage.masked_name.toString();
+		}
+	}
 
 	if(input){
-		console.log(input);
 		var bev_id = input.bev_id;
-		
-		console.log(bev_id);
-		
-		var attendanceRecord = new x_snc_commodore_0.CCUtils().getMyRSVPRecord(user,data.event).sys_id.toString();
-		var voteRecord = new x_snc_commodore_0.CCUtils().getMyVote(user,attendanceRecord);
-		console.log([user,attendanceRecord,voteRecord]);
 		
 		var vote = new GlideRecord('x_snc_commodore_0_votes');
 		if(vote.canWrite()){
-			vote.get(voteRecord);
-			if(vote){
-				vote.beverage = bev_id;
-				vote.update();
+			if(voteID && voteID !=''){
+				vote.addQuery('sys_id',voteID);
+				vote.query();
+				if(vote.next()){
+					vote.beverage = bev_id;
+					vote.update();
+				}
 			} else {
+				//console.log([user,attendanceRecord,voteRecord]);
 				vote.initialize();
-				vote.beverage = bev_id;
-				vote.user = user;
-				vote.event_attendances = attendanceRecord;
+				vote.setValue('user',user);
+				vote.setValue('event_attendances',attendanceRecord+'');
+				vote.setValue('beverage',bev_id+'');				
 				vote.insert();
 			}
 		}
@@ -84,17 +111,17 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-04-10 01:16:01</sys_created_on>
         <sys_id>1ff535a687caa5104c1fc99d0ebb355d</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>32</sys_mod_count>
         <sys_name>CC Bev List Voting Wrapper</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_1ff535a687caa5104c1fc99d0ebb355d</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-10 01:54:00</sys_updated_on>
+        <sys_updated_on>2023-04-10 12:47:17</sys_updated_on>
         <template><![CDATA[<div class="bev-list-wrapper">
   <sp-widget widget="c.bevListWidget"/>  
 </div>
-<div><p>You voted for {{'vote'}}</p></div>]]></template>
+<div ng-if="data.vote"><p>You voted for {{data.vote.name}}</p></div>]]></template>
     </sp_widget>
 </record_update>
