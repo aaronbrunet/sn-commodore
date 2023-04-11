@@ -28,14 +28,18 @@
 				if(oldBev < b){
 					$scope.data.bev_votes[b].movement = 'downwards';
 				}
+				if(oldBevs[oldBev].votes < $scope.data.bev_votes[b].votes){
+					$scope.data.bev_votes[b].movement += ' buzz';
+				}	
+				
 				//console.log([$scope.data.bev_votes[b].name.display_value,oldBev,'->',b,$scope.data.bev_votes[b].movement]);
 				
 			};
-		$scope.server.update().then(function(){
-			oldBevs = $scope.data.bev_votes;
-			c.stopRotating();
+			$scope.server.update().then(function(){
+				oldBevs = $scope.data.bev_votes;
+				c.stopRotating();
+				});
 			});
-		});
     });
 
 	$scope.refresh = function(){
@@ -172,9 +176,20 @@
   50% {transform: rotate(180deg);}&#13;
   100% {transform: rotate(360deg);}&#13;
 }&#13;
+@keyframes wiggle {&#13;
+    0% { transform: rotate(0deg); }&#13;
+   25% { transform: rotate(2deg); }&#13;
+   50% { transform: rotate(0deg); }&#13;
+   75% { transform: rotate(-2deg); }&#13;
+  100% { transform: rotate(0deg); }&#13;
+}&#13;
 &#13;
 .rotating {&#13;
 	animation: rotate .5s cubic-bezier(0.01, 0.03, 1, 1) infinite;&#13;
+}&#13;
+&#13;
+.buzz {&#13;
+	animation: wiggle .2s ease-in-out infinite;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -272,7 +287,7 @@ var b_list = new CCUtils().getBevRecords(data.event_id,true);
 var beverages = [];
 var getBev = new GlideRecord('x_snc_commodore_0_beverage');
 getBev.addEncodedQuery('sys_idIN'+b_list);
-getBev.orderBy('sys_created_on');
+getBev.orderBy('masked_name');
 getBev.query();
 while(getBev.next()){
 	var bObj = {};
@@ -302,7 +317,9 @@ while(getVotes.next()){
 	var targetBeverage = beverages.findIndex(b => b.sys_id == vObj.beverage.value);
 	if(targetBeverage != -1){
 		beverages[targetBeverage].votes += 1;
-		beverages[targetBeverage].updated = vObj.beverage.updated;
+		if(beverages[targetBeverage].updated < vObj.beverage.updated){
+			beverages[targetBeverage].updated = vObj.beverage.updated;
+		}
 		if(beverages[targetBeverage].votes > top_score){
 			top_score = beverages[targetBeverage].votes;
 		}
@@ -312,8 +329,8 @@ while(getVotes.next()){
 data.attendees = attendees;
 data.beverages = beverages;
 data.bev_votes = [...beverages].sort(function(a,b){ 
-	if(a.votes === b.votes){
-		return 0;
+	if(a.votes == b.votes){		
+		return a.masked_name - b.masked_name;
 	} else {
 	return b.votes - a.votes;
 	}
@@ -322,7 +339,7 @@ data.bev_votes = [...beverages].sort(function(a,b){
 data.top_score = top_score;
 data.votes = votes;
 
-//console.log(data.beverages);
+console.log(data.beverages);
 //console.log(data.bev_votes);
 //console.log(data.votes);
 })();]]></script>
@@ -331,14 +348,14 @@ data.votes = votes;
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-01-26 16:09:09</sys_created_on>
         <sys_id>268d3fbe87e821106e4b11f83cbb35e6</sys_id>
-        <sys_mod_count>291</sys_mod_count>
+        <sys_mod_count>319</sys_mod_count>
         <sys_name>CC Event Voting</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_268d3fbe87e821106e4b11f83cbb35e6</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-10 15:22:11</sys_updated_on>
+        <sys_updated_on>2023-04-11 01:58:52</sys_updated_on>
         <template><![CDATA[<div>
   <div ng-if="data.auth" class="cc-panel cc-auth-panel">
     <h3><i class="ri-lock-fill"></i> Founders Only</h3>
