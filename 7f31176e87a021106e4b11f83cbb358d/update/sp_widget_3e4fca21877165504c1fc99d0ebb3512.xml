@@ -35,6 +35,7 @@
 		}).then(function(){
 			//console.log("Vote will be generated for "+options.attendanceRecord);
 			if(vote){
+				//$scope.data.voted = options.beverage;
 				$rootScope.$emit('clicked_beverage',options.beverage);
 			}
 			console.log('Modal closed');
@@ -50,6 +51,7 @@
 .cc-list-row.cards {&#13;
 	overflow-x: auto;&#13;
     padding: 2rem;&#13;
+    scroll-snap-type: x mandatory;&#13;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -75,6 +77,7 @@
 	} else{
 		data.options = input;
 	}
+	console.log('Bev List Options');
 	console.log(data.options);
 	data.limit = data.options.limit;
 	data.bevs = [];
@@ -114,21 +117,23 @@
 	if(data.options.click_action == 'vote'){
 		var attendanceRecord = new x_snc_commodore_0.CCUtils().getMyRSVPRecord(user,data.event).sys_id.toString();
 		var voteRecord = new x_snc_commodore_0.CCUtils().getMyVote(user,attendanceRecord);
-		console.log(voteRecord);
+		//console.log(voteRecord);
 	}
 
-	bevs.orderBy('sys_created_on');
+	bevs.orderBy('masked_name');
 	bevs.query();
 
 	while(bevs.next()){		
 		var bev = {};
 		bev.sys_id = bevs.getValue('sys_id');
+		var voted = false;
+		if(bev.sys_id == data.options.voted){ voted = true; }
 		bev.event = bevs.getValue('event');
 		bev.options = {beverage:bev.sys_id,event_id:bev.event,display:'list',click_action:data.options.click_action};
-		if(options.click_action == 'vote'){
+		if(data.options.click_action == 'vote'){
 			bev.options.user = user;
 			bev.options.attendanceRecord = attendanceRecord;
-
+			bev.options.voted = voted;
 		}
 		//console.log(['bev',bev]);
 		data.widgets.push($sp.getWidget("cc-beverage-card",bev.options));
@@ -146,19 +151,19 @@
         <sys_created_by>aaron.brunet</sys_created_by>
         <sys_created_on>2023-03-25 14:12:12</sys_created_on>
         <sys_id>3e4fca21877165504c1fc99d0ebb3512</sys_id>
-        <sys_mod_count>78</sys_mod_count>
+        <sys_mod_count>85</sys_mod_count>
         <sys_name>CC Beverage List</sys_name>
         <sys_package display_value="Commodore's Club" source="x_snc_commodore_0">7f31176e87a021106e4b11f83cbb358d</sys_package>
         <sys_policy/>
         <sys_scope display_value="Commodore's Club">7f31176e87a021106e4b11f83cbb358d</sys_scope>
         <sys_update_name>sp_widget_3e4fca21877165504c1fc99d0ebb3512</sys_update_name>
         <sys_updated_by>aaron.brunet</sys_updated_by>
-        <sys_updated_on>2023-04-11 00:55:57</sys_updated_on>
+        <sys_updated_on>2023-04-11 02:29:26</sys_updated_on>
         <template><![CDATA[<div class="cc-panel" >
     <h3 class="cc-title">{{data.options.title}}</h3>
     <p class="cc-subtitle" ng-if="data.options.subtitle">{{data.options.subtitle}}</p>
     <div class="cc-list-row cards" ng-if="data.bevs.length > 0">
-      <div ng-repeat="w in data.widgets | limitTo : data.limit">
+      <div ng-repeat="w in data.widgets | limitTo : data.limit" class="cc-list-items">
         <div ng-click="c.clickCard(w,w.options)" class="cc-beverage-list">
           <sp-widget widget="w" ></sp-widget>
         </div>
